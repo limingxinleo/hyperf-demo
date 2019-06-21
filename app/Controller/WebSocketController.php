@@ -11,19 +11,19 @@ use Swoole\Server;
 use Swoole\Websocket\Frame;
 use Swoole\WebSocket\Server as WsServer;
 
-class WebSocketController implements OnMessageInterface
+class WebSocketController
 {
-    public function ws(RequestInterface $request, ResponseInterface $response)
-    {
-        return $response->raw('Hello Hyperf!');
-    }
-
     /**
      * @param WsServer $server
      * @param Frame $frame
      */
-    public function onMessage(Server $server, Frame $frame): void
+    public function one(Server $server, Frame $frame)
     {
-        $server->push($frame->fd, 'FROM: ' . $frame->data);
+        $server->push($frame->fd, 'FROM1: ' . $frame->data);
+    }
+
+    public function two(Server $server, Frame $frame)
+    {
+        $server->push($frame->fd, 'FROM2: ' . $frame->data);
     }
 }
