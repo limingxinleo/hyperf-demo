@@ -9,6 +9,7 @@ use Hyperf\HttpServer\Contract\ResponseInterface;
 use Hyperf\Contract\OnMessageInterface;
 use Swoole\Server;
 use Swoole\Websocket\Frame;
+use Swoole\WebSocket\Server as WsServer;
 
 class WebSocketController implements OnMessageInterface
 {
@@ -17,8 +18,12 @@ class WebSocketController implements OnMessageInterface
         return $response->raw('Hello Hyperf!');
     }
 
+    /**
+     * @param WsServer $server
+     * @param Frame $frame
+     */
     public function onMessage(Server $server, Frame $frame): void
     {
-        var_dump(111);
+        $server->push($frame->fd, 'FROM: ' . $frame->data);
     }
 }
