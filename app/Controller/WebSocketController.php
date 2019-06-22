@@ -4,26 +4,32 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Hyperf\Contract\OnCloseInterface;
+use Hyperf\Contract\OnOpenInterface;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 use Hyperf\Contract\OnMessageInterface;
+use Swoole\Http\Request;
 use Swoole\Server;
 use Swoole\Websocket\Frame;
 use Swoole\WebSocket\Server as WsServer;
 
-class WebSocketController
+class WebSocketController implements OnMessageInterface, OnOpenInterface, OnCloseInterface
 {
-    /**
-     * @param WsServer $server
-     * @param Frame $frame
-     */
-    public function one(Server $server, Frame $frame)
+    public function onMessage(Server $server, Frame $frame): void
     {
         $server->push($frame->fd, 'FROM1: ' . $frame->data);
     }
 
-    public function two(Server $server, Frame $frame)
+    public function onClose(Server $server, int $fd, int $reactorId): void
     {
-        $server->push($frame->fd, 'FROM2: ' . $frame->data);
+        var_dump('closed');
+        $server->push($fd, 'closed');
+    }
+
+    public function onOpen(Server $server, Request $request): void
+    {
+        var_dump('opened',$server instanceof \Swoole\WebSocket\Server);
+        $server->push($request->fd, 'opened');
     }
 }
