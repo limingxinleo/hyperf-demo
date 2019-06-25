@@ -47,7 +47,8 @@
         "hyperf/redis": "1.0.*",
         "hyperf/server": "1.0.*",
         "hyperf/utils": "1.0.*",
-        "hyperf/websocket-server": "1.0.*"
+        "hyperf/websocket-server": "1.0.*",
+        "swlib/saber": "^1.0"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
@@ -86,7 +87,7 @@
     "repositories": {
         "hyperf": {
             "type": "path",
-            "url": "../../hyperf-cloud/hyperf/*"
+            "url": "../../hyperf-cloud/hyperf/src/*"
         },
         "packagist": {
             "type": "composer",
