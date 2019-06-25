@@ -10,14 +10,14 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-namespace App\Annotation;
+namespace App\Event;
 
-use Hyperf\Di\Annotation\AbstractAnnotation;
-
-/**
- * @Annotation
- * @Target({"ALL"})
- */
-class Formatter extends AbstractAnnotation
+class UserRegisted
 {
+    protected $userId;
+
+    public function __construct($userId)
+    {
+        $this->userId = $userId;
+    }
 }

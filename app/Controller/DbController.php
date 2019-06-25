@@ -16,8 +16,6 @@ use App\Annotation\Formatter;
 use App\Service\UserService;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\HttpServer\Annotation\RequestMapping;
-use Hyperf\HttpServer\Contract\RequestInterface;
-use Hyperf\HttpServer\Contract\ResponseInterface;
 
 /**
  * @AutoController(prefix="/db/")
@@ -30,7 +28,7 @@ class DbController
     }
 
     /**
-     * @Formatter()
+     * @Formatter
      */
     public function format()
     {
