@@ -12,8 +12,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Annotation\Formatter;
 use App\Service\UserService;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 
@@ -22,8 +24,24 @@ use Hyperf\HttpServer\Contract\ResponseInterface;
  */
 class DbController
 {
-    public function index(RequestInterface $request, ResponseInterface $response)
+    public function index()
     {
         return di()->get(UserService::class)->find(1);
+    }
+
+    /**
+     * @Formatter()
+     */
+    public function format()
+    {
+        return [];
+    }
+
+    /**
+     * @RequestMapping(path="fo")
+     */
+    public function fo()
+    {
+        return [];
     }
 }
