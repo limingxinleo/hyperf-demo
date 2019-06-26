@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Service\MakeService;
+use GuzzleHttp\RequestOptions;
 use Hyperf\Guzzle\ClientFactory;
 use Hyperf\HttpServer\Annotation\AutoController;
 
@@ -33,10 +34,20 @@ class DemoController extends Controller
     public function guzzle()
     {
         $client = di()->get(ClientFactory::class)->create([
-            'base_uri' => 'https://api.github.com'
+            'base_uri' => 'https://api.github.com',
         ]);
 
-        $response = $client->get('/');
+        $response = $client->get('/', [
+            RequestOptions::JSON => ['a' => 'a', 'b' => 'b'],
+            RequestOptions::VERIFY => false,
+            RequestOptions::HEADERS => [
+                'appid' => '8ab74856-8772-45c9-96db-54cb30ab9f74',
+                'timestamp' => '1561536304',
+                'apisign' => '7f04cb6bcd787daba31caf7ef569e4f4',
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+            ],
+        ]);
 
         return $response->getBody()->getContents();
     }
