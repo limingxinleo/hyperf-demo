@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Service\MakeService;
+use Hyperf\Guzzle\ClientFactory;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -27,5 +28,16 @@ class DemoController extends Controller
         return $this->response->success([
             'id' => $service->getId(),
         ]);
+    }
+
+    public function guzzle()
+    {
+        $client = di()->get(ClientFactory::class)->create([
+            'base_uri' => 'https://api.github.com'
+        ]);
+
+        $response = $client->get('/');
+
+        return $response->getBody()->getContents();
     }
 }
