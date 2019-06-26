@@ -12,14 +12,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Hyperf\Contract\OnMessageInterface;
-use Swoole\Server;
-use Swoole\Websocket\Frame;
+use Hyperf\HttpServer\Annotation\AutoController;
 
-class WebSocket2Controller implements OnMessageInterface
+/**
+ * @AutoController(prefix="ws-client")
+ */
+class WebSocketClientController extends Controller
 {
-    public function onMessage(Server $server, Frame $frame): void
+    public function send()
     {
-        $server->push($frame->fd, 'FROM2: ' . $frame->data);
     }
 }
