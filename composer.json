@@ -48,7 +48,7 @@
         "hyperf/server": "1.0.*",
         "hyperf/utils": "1.0.*",
         "hyperf/websocket-server": "1.0.*",
-        "swlib/saber": "^1.0"
+        "hyperf/websocket-client": "dev-master"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",

@@ -23,6 +23,7 @@ class WebSocketController implements OnMessageInterface, OnOpenInterface, OnClos
 {
     public function onMessage(Server $server, Frame $frame): void
     {
+        var_dump($frame->data);
         $server->push($frame->fd, 'FROM1: ' . $frame->data);
     }
 
