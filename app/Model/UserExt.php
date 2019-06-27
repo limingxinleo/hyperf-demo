@@ -12,11 +12,11 @@ declare (strict_types=1);
 namespace App\Model;
 
 /**
- * @property bigint|integer $id
- * @property int|integer $count
- * @property decimal|float $float_num
- * @property datetime|\Carbon\Carbon $created_at
- * @property datetime|\Carbon\Carbon $updated_at
+ * @property integer $id
+ * @property integer $count
+ * @property float $float_num
+ * @property string $created_at
+ * @property string $updated_at
  */
 class UserExt extends Model
 {

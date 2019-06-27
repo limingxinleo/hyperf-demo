@@ -12,9 +12,9 @@ declare (strict_types=1);
 namespace App\Model;
 
 /**
- * @property int|integer $id
- * @property varchar|string $migration
- * @property int|integer $batch
+ * @property integer $id
+ * @property string $migration
+ * @property integer $batch
  */
 class Migrations extends Model
 {

@@ -12,11 +12,11 @@ declare (strict_types=1);
 namespace App\Model;
 
 /**
- * @property bigint|integer $id
- * @property bigint|integer $user_id
- * @property varchar|string $title
- * @property datetime|\Carbon\Carbon $created_at
- * @property datetime|\Carbon\Carbon $updated_at
+ * @property integer $id
+ * @property integer $user_id
+ * @property string $title
+ * @property string $created_at
+ * @property string $updated_at
  */
 class Book extends Model
 {

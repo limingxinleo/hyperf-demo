@@ -12,10 +12,10 @@ declare (strict_types=1);
 namespace App\Model;
 
 /**
- * @property int|integer $id
- * @property varchar|string $name
- * @property datetime|\Carbon\Carbon $created_at
- * @property datetime|\Carbon\Carbon $updated_at
+ * @property integer $id
+ * @property string $name
+ * @property string $created_at
+ * @property string $updated_at
  */
 class Role extends Model
 {

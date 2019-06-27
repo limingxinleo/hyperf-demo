@@ -12,11 +12,11 @@ declare (strict_types=1);
 namespace App\Model;
 
 /**
- * @property bigint|integer $id
- * @property varchar|string $name
- * @property tinyint|integer $gender
- * @property datetime|\Carbon\Carbon $created_at
- * @property datetime|\Carbon\Carbon $updated_at
+ * @property integer $id
+ * @property string $name
+ * @property integer $gender
+ * @property string $created_at
+ * @property string $updated_at
  */
 class User extends Model
 {
