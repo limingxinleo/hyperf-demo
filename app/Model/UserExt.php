@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * This file is part of Hyperf.
  *
@@ -9,15 +9,14 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
-
 namespace App\Model;
 
 /**
- * @property $id
- * @property $count
- * @property $float_num
- * @property $created_at
- * @property $updated_at
+ * @property bigint|integer $id
+ * @property int|integer $count
+ * @property decimal|float $float_num
+ * @property datetime|\Carbon\Carbon $created_at
+ * @property datetime|\Carbon\Carbon $updated_at
  */
 class UserExt extends Model
 {
@@ -27,21 +26,18 @@ class UserExt extends Model
      * @var string
      */
     protected $table = 'user_ext';
-
     /**
      * The connection name for the model.
      *
      * @var string
      */
     protected $connection = 'default';
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = ['id', 'count', 'float_num', 'created_at', 'updated_at'];
-
     /**
      * The attributes that should be cast to native types.
      *

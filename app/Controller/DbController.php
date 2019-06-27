@@ -13,18 +13,27 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Annotation\Formatter;
+use App\Model\User;
 use App\Service\UserService;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\HttpServer\Annotation\RequestMapping;
 
 /**
- * @AutoController(prefix="/db/")
+ * @AutoController(prefix="db")
  */
 class DbController
 {
     public function index()
     {
         return di()->get(UserService::class)->find(1);
+    }
+
+    public function model()
+    {
+        /** @var User $user */
+        $user = User::query()->find(1);
+
+        return $user->created_at->toDateString();
     }
 
     /**

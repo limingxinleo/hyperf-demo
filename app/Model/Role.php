@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * This file is part of Hyperf.
  *
@@ -9,14 +9,13 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
-
 namespace App\Model;
 
 /**
- * @property $id
- * @property $name
- * @property $created_at
- * @property $updated_at
+ * @property int|integer $id
+ * @property varchar|string $name
+ * @property datetime|\Carbon\Carbon $created_at
+ * @property datetime|\Carbon\Carbon $updated_at
  */
 class Role extends Model
 {
@@ -26,21 +25,18 @@ class Role extends Model
      * @var string
      */
     protected $table = 'role';
-
     /**
      * The connection name for the model.
      *
      * @var string
      */
     protected $connection = 'default';
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = ['id', 'name', 'created_at', 'updated_at'];
-
     /**
      * The attributes that should be cast to native types.
      *
