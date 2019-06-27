@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 /**
  * This file is part of Hyperf.
  *
@@ -9,12 +9,13 @@ declare (strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
+
 namespace App\Model;
 
 /**
- * @property integer $id
+ * @property int $id
  * @property string $migration
- * @property integer $batch
+ * @property int $batch
  */
 class Migrations extends Model
 {
@@ -24,18 +25,21 @@ class Migrations extends Model
      * @var string
      */
     protected $table = 'migrations';
+
     /**
      * The connection name for the model.
      *
      * @var string
      */
     protected $connection = 'default';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = ['id', 'migration', 'batch'];
+
     /**
      * The attributes that should be cast to native types.
      *
