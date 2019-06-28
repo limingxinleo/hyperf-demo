@@ -16,6 +16,7 @@ namespace App\Model;
  * @property int $id
  * @property int $count
  * @property float $float_num
+ * @property string $str
  * @property array $json
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
@@ -41,7 +42,7 @@ class UserExt extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'count', 'float_num', 'json', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'count', 'float_num', 'str', 'json', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be cast to native types.

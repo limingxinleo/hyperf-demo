@@ -40,9 +40,11 @@ class DbController
     public function json()
     {
         /** @var UserExt $user */
-        $user = UserExt::query()->find(1);
+        $user = UserExt::query()->find([1, 2]);
 
-        return $user->json;
+        $ext = UserExt::findManyFromCache([1, 2]);
+
+        return $user;
     }
 
     /**
