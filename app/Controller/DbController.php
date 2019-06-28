@@ -14,6 +14,7 @@ namespace App\Controller;
 
 use App\Annotation\Formatter;
 use App\Model\User;
+use App\Model\UserExt;
 use App\Service\UserService;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\HttpServer\Annotation\RequestMapping;
@@ -34,6 +35,14 @@ class DbController
         $user = User::query()->find(1);
 
         return $user->created_at->toDateString();
+    }
+
+    public function json()
+    {
+        /** @var UserExt $user */
+        $user = UserExt::query()->find(1);
+
+        return $user->json;
     }
 
     /**

@@ -39,7 +39,7 @@ return [
         'commands' => [
             'db:model' => [
                 'path' => 'app/Model',
-                'force_casts' => true,
+                'force_casts' => false,
                 'inheritance' => 'Model',
                 'uses' => '',
             ],
