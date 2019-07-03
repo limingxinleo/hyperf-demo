@@ -10,10 +10,14 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-use Hyperf\HttpServer\Router\Router;
+namespace App\Annotation;
 
-Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
+use Hyperf\Di\Annotation\AbstractAnnotation;
 
-Router::addServer('ws', function () {
-    Router::get('/', 'App\Controller\WebSocketController');
-});
+/**
+ * @Annotation
+ * @Target({"ALL"})
+ */
+class Formatter extends AbstractAnnotation
+{
+}

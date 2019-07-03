@@ -10,10 +10,14 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-use Hyperf\HttpServer\Router\Router;
+namespace App\Event;
 
-Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
+class UserRegisted
+{
+    protected $userId;
 
-Router::addServer('ws', function () {
-    Router::get('/', 'App\Controller\WebSocketController');
-});
+    public function __construct($userId)
+    {
+        $this->userId = $userId;
+    }
+}
