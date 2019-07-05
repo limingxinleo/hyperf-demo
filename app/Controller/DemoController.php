@@ -51,4 +51,17 @@ class DemoController extends Controller
 
         return $response->getBody()->getContents();
     }
+
+    public function file()
+    {
+        $has = $this->request->hasFile('file');
+
+        $file = $this->request->file('file');
+
+        return $this->response->success([
+            'has' => $has,
+            'file' => $file->toArray(),
+            'path' => $file->getPath(),
+        ]);
+    }
 }
