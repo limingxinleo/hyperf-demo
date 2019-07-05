@@ -48,7 +48,11 @@
         "hyperf/server": "1.0.*",
         "hyperf/utils": "1.0.*",
         "hyperf/websocket-server": "1.0.*",
-        "hyperf/websocket-client": "dev-master"
+        "hyperf/websocket-client": "1.0.*",
+        "hyperf/rpc-client": "1.0.*",
+        "hyperf/rpc-server": "1.0.*",
+        "hyperf/json-rpc": "1.0.*",
+        "hyperf/consul": "1.0.*"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
