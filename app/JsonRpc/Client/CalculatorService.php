@@ -27,7 +27,7 @@ class CalculatorService extends AbstractServiceClient implements CalculatorServi
      * 定义对应服务提供者的服务协议.
      * @var string
      */
-    protected $protocol = 'jsonrpc';
+    protected $protocol = 'jsonrpc-http';
 
     public function add(int $a, int $b): int
     {

@@ -16,7 +16,7 @@ use App\JsonRpc\CalculatorServiceInterface;
 use Hyperf\RpcServer\Annotation\RpcService;
 
 /**
- * @RpcService(name="CalculatorService", protocol="jsonrpc", server="jsonrpc", publishTo="consul")
+ * @RpcService(name="CalculatorService", protocol="jsonrpc-http", server="jsonrpc-http", publishTo="consul")
  */
 class CalculatorService implements CalculatorServiceInterface
 {

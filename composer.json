@@ -92,7 +92,7 @@
     "repositories": {
         "hyperf": {
             "type": "path",
-            "url": "../../hyperf-cloud/hyperf/src/*"
+            "url": "../../limingxinleo/hyperf/src/*"
         },
         "packagist": {
             "type": "composer",
