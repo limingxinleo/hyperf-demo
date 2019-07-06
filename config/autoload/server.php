@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * This file is part of Hyperf.
  *
@@ -36,6 +37,20 @@ return [
                 SwooleEvent::ON_HAND_SHAKE => [Hyperf\WebSocketServer\Server::class, 'onHandShake'],
                 SwooleEvent::ON_MESSAGE => [Hyperf\WebSocketServer\Server::class, 'onMessage'],
                 SwooleEvent::ON_CLOSE => [Hyperf\WebSocketServer\Server::class, 'onClose'],
+            ],
+        ],
+        [
+            'name' => 'jsonrpc',
+            'type' => Server::SERVER_TCP,
+            'host' => '0.0.0.0',
+            'port' => 9503,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                SwooleEvent::ON_RECEIVE => [\Hyperf\JsonRpc\TcpServer::class, 'onReceive'],
+            ],
+            'settings' => [
+                'open_eof_split' => true,
+                'package_eof' => "\r\n",
             ],
         ],
         [
