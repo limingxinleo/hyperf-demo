@@ -52,7 +52,8 @@
         "hyperf/rpc-client": "1.0.*",
         "hyperf/rpc-server": "1.0.*",
         "hyperf/json-rpc": "1.0.*",
-        "hyperf/consul": "1.0.*"
+        "hyperf/consul": "1.0.*",
+        "hyperf/service-governance": "1.0.*"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
