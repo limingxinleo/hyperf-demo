@@ -38,6 +38,20 @@ return [
                 SwooleEvent::ON_CLOSE => [Hyperf\WebSocketServer\Server::class, 'onClose'],
             ],
         ],
+        [
+            'name' => 'jsonrpc',
+            'type' => Server::SERVER_TCP,
+            'host' => '0.0.0.0',
+            'port' => 9503,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                SwooleEvent::ON_RECEIVE => [\Hyperf\JsonRpc\TcpServer::class, 'onReceive'],
+            ],
+            'settings' => [
+                'open_eof_split' => true,
+                'package_eof' => "\r\n",
+            ],
+        ],
     ],
     'settings' => [
         'enable_coroutine' => true,
