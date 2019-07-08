@@ -20,8 +20,10 @@ class UserService
     /**
      * @Cacheable(prefix="cache:user", value="#{userId}")
      */
-    public function find(int $userId)
+    public function find(int $userId, int $max = 100, array $ext = [])
     {
+        var_dump($max, $ext);
+
         return User::query()->find($userId)->toArray();
     }
 }

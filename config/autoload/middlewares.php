@@ -13,6 +13,6 @@ declare(strict_types=1);
 return [
     'http' => [
         \App\Middleware\DemoMiddleware::class,
-        \Hyperf\SwooleDashboard\Middleware\HttpServerMiddleware::class
+        // \Hyperf\SwooleDashboard\Middleware\HttpServerMiddleware::class
     ],
 ];

@@ -64,4 +64,9 @@ class DemoController extends Controller
             'path' => $file->getPath(),
         ]);
     }
+
+    public function defaultArgs(int $id = 10)
+    {
+        return $this->response->success($id);
+    }
 }

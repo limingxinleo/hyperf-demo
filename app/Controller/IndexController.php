@@ -24,4 +24,9 @@ class IndexController extends Controller
             'message' => 'Hello Hyperf.',
         ]);
     }
+
+    public function args(int $id, string $name = 'Hyperf')
+    {
+        return [$id, $name];
+    }
 }
