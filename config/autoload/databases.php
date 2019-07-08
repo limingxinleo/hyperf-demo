@@ -22,7 +22,7 @@ return [
         'collation' => env('DB_COLLATION', 'utf8_unicode_ci'),
         'prefix' => env('DB_PREFIX', ''),
         'pool' => [
-            'min_connections' => 1,
+            'min_connections' => 4,
             'max_connections' => 10,
             'connect_timeout' => 10.0,
             'wait_timeout' => 3.0,
