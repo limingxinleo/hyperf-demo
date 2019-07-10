@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\User;
+
 class IndexController extends Controller
 {
     public function index()
@@ -23,5 +25,12 @@ class IndexController extends Controller
             'method' => $method,
             'message' => 'Hello Hyperf.',
         ]);
+    }
+
+    public function handle()
+    {
+        $user = User::findFromCache(1);
+
+        return $this->response->success($user->toArray());
     }
 }
