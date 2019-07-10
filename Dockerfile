@@ -18,7 +18,6 @@ ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
     COMPOSER_VERSION=1.8.6 \
     APP_ENV=prod
 
-# update
 RUN set -ex \
     && apk update \
     # install composer
@@ -45,9 +44,16 @@ RUN set -ex \
     && rm -rf /var/cache/apk/* /tmp/* /usr/share/man \
     && echo -e "\033[42;37m Build Completed :).\033[0m\n"
 
-WORKDIR /opt/www
-
 COPY . /opt/www
+WORKDIR /opt/www/.build
+
+RUN ./deploy_env.sh www.swoole-cloud.com \
+    && chmod 755 entrypoint.sh \
+    && cp swoole_tracker72.so /opt/swoole_tracker.so \
+    && cp swoole-tracker.ini /etc/php7/conf.d/swoole-tracker.ini \
+    && php -m
+
+WORKDIR /opt/www
 
 RUN composer install --no-dev \
     && composer dump-autoload -o \
@@ -56,4 +62,5 @@ RUN composer install --no-dev \
 
 EXPOSE 9501
 
-ENTRYPOINT ["php", "/opt/www/bin/hyperf.php", "start"]
+ENTRYPOINT ["sh", ".build/entrypoint.sh"]
+
