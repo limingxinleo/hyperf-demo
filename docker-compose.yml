@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  hyperf:
+    build: .
+    links:
+      - redis
+    environment:
+      - "APP_PROJECT=hyperf-demo-swoole-dashboard"
+      - "APP_ENV=test"
+    ports:
+      - 9501:9501
+  redis:
+    image: "redis:latest"

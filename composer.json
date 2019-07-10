@@ -45,7 +45,8 @@
         "hyperf/pool": "1.0.*",
         "hyperf/process": "1.0.*",
         "hyperf/redis": "1.0.*",
-        "hyperf/utils": "1.0.*"
+        "hyperf/utils": "1.0.*",
+        "hyperf/swoole-dashboard": "dev-master"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
