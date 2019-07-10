@@ -10,6 +10,9 @@
 # Generation Time: 2019-07-10 07:39:42 +0000
 # ************************************************************
 
+create database `hyperf` default character set utf8mb4 collate utf8mb4_general_ci;
+
+use hyperf;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -120,7 +123,7 @@ LOCK TABLES `user_ext` WRITE;
 
 INSERT INTO `user_ext` (`id`, `count`, `float_num`, `str`, `json`, `created_at`, `updated_at`)
 VALUES
-	(1,0,1.20,'','{\"id\": 1}','2019-03-13 02:38:04','2019-03-13 02:38:04'),
+	(1,0,1.20,'','{"id": 1}','2019-03-13 02:38:04','2019-03-13 02:38:04'),
 	(2,0,0.00,NULL,NULL,'2019-02-07 16:24:02','2019-02-17 04:44:41');
 
 /*!40000 ALTER TABLE `user_ext` ENABLE KEYS */;
