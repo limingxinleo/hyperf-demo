@@ -6,7 +6,7 @@ services:
       - redis
       - mysql
     environment:
-      - "APP_PROJECT=hyperf-demo-swoole-dashboard"
+      - "APP_NAME=biz-skeleton"
       - "APP_ENV=test"
     ports:
       - 9501:9501
