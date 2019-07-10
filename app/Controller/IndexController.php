@@ -33,4 +33,17 @@ class IndexController extends Controller
 
         return $this->response->success($user->toArray());
     }
+
+    public function handle2()
+    {
+        $time = microtime(true);
+
+        $user = User::query()->find(1);
+
+        $redis = di()->get(\Redis::class);
+
+        $redis->hMSet(uniqid(), $user->toArray());
+
+        return $this->response->success(microtime(true) - $time);
+    }
 }
