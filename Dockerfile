@@ -47,10 +47,6 @@ RUN set -ex \
 
 WORKDIR /opt/www
 
-COPY composer.* /opt/www/
-
-RUN composer install --no-dev
-
 COPY . /opt/www
 
 RUN composer install --no-dev \

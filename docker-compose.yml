@@ -4,6 +4,7 @@ services:
     build: .
     links:
       - redis
+      - mysql
     environment:
       - "APP_PROJECT=hyperf-demo-swoole-dashboard"
       - "APP_ENV=test"
@@ -11,3 +12,5 @@ services:
       - 9501:9501
   redis:
     image: "redis:latest"
+  mysql:
+    build: .mysql/
