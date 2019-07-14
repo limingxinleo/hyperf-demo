@@ -37,7 +37,7 @@ return [
         'max_request' => 100000,
         'socket_buffer_size' => 2 * 1024 * 1024,
         // Task setting
-        'task_worker_num' => 1,
+        'task_worker_num' => 4,
         'task_enable_coroutine' => true,
     ],
     'callbacks' => [

@@ -15,6 +15,7 @@ namespace App\Controller;
 use App\Task\ClassTask;
 use App\Task\DemoTask;
 use App\Task\MethodTask;
+use App\Task\MongoTask;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Task\Task;
 use Hyperf\Task\TaskExecutor;
@@ -49,6 +50,19 @@ class TaskController extends Controller
         $cid = Coroutine::id();
 
         $result = di()->get(ClassTask::class)->handle($cid);
+
+        return $this->response->success($result);
+    }
+
+    public function mongo()
+    {
+        $client = di()->get(MongoTask::class);
+        $client->insert('hyerf.test', ['id' => rand(0, 99999999)]);
+
+        $result = $client->query('hyerf.test', [], [
+            'sort' => ['id' => -1],
+            'limit' => 5,
+        ]);
 
         return $this->response->success($result);
     }
