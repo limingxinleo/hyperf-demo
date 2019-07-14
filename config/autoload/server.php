@@ -38,7 +38,7 @@ return [
         'socket_buffer_size' => 2 * 1024 * 1024,
         // Task setting
         'task_worker_num' => 4,
-        'task_enable_coroutine' => true,
+        'task_enable_coroutine' => false,
     ],
     'callbacks' => [
         SwooleEvent::ON_BEFORE_START => [Hyperf\Framework\Bootstrap\ServerStartCallback::class, 'beforeStart'],

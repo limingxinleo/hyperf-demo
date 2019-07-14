@@ -57,9 +57,9 @@ class TaskController extends Controller
     public function mongo()
     {
         $client = di()->get(MongoTask::class);
-        $client->insert('hyerf.test', ['id' => rand(0, 99999999)]);
+        $client->insert('hyperf.test', ['id' => rand(0, 99999999)]);
 
-        $result = $client->query('hyerf.test', [], [
+        $result = $client->query('hyperf.test', [], [
             'sort' => ['id' => -1],
             'limit' => 5,
         ]);
