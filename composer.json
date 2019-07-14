@@ -47,7 +47,9 @@
         "hyperf/redis": "1.0.*",
         "hyperf/utils": "1.0.*",
         "hyperf/view": "dev-master",
-        "hyperf/task": "dev-master"
+        "hyperf/task": "dev-master",
+        "topthink/think-template": "^2.0",
+        "smarty/smarty": "^3.1"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
