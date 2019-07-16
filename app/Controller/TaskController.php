@@ -66,4 +66,11 @@ class TaskController extends Controller
 
         return $this->response->success($result);
     }
+
+    public function timeout()
+    {
+        $result = di()->get(MethodTask::class)->timeout();
+
+        return $this->response->success($result);
+    }
 }

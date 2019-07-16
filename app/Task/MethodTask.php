@@ -36,4 +36,14 @@ class MethodTask
             'no.task.cid' => Coroutine::id(),
         ];
     }
+
+    /**
+     * @Task(timeout=1)
+     */
+    public function timeout()
+    {
+        sleep(2);
+
+        return microtime(true);
+    }
 }
