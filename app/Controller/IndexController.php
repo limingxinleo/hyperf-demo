@@ -12,24 +12,12 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Server;
-
 class IndexController extends Controller
 {
     public function index()
     {
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
-
-        $server = di()->get(Server::class)->getServer();
-
-        $list = $server->getClientList();
-        foreach ($list as $fd) {
-            $info = $server->connection_info($fd);
-            if ($info['websocket_status'] == WEBSOCKET_STATUS_ACTIVE) {
-                $server->push($fd, 'Hello Hyperf.');
-            }
-        }
 
         return $this->response->success([
             'user' => $user,
