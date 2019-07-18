@@ -78,4 +78,32 @@ class IndexController extends Controller
             $status,
         ]);
     }
+
+    public function send3()
+    {
+        $client = new GrpcClient('127.0.0.1:9502', [
+            'credentials' => null,
+        ]);
+
+        $users = [
+            ['limx', 1],
+            ['hyperf', 1],
+            ['asdf', 1],
+        ];
+
+        $result = [];
+        foreach ($users as [$name, $sex]) {
+            $request = new \Grpc\HiUser();
+            $request->setName($name);
+            $request->setSex($sex);
+
+            /*
+             * @var \Grpc\HiReply
+             */
+            [$reply,] = $client->sayHello($request);
+            $result[] = $reply->getUser()->getName();
+        }
+
+        return $this->response->success($result);
+    }
 }
