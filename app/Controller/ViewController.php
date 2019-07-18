@@ -12,7 +12,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Hyperf\Contract\ConfigInterface;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\View\Engine\SmartyEngine;
 use Hyperf\View\Render;
 
 /**
@@ -26,6 +28,15 @@ class ViewController extends Controller
 
         $name = $this->request->input('name', 'limx');
 
-        return $render->view('index.tpl', ['name' => $name]);
+        $engine = di()->get(ConfigInterface::class)->get('view.engine');
+
+        $template = 'index';
+        switch ($engine) {
+            case SmartyEngine::class:
+                $template = 'index.tpl';
+                break;
+        }
+
+        return $render->view($template, ['name' => $name]);
     }
 }

@@ -12,9 +12,10 @@ declare(strict_types=1);
 
 use Hyperf\View\Engine\SmartyEngine;
 use Hyperf\View\Mode;
+use Hyperf\View\Engine\BladeEngine;
 
 return [
-    'engine' => SmartyEngine::class,
+    'engine' => BladeEngine::class,
     'mode' => Mode::TASK,
     'config' => [
         'view_path' => BASE_PATH . '/storage/view/',
