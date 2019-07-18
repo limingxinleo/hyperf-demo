@@ -13,3 +13,9 @@ declare(strict_types=1);
 use Hyperf\HttpServer\Router\Router;
 
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
+
+Router::addServer('grpc', function () {
+    Router::addGroup('/grpc.hi', function () {
+        Router::post('/sayHello', 'App\Controller\GrpcController@sayHello');
+    });
+});
