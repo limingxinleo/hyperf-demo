@@ -15,8 +15,5 @@ return [
         'http' => [
             App\Exception\Handler\BusinessExceptionHandler::class,
         ],
-        'grpc' => [
-            App\Exception\Handler\GrpcExceptionHandler::class,
-        ],
     ],
 ];

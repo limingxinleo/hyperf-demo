@@ -69,7 +69,6 @@ class IndexController extends Controller
          */
         [$reply, $status] = $client->sayHello($request);
         if ($status !== 0) {
-            var_dump($reply, $status);
             return $this->response->fail($status, $reply);
         }
 
