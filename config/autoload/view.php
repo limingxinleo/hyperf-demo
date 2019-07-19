@@ -10,12 +10,11 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-use Hyperf\View\Engine\SmartyEngine;
+use Hyperf\View\Engine;
 use Hyperf\View\Mode;
-use Hyperf\View\Engine\BladeEngine;
 
 return [
-    'engine' => BladeEngine::class,
+    'engine' => Engine\SmartyEngine::class,
     'mode' => Mode::TASK,
     'config' => [
         'view_path' => BASE_PATH . '/storage/view/',
