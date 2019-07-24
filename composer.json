@@ -19,7 +19,7 @@
         "ext-pdo": "*",
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
-        "hyperf/amqp": "1.0.*",
+        "hyperf/amqp": "dev-master",
         "hyperf/async-queue": "1.0.*",
         "hyperf/cache": "1.0.*",
         "hyperf/circuit-breaker": "1.0.*",
