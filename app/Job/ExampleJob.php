@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Job;
 
+use App\Service\AspectService;
 use Hyperf\AsyncQueue\Job;
 
 class ExampleJob extends Job
@@ -27,6 +28,8 @@ class ExampleJob extends Job
     public function handle()
     {
         // 根据参数处理具体逻辑
-        var_dump($this->params);
+        $result = di()->get(AspectService::class)->handle($this->params);
+
+        var_dump($result);
     }
 }
