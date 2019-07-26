@@ -14,11 +14,13 @@ use Hyperf\HttpServer\Contract\ResponseInterface;
  */
 class EtcdController extends Controller
 {
-    public function get()
+    public function index()
     {
         $client = di()->get(KVInterface::class);
 
-        $result = $client->get("\0", ['range_end' => "\0"]);
+        $key = $this->request->input('key', '/');
+
+        $result = $client->fetchByPrefix($key);
 
         return $this->response->success($result);
     }

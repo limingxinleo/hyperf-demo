@@ -6,4 +6,13 @@ return [
     'options' => [
         'timeout' => 10,
     ],
+
+    # Etcd Config Center
+    'enable' => false,
+    'namespaces' => [
+        'application',
+    ],
+    'mapping' => [
+    ],
+    'interval' => 5,
 ];
