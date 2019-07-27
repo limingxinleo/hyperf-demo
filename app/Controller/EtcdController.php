@@ -1,27 +1,29 @@
 <?php
 
 declare(strict_types=1);
+/**
+ * This file is part of Hyperf.
+ *
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ */
 
 namespace App\Controller;
 
-use Hyperf\Etcd\KVInterface;
+use Hyperf\Contract\ConfigInterface;
 use Hyperf\HttpServer\Annotation\AutoController;
-use Hyperf\HttpServer\Contract\RequestInterface;
-use Hyperf\HttpServer\Contract\ResponseInterface;
 
 /**
- * @AutoController()
+ * @AutoController
  */
 class EtcdController extends Controller
 {
     public function index()
     {
-        $client = di()->get(KVInterface::class);
+        $config = di()->get(ConfigInterface::class);
 
-        $key = $this->request->input('key', '/');
-
-        $result = $client->fetchByPrefix($key);
-
-        return $this->response->success($result);
+        return $this->response->success($config->get('etcd'));
     }
 }
