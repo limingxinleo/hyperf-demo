@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Amqp\Producer\Demo2Producer;
 use App\Amqp\Producer\DemoProducer;
 use Hyperf\HttpServer\Annotation\AutoController;
 
@@ -23,6 +24,7 @@ class AmqpController extends Controller
     public function index()
     {
         $res = amqp_produce(new DemoProducer(uniqid()));
+        $res = amqp_produce(new Demo2Producer(uniqid()));
 
         return $this->response->success($res);
     }
