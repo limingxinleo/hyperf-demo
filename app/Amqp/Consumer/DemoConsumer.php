@@ -17,10 +17,15 @@ use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
 
 /**
- * @Consumer(exchange="hyperf", routingKey="{hyperf,hyperf2}", queue="hyperf", nums=1)
+ * @Consumer(exchange="hyperf", routingKey={"hyperf","hyperf2"}, queue="hyperf", nums=1)
  */
 class DemoConsumer extends ConsumerMessage
 {
+    // protected $routingKey = [
+    //     'hyperf',
+    //     'hyperf2'
+    // ];
+
     public function consume($data): string
     {
         var_dump($data);
