@@ -11,9 +11,12 @@ declare(strict_types=1);
  */
 
 return [
-    'uri' => 'http://192.168.1.200:2379',
-    'version' => 'v3beta',
-    'options' => [
-        'timeout' => 10,
+    'enable' => true,
+    'namespaces' => [
+        '/test',
     ],
+    'mapping' => [
+        '/test/test' => 'etcd.test.test',
+    ],
+    'interval' => 5,
 ];
