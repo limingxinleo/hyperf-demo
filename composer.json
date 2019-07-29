@@ -28,7 +28,7 @@
         "hyperf/constants": "1.0.*",
         "hyperf/contract": "1.0.*",
         "hyperf/database": "1.0.*",
-        "hyperf/db-connection": "1.0.*",
+        "hyperf/db-connection": "dev-master",
         "hyperf/devtool": "1.0.*",
         "hyperf/di": "1.0.*",
         "hyperf/dispatcher": "1.0.*",
