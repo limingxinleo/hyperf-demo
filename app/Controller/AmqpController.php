@@ -25,6 +25,7 @@ class AmqpController extends Controller
     {
         $res = amqp_produce(new DemoProducer(uniqid()));
         $res = amqp_produce(new Demo2Producer(uniqid()));
+        $res = amqp_produce(new Demo2Producer(uniqid()));
 
         return $this->response->success($res);
     }

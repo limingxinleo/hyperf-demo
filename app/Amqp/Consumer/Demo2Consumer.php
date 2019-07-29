@@ -17,12 +17,13 @@ use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
 
 /**
- * @Consumer(exchange="hyperf", routingKey={"hyperf", "hyperf2"}, queue="hyperf", nums=1)
+ * @Consumer(exchange="hyperf", routingKey="hyperf3", queue="hyperf", nums=1)
  */
-class DemoConsumer extends ConsumerMessage
+class Demo2Consumer extends ConsumerMessage
 {
     public function consume($data): string
     {
+        var_dump('demo2');
         var_dump($data);
         return Result::ACK;
     }
