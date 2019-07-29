@@ -38,6 +38,8 @@ class DebugAspect extends AbstractAspect
 
     public function process(ProceedingJoinPoint $proceedingJoinPoint)
     {
+        var_dump('aspected');
+
         return $proceedingJoinPoint->process();
     }
 }

@@ -30,7 +30,7 @@
         "hyperf/database": "1.0.*",
         "hyperf/db-connection": "1.0.*",
         "hyperf/devtool": "1.0.*",
-        "hyperf/di": "1.0.*",
+        "hyperf/di": "dev-master",
         "hyperf/dispatcher": "1.0.*",
         "hyperf/elasticsearch": "1.0.*",
         "hyperf/event": "1.0.*",
@@ -82,10 +82,6 @@
         "start": "php ./bin/hyperf.php start"
     },
     "repositories": {
-        "hyperf": {
-            "type": "path",
-            "url": "../hyperf/src/*"
-        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
