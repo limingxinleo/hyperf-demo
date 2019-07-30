@@ -7,4 +7,5 @@
 <body>
 Hello, {{$name}}. You are using blade template now.
 </body>
+<script src="/debug.js"></script>
 </html>

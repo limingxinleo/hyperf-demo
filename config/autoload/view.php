@@ -14,7 +14,7 @@ use Hyperf\View\Engine;
 use Hyperf\View\Mode;
 
 return [
-    'engine' => Engine\SmartyEngine::class,
+    'engine' => Engine\BladeEngine::class,
     'mode' => Mode::TASK,
     'config' => [
         'view_path' => BASE_PATH . '/storage/view/',

@@ -39,6 +39,9 @@ return [
         // Task setting
         'task_worker_num' => 4,
         'task_enable_coroutine' => false,
+        // View
+        'document_root' => BASE_PATH . '/public',
+        'enable_static_handler' => true,
     ],
     'callbacks' => [
         SwooleEvent::ON_BEFORE_START => [Hyperf\Framework\Bootstrap\ServerStartCallback::class, 'beforeStart'],
