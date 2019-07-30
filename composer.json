@@ -37,7 +37,7 @@
         "hyperf/exception-handler": "1.0.*",
         "hyperf/framework": "1.0.*",
         "hyperf/guzzle": "1.0.*",
-        "hyperf/http-server": "1.0.*",
+        "hyperf/http-server": "dev-master",
         "hyperf/logger": "1.0.*",
         "hyperf/memory": "1.0.*",
         "hyperf/model-cache": "1.0.*",
@@ -82,6 +82,10 @@
         "start": "php ./bin/hyperf.php start"
     },
     "repositories": {
+        "hyperf": {
+            "type": "path",
+            "url": "../hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
