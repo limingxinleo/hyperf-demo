@@ -15,17 +15,17 @@ namespace App\Amqp\Consumer;
 use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
-use Hyperf\Contract\StdoutLoggerInterface;
+use Hyperf\DbConnection\Db;
 
 /**
- * @Consumer(exchange="hyperf", routingKey={"hyperf", "hyperf2"}, queue="hyperf", nums=1)
+ * @Consumer(exchange="hyperf", routingKey="hyperf4", queue="hyperf", nums=1)
  */
-class DemoConsumer extends ConsumerMessage
+class Demo3Consumer extends ConsumerMessage
 {
     public function consume($data): string
     {
-        $logger = di()->get(StdoutLoggerInterface::class);
-        $logger->info('demo' . json_encode($data));
+        Db::beginTransaction();
+        throw new \Exception('xxx');
         return Result::ACK;
     }
 }

@@ -15,6 +15,7 @@ namespace App\Amqp\Consumer;
 use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
+use Hyperf\Contract\StdoutLoggerInterface;
 
 /**
  * @Consumer(exchange="hyperf", routingKey="hyperf3", queue="hyperf", nums=1)
@@ -23,8 +24,8 @@ class Demo2Consumer extends ConsumerMessage
 {
     public function consume($data): string
     {
-        var_dump('demo2');
-        var_dump($data);
+        $logger = di()->get(StdoutLoggerInterface::class);
+        $logger->info('demo2' . json_encode($data));
         return Result::ACK;
     }
 }
