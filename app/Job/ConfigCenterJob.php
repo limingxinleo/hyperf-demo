@@ -10,23 +10,17 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-namespace App\Controller;
+namespace App\Job;
 
-use App\Job\ConfigCenterJob;
+use Hyperf\AsyncQueue\Job;
 use Hyperf\Contract\ConfigInterface;
-use Hyperf\HttpServer\Annotation\AutoController;
 
-/**
- * @AutoController
- */
-class EtcdController extends Controller
+class ConfigCenterJob extends Job
 {
-    public function index()
+    public function handle()
     {
         $config = di()->get(ConfigInterface::class);
 
-        queue_push(new ConfigCenterJob());
-
-        return $this->response->success($config->get('etcd'));
+        echo 'Process.Handle ' . json_encode($config->get('etcd')) . PHP_EOL;
     }
 }
