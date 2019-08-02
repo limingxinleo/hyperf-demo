@@ -26,9 +26,9 @@ class DemoProcess extends AbstractProcess
         while (true) {
             sleep(1);
 
-            if (rand(0, 10) > 9) {
-                exit();
-            }
+            // if (rand(0, 10) > 9) {
+            //     exit();
+            // }
 
             $config = di()->get(ConfigInterface::class);
             echo 'Process.Restart ' . json_encode($config->get('etcd')) . PHP_EOL;
