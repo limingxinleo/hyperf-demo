@@ -14,13 +14,13 @@ namespace App\JsonRpc;
 
 use Hyperf\RpcClient\AbstractServiceClient;
 
-class CalculatorServiceConsumer extends AbstractServiceClient
+class CalculatorServiceConsumer extends AbstractServiceClient implements CalculatorServiceInterface
 {
     /**
      * 定义对应服务提供者的服务名称.
      * @var string
      */
-    protected $serviceName = 'CalculatorService';
+    protected $serviceName = CalculatorServiceInterface::class;
 
     /**
      * 定义对应服务提供者的服务协议.

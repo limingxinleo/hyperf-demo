@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\JsonRpc\CalculatorServiceConsumer;
+use App\JsonRpc\CalculatorServiceInterface;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -23,6 +24,13 @@ class RpcController extends Controller
     public function send()
     {
         $client = di()->get(CalculatorServiceConsumer::class);
+
+        return $client->add(1, 2);
+    }
+
+    public function send2()
+    {
+        $client = di()->get(CalculatorServiceInterface::class);
 
         return $client->add(1, 2);
     }

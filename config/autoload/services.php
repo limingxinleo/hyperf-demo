@@ -14,7 +14,7 @@ return [
     'consumers' => [
         [
             // 对应消费者类的 $serviceName
-            'name' => 'CalculatorService',
+            'name' => \App\JsonRpc\CalculatorServiceInterface::class,
             // 这个消费者要从哪个服务中心获取节点信息，如不配置则不会从服务中心获取节点信息
             // 'registry' => [
             //     'protocol' => 'consul',
