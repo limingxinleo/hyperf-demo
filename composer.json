@@ -48,7 +48,9 @@
         "hyperf/utils": "1.0.*",
         "hyperf/json-rpc": "1.0.*",
         "hyperf/rpc-server": "1.0.*",
-        "hyperf/rpc-client": "1.0.*"
+        "hyperf/rpc-client": "1.0.*",
+        "symfony/property-access": "^4.3",
+        "symfony/serializer": "^4.3"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
