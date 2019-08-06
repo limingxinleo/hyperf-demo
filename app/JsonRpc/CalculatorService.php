@@ -26,4 +26,9 @@ class CalculatorService implements CalculatorServiceInterface
         // 这里是服务方法的具体实现
         return $a + $b;
     }
+
+    public function sum(MathValue $v1, MathValue $v2): MathValue
+    {
+        return new MathValue($v1->value + $v2->value);
+    }
 }

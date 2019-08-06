@@ -14,6 +14,7 @@ namespace App\Controller;
 
 use App\JsonRpc\CalculatorServiceConsumer;
 use App\JsonRpc\CalculatorServiceInterface;
+use App\JsonRpc\MathValue;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -33,5 +34,25 @@ class RpcController extends Controller
         $client = di()->get(CalculatorServiceInterface::class);
 
         return $client->add(1, 2);
+    }
+
+    public function sum()
+    {
+        $client = di()->get(CalculatorServiceInterface::class);
+
+        /** @var MathValue $result */
+        $result = $client->sum(new MathValue(1), new MathValue(2));
+
+        return $result->value;
+    }
+
+    public function sum2()
+    {
+        $client = di()->get(CalculatorServiceConsumer::class);
+
+        /** @var MathValue $result */
+        $result = $client->sum(new MathValue(1), new MathValue(2));
+
+        return $result->value;
     }
 }

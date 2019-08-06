@@ -12,9 +12,16 @@ declare(strict_types=1);
 
 namespace App\JsonRpc;
 
-interface CalculatorServiceInterface
+class MathValue
 {
-    public function add(int $a, int $b): int;
+    public $value;
 
-    public function sum(MathValue $v1, MathValue $v2): MathValue;
+    /**
+     * MathValue constructor.
+     * @param $value
+     */
+    public function __construct($value)
+    {
+        $this->value = $value;
+    }
 }

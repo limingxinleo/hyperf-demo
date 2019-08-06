@@ -32,4 +32,9 @@ class CalculatorServiceConsumer extends AbstractServiceClient implements Calcula
     {
         return $this->__request(__FUNCTION__, compact('a', 'b'));
     }
+
+    public function sum(MathValue $v1, MathValue $v2): MathValue
+    {
+        return $this->__request(__FUNCTION__, compact('v1', 'v2'));
+    }
 }
