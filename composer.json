@@ -45,7 +45,10 @@
         "hyperf/pool": "1.0.*",
         "hyperf/process": "1.0.*",
         "hyperf/redis": "1.0.*",
-        "hyperf/utils": "1.0.*"
+        "hyperf/utils": "1.0.*",
+        "hyperf/json-rpc": "1.0.*",
+        "hyperf/rpc-server": "1.0.*",
+        "hyperf/rpc-client": "1.0.*"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
@@ -85,6 +88,10 @@
         "start": "php ./bin/hyperf.php start"
     },
     "repositories": {
+        "hyperf": {
+            "type": "path",
+            "url": "../../hyperf-cloud/hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
