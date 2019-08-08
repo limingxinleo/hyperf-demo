@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Job\ModelJob;
+use App\Model\User;
 use App\Service\QueueService;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
@@ -34,6 +36,15 @@ class QueueController extends Controller
             'https://doc.hyperf.io',
             'https://www.hyperf.io',
         ]);
+
+        return 'success';
+    }
+
+    public function model()
+    {
+        $user = User::query()->find(1);
+
+        queue_push(new ModelJob($user));
 
         return 'success';
     }
