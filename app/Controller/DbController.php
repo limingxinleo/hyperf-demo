@@ -11,10 +11,11 @@ declare(strict_types=1);
  */
 
 namespace App\Controller;
+
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
- * @AutoController()
+ * @AutoController
  */
 class DbController extends Controller
 {
@@ -24,7 +25,7 @@ class DbController extends Controller
             'host' => 'localhost',
             'port' => '8123',
             'username' => 'default',
-            'password' => ''
+            'password' => '',
         ];
         $db = new \ClickHouseDB\Client($config);
         $db->database('default');
