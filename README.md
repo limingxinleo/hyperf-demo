@@ -20,3 +20,16 @@ Hyperf 是基于 `Swoole 4.3+` 实现的高性能、高灵活性的 PHP 持久�
 # 文档
 
 [https://doc.hyperf.io/](https://doc.hyperf.io/)
+
+# SQL
+
+```
+CREATE TABLE `user` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL DEFAULT '' COMMENT '姓名',
+  `gender` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '性别 1未知1男2女',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
