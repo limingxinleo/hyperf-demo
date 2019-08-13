@@ -24,4 +24,9 @@ class ErrorCode extends AbstractConstants
      * @Message("Server Error")
      */
     const SERVER_ERROR = 500;
+
+    /**
+     * @Message("数据库选择失败")
+     */
+    const DB_SELECT_FAILED = 501;
 }

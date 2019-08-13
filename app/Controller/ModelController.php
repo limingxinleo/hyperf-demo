@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Model\User;
+use App\Model\Order;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -22,20 +22,16 @@ class ModelController extends Controller
 {
     public function create()
     {
-        $user = new User();
-        $user->name = uniqid();
-        $user->gender = rand(0, 1);
-        $user->save();
+        $userId = rand(1000000, 9999999);
 
-        return $user->toArray();
-    }
+        $order = new Order();
+        $order->user_id = $userId;
+        $order->total_fee = rand(1, 999);
+        $order->status = Order::STATUS_INIT;
+        $order->sku_id = rand(1, 999);
 
-    public function get()
-    {
-        $id = $this->request->input('id');
+        $result = $order->save();
 
-        $user = User::find($id);
-
-        return $user->toArray();
+        return $this->response->success($result);
     }
 }

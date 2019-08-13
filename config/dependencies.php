@@ -10,8 +10,11 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
+use Hyperf\Database\Commands\Ast\ModelUpdateVisitor as Visitor;
+
 return [
     'dependencies' => [
-        // Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,
+        Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,
+        Visitor::class => App\Kernel\Model\ModelUpdateVisitor::class,
     ],
 ];

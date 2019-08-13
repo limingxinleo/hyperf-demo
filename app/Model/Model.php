@@ -12,6 +12,9 @@ declare(strict_types=1);
 
 namespace App\Model;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
+use App\Kernel\Model\IdGenerator;
 use Hyperf\Database\ConnectionInterface;
 use Hyperf\DbConnection\ConnectionResolver;
 use Hyperf\DbConnection\Model\Model as BaseModel;
@@ -22,13 +25,26 @@ abstract class Model extends BaseModel implements CacheableInterface
 {
     use Cacheable;
 
-    public function getRealConnectionName($id = null)
+    /**
+     * 根据主键ID获取对应 ConnectionName.
+     * @param null|int $id
+     * @return string
+     */
+    public function getRealConnectionName(int $id = null)
     {
-        if ($id) {
-            $this->id = $id;
+        if (is_null($id)) {
+            if (empty($this->user_id)) {
+                throw new BusinessException(ErrorCode::DB_SELECT_FAILED);
+            }
+
+            $did = $this->user_id;
+        } else {
+            $generator = $this->getContainer()->get(IdGenerator::class);
+
+            $did = $generator->degenerate($id);
         }
 
-        if ($this->id % 2) {
+        if ($did % 2 == 0) {
             return 'db2';
         }
         return 'db1';
@@ -36,19 +52,28 @@ abstract class Model extends BaseModel implements CacheableInterface
 
     public function save(array $options = []): bool
     {
-        if (is_null($this->id)) {
-            $this->id = $this->newId();
+        if (is_null($this->id) && ! $this->incrementing) {
+            if (empty($this->user_id)) {
+                throw new BusinessException(ErrorCode::DB_SELECT_FAILED);
+            }
+
+            $this->id = di()->get(IdGenerator::class)->generate($this->user_id);
         }
 
         return parent::save($options);
     }
 
-    public static function find($id)
+    public static function find(int $id)
     {
-        return (new static())->setConnectionById($id)->newQuery()->find($id);
+        return (new static())->loadConnnection($id)->newQuery()->find($id);
     }
 
-    public function setConnectionById($id)
+    /**
+     * Reset connection name by id.
+     * @param $id
+     * @return BaseModel
+     */
+    public function loadConnnection(int $id)
     {
         return parent::setConnection($this->getRealConnectionName($id));
     }
@@ -58,17 +83,14 @@ abstract class Model extends BaseModel implements CacheableInterface
      */
     public function getConnection(): ConnectionInterface
     {
-        $connectionName = $this->getRealConnectionName();
+        $connectionName = $this->getConnectionName();
+        if ($connectionName == 'default') {
+            // 如果没有选择正确的数据库，则重新选择
+            $connectionName = $this->getRealConnectionName();
+        }
+
         $resolver = $this->getContainer()->get(ConnectionResolver::class);
+
         return $resolver->connection($connectionName);
-    }
-
-    protected function newId()
-    {
-        $redis = $this->getContainer()->get(\Redis::class);
-        $incr = (string) $redis->incr('unique:id');
-        $incr = str_pad($incr, 5, '0', STR_PAD_LEFT);
-
-        return (int) sprintf('%s%s', time(), $incr);
     }
 }

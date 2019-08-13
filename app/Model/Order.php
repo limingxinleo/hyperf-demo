@@ -14,13 +14,21 @@ namespace App\Model;
 
 /**
  * @property int $id
- * @property string $name
- * @property int $gender
+ * @property int $user_id
+ * @property int $total_fee
+ * @property int $sku_id
+ * @property int $status
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class User extends Model
+class Order extends Model
 {
+    const STATUS_INIT = 0;
+
+    const STATUS_PAID = 1;
+
+    const STATUS_CANCEL = 2;
+
     public $incrementing = false;
 
     /**
@@ -28,26 +36,26 @@ class User extends Model
      *
      * @var string
      */
-    protected $table = 'user';
+    protected $table = 'order';
 
     /**
      * The connection name for the model.
      *
      * @var string
      */
-    protected $connection = 'db1';
+    protected $connection = 'default';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['id', 'name', 'gender', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'user_id', 'total_fee', 'sku_id', 'status', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = ['id' => 'integer', 'gender' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+    protected $casts = ['id' => 'integer', 'user_id' => 'integer', 'total_fee' => 'integer', 'sku_id' => 'integer', 'status' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
 }
