@@ -38,6 +38,15 @@ class UserTest extends HttpTestCase
     public function testUserFind()
     {
         $order = Order::find(156569356749045);
+        if (empty($order)) {
+            $order = new Order();
+            $order->user_id = 9733949;
+            $order->total_fee = rand(1, 999);
+            $order->status = Order::STATUS_INIT;
+            $order->sku_id = rand(1, 999);
+
+            $this->assertTrue($order->save());
+        }
 
         $this->assertNotEmpty($order);
     }
