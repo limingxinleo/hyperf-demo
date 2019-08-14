@@ -24,4 +24,9 @@ class IndexController extends Controller
             'message' => 'Hello Hyperf.',
         ]);
     }
+
+    public function user(int $id)
+    {
+        return $this->response->success($id);
+    }
 }

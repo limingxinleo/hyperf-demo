@@ -12,4 +12,14 @@ declare(strict_types=1);
 
 use Hyperf\HttpServer\Router\Router;
 
-Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
+Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index', [
+    'middleware' => [
+        \App\Middleware\UserMiddleware::class,
+    ],
+]);
+
+Router::addRoute(['GET', 'POST', 'HEAD'], '/user/{id:\d+}', 'App\Controller\IndexController@user', [
+    'middleware' => [
+        \App\Middleware\UserMiddleware::class,
+    ],
+]);
