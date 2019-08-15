@@ -13,9 +13,8 @@
     "license": "Apache-2.0",
     "require": {
         "php": ">=7.2",
-        "ext-swoole": ">=4.2",
-        "ext-openssl": "*",
         "ext-json": "*",
+        "ext-openssl": "*",
         "ext-pdo": "*",
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
@@ -73,6 +72,9 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
     "extra": [],
     "scripts": {
         "post-root-package-install": [
