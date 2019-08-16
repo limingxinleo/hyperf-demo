@@ -14,7 +14,7 @@ use Hyperf\Server\Server;
 use Hyperf\Server\SwooleEvent;
 
 return [
-    'mode' => SWOOLE_BASE,
+    'mode' => SWOOLE_PROCESS,
     'servers' => [
         [
             'name' => 'http',
