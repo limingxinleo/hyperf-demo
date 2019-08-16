@@ -15,7 +15,7 @@ namespace App\Listener;
 use App\Server;
 use Hyperf\Event\Annotation\Listener;
 use Hyperf\Event\Contract\ListenerInterface;
-use Hyperf\Framework\Event\BeforeMainServerStart;
+use Hyperf\Framework\Event\AfterWorkerStart;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -36,16 +36,16 @@ class WebSocketListener implements ListenerInterface
     public function listen(): array
     {
         return [
-            BeforeMainServerStart::class,
+            AfterWorkerStart::class,
         ];
     }
 
     /**
-     * @param BeforeMainServerStart $event
+     * @param AfterWorkerStart $event
      */
     public function process(object $event)
     {
-        if ($event instanceof BeforeMainServerStart) {
+        if ($event instanceof AfterWorkerStart) {
             di()->get(Server::class)->setServer($event->server);
         }
     }
