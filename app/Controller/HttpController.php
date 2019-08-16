@@ -22,15 +22,11 @@ class HttpController extends Controller
 {
     public function index()
     {
+        $fd = $this->request->input('fd');
+
         $server = di()->get(Server::class)->getServer();
 
-        $list = $server->getClientList();
-        foreach ($list as $fd) {
-            $info = $server->connection_info($fd);
-            if ($info['websocket_status'] == WEBSOCKET_STATUS_ACTIVE) {
-                $server->push($fd, 'Hello Hyperf.');
-            }
-        }
+        $server->push((int) $fd, 'Hello Hyperf.');
 
         return $this->response->success();
     }
