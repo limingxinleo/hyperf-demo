@@ -13,7 +13,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Hyperf\HttpServer\Annotation\AutoController;
-use Hyperf\Server\ServerFactory;
+use Hyperf\WebSocketServer\Sender;
 
 /**
  * @AutoController
@@ -24,9 +24,9 @@ class HttpController extends Controller
     {
         $fd = $this->request->input('fd');
 
-        $server = di()->get(ServerFactory::class)->getServer()->getServer();
+        $sender = $this->container->get(Sender::class);
 
-        $server->push((int) $fd, 'Hello Hyperf.');
+        $sender->push((int) $fd, 'Hello Hyperf.');
 
         return $this->response->success();
     }
