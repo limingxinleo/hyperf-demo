@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Server;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\Server\ServerFactory;
 
 /**
  * @AutoController
@@ -24,7 +24,7 @@ class HttpController extends Controller
     {
         $fd = $this->request->input('fd');
 
-        $server = di()->get(Server::class)->getServer();
+        $server = di()->get(ServerFactory::class)->getServer()->getServer();
 
         $server->push((int) $fd, 'Hello Hyperf.');
 
