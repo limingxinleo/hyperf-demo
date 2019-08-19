@@ -13,3 +13,11 @@ declare(strict_types=1);
 use Hyperf\HttpServer\Router\Router;
 
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
+
+Router::addServer('http2', function () {
+    Router::get('/', 'App\Controller\IndexController@index2');
+});
+
+Router::addServer('http3', function () {
+    Router::get('/', 'App\Controller\IndexController@index3');
+});

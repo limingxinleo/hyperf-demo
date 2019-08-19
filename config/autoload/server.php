@@ -26,6 +26,26 @@ return [
                 SwooleEvent::ON_REQUEST => [Hyperf\HttpServer\Server::class, 'onRequest'],
             ],
         ],
+        [
+            'name' => 'http2',
+            'type' => Server::SERVER_HTTP,
+            'host' => '0.0.0.0',
+            'port' => 9502,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                SwooleEvent::ON_REQUEST => ['Server2', 'onRequest'],
+            ],
+        ],
+        [
+            'name' => 'http3',
+            'type' => Server::SERVER_HTTP,
+            'host' => '0.0.0.0',
+            'port' => 9503,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                SwooleEvent::ON_REQUEST => ['Server3', 'onRequest'],
+            ],
+        ],
     ],
     'settings' => [
         'enable_coroutine' => true,

@@ -13,5 +13,7 @@ declare(strict_types=1);
 return [
     'dependencies' => [
         // Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,
+        'Server2' => Hyperf\HttpServer\Server::class,
+        'Server3' => Hyperf\HttpServer\Server::class,
     ],
 ];

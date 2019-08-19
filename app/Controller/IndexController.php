@@ -24,4 +24,14 @@ class IndexController extends Controller
             'message' => 'Hello Hyperf.',
         ]);
     }
+
+    public function index2()
+    {
+        return $this->response->success('http2');
+    }
+
+    public function index3()
+    {
+        return $this->response->success('http3');
+    }
 }
