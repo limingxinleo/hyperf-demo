@@ -15,10 +15,10 @@ namespace App\Listener;
 use App\Model\User;
 use Hyperf\Database\Model\Events\Saving;
 use Hyperf\ModelListener\AbstractListener;
-use Hyperf\ModelListener\Observer;
+use Hyperf\ModelListener\Annotation\ModelListener;
 
 /**
- * @Observer(User::class)
+ * @ModelListener(User::class)
  */
 class UserObserver extends AbstractListener
 {
