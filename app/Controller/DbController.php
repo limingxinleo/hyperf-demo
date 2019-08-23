@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\User;
 use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Annotation\AutoController;
 
@@ -29,5 +30,14 @@ class DbController extends Controller
         Db::beginTransaction();
 
         return $this->response->success($transactions);
+    }
+
+    public function saving()
+    {
+        $user = User::find(1);
+
+        $user->save();
+
+        return $this->response->success();
     }
 }
