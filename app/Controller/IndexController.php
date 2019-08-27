@@ -12,12 +12,17 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
+
 class IndexController extends Controller
 {
     public function index()
     {
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
+
+        throw new BusinessException(ErrorCode::PARAM_INVALID);
         return $this->response->success([
             'user' => $user,
             'method' => $method,
