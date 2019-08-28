@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Model\User;
+use App\Model\UserRole;
 use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Annotation\AutoController;
 
@@ -39,5 +40,12 @@ class DbController extends Controller
         $user->save();
 
         return $this->response->success();
+    }
+
+    public function rel()
+    {
+        $role = UserRole::query()->with('users.books')->first();
+
+        return $this->response->success($role->toArray());
     }
 }

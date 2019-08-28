@@ -55,4 +55,9 @@ class User extends Model
     {
         var_dump(get_class($event->getModel()) . ' hook method saving');
     }
+
+    public function books()
+    {
+        return $this->hasMany(Book::class, 'user_id', 'id');
+    }
 }
