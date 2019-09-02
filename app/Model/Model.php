@@ -34,6 +34,10 @@ abstract class Model extends BaseModel implements CacheableInterface
      */
     public function getRealConnectionName(int $id = null)
     {
+        if ($this->connection !== 'default') {
+            return $this->connection;
+        }
+
         if (is_null($id)) {
             if (empty($this->id)) {
                 throw new BusinessException(ErrorCode::DB_SELECT_FAILED);
@@ -46,15 +50,17 @@ abstract class Model extends BaseModel implements CacheableInterface
 
         $did = $generator->degenerate($id);
 
+        $db = 'db1';
         if ($did % 2 == 0) {
-            return 'db2';
+            $db = 'db2';
         }
-        return 'db1';
+
+        return $this->connection = $db;
     }
 
     public function save(array $options = []): bool
     {
-        if (is_null($this->id) && ! $this->incrementing) {
+        if (is_null($this->id) && !$this->incrementing) {
             if (empty($this->user_id)) {
                 throw new BusinessException(ErrorCode::DB_SELECT_FAILED);
             }
