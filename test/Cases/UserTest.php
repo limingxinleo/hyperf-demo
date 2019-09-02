@@ -13,6 +13,8 @@ declare(strict_types=1);
 namespace HyperfTest\Cases;
 
 use App\Model\Order;
+use App\Model\OrderLog;
+use Hyperf\Database\Model\Collection;
 use HyperfTest\HttpTestCase;
 
 /**
@@ -63,10 +65,14 @@ class UserTest extends HttpTestCase
         $this->assertTrue($model->save());
     }
 
-    // public function testHasMany()
-    // {
-    //     $model = Order::find(37907888619521);
-    //
-    //     var_dump($model->logs);
-    // }
+    public function testHasMany()
+    {
+        $model = Order::find(37907888619521);
+
+        $this->assertInstanceOf(Collection::class, $model->logs);
+
+        foreach ($model->logs as $log) {
+            $this->assertInstanceOf(OrderLog::class, $log);
+        }
+    }
 }

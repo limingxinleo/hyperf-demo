@@ -69,14 +69,17 @@ class Order extends Model
         $model->total_fee = $this->total_fee;
         $model->sku_id = $this->sku_id;
         $model->status = $this->status;
-
         $model->setConnection($this->getRealConnectionName());
-
         $model->save();
     }
 
     public function logs()
     {
         return $this->hasMany(OrderLog::class, 'order_id', 'id');
+    }
+
+    protected function newRelatedInstance($class)
+    {
+        return (new $class())->setConnection($this->getRealConnectionName());
     }
 }
