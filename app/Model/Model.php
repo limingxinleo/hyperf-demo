@@ -14,7 +14,8 @@ namespace App\Model;
 
 use App\Constants\ErrorCode;
 use App\Exception\BusinessException;
-use App\Kernel\Model\IdGenerator;
+use App\Kernel\Model\MultiDBTrait;
+use App\Kernel\Snowflake\IdGenerator;
 use Hyperf\Database\ConnectionInterface;
 use Hyperf\DbConnection\ConnectionResolver;
 use Hyperf\DbConnection\Model\Model as BaseModel;
@@ -24,6 +25,7 @@ use Hyperf\ModelCache\CacheableInterface;
 abstract class Model extends BaseModel implements CacheableInterface
 {
     use Cacheable;
+    use MultiDBTrait;
 
     /**
      * 根据主键ID获取对应 ConnectionName.
@@ -33,16 +35,16 @@ abstract class Model extends BaseModel implements CacheableInterface
     public function getRealConnectionName(int $id = null)
     {
         if (is_null($id)) {
-            if (empty($this->user_id)) {
+            if (empty($this->id)) {
                 throw new BusinessException(ErrorCode::DB_SELECT_FAILED);
             }
 
-            $did = $this->user_id;
-        } else {
-            $generator = $this->getContainer()->get(IdGenerator::class);
-
-            $did = $generator->degenerate($id);
+            $id = $this->id;
         }
+
+        $generator = $this->getContainer()->get(IdGenerator::class);
+
+        $did = $generator->degenerate($id);
 
         if ($did % 2 == 0) {
             return 'db2';
@@ -88,7 +90,6 @@ abstract class Model extends BaseModel implements CacheableInterface
             // 如果没有选择正确的数据库，则重新选择
             $connectionName = $this->getRealConnectionName();
         }
-
         $resolver = $this->getContainer()->get(ConnectionResolver::class);
 
         return $resolver->connection($connectionName);

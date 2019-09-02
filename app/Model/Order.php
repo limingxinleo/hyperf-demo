@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Model;
 
+use Hyperf\Database\Model\Events\Saved;
+
 /**
  * @property int $id
  * @property int $user_id
@@ -58,4 +60,23 @@ class Order extends Model
      * @var array
      */
     protected $casts = ['id' => 'integer', 'user_id' => 'integer', 'total_fee' => 'integer', 'sku_id' => 'integer', 'status' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function saved(Saved $event)
+    {
+        $model = new OrderLog();
+        $model->order_id = $this->id;
+        $model->user_id = $this->user_id;
+        $model->total_fee = $this->total_fee;
+        $model->sku_id = $this->sku_id;
+        $model->status = $this->status;
+
+        $model->setConnection($this->getRealConnectionName());
+
+        $model->save();
+    }
+
+    public function logs()
+    {
+        return $this->hasMany(OrderLog::class, 'order_id', 'id');
+    }
 }

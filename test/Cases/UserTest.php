@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace HyperfTest\Cases;
 
-use App\Kernel\Model\IdGenerator;
 use App\Model\Order;
 use HyperfTest\HttpTestCase;
 
@@ -22,47 +21,52 @@ use HyperfTest\HttpTestCase;
  */
 class UserTest extends HttpTestCase
 {
-    public function testUserCreate()
+    public function testDbSelect()
     {
-        $userId = rand(1000000, 9999999);
+        $model = Order::find(37907888619521);
+        if (empty($model)) {
+            $model = new Order();
+            $model->id = 37907888619521;
+            $model->user_id = 8755870;
+            $model->total_fee = rand(1, 999);
+            $model->status = Order::STATUS_INIT;
+            $model->sku_id = rand(1, 999);
 
-        $order = new Order();
-        $order->user_id = $userId;
-        $order->total_fee = rand(1, 999);
-        $order->status = Order::STATUS_INIT;
-        $order->sku_id = rand(1, 999);
-
-        $this->assertTrue($order->save());
-    }
-
-    public function testUserFind()
-    {
-        $order = Order::find(156569356749045);
-        if (empty($order)) {
-            $order = new Order();
-            $order->user_id = 9733949;
-            $order->total_fee = rand(1, 999);
-            $order->status = Order::STATUS_INIT;
-            $order->sku_id = rand(1, 999);
-
-            $this->assertTrue($order->save());
+            $model->save();
         }
 
-        $this->assertNotEmpty($order);
-    }
+        $this->assertSame('db2', $model->getRealConnectionName());
 
-    public function testIdGeneratorDegenerate()
-    {
-        $userIds = [
-            1234456 => 56,
-            111111 => 11,
-            1010101 => 1,
-        ];
+        $model = Order::find(37907888488450);
+        if (empty($model)) {
+            $model = new Order();
+            $model->id = 37907888488450;
+            $model->user_id = 9733949;
+            $model->total_fee = rand(1, 999);
+            $model->status = Order::STATUS_INIT;
+            $model->sku_id = rand(1, 999);
 
-        foreach ($userIds as $userId => $did) {
-            $generator = di()->get(IdGenerator::class);
-            $id = $generator->generate($userId);
-            $this->assertSame($did, $generator->degenerate($id));
+            $model->save();
         }
+
+        $this->assertSame('db1', $model->getRealConnectionName());
     }
+
+    public function testCreateOrder()
+    {
+        $model = new Order();
+        $model->user_id = rand(1000000, 9999999);
+        $model->total_fee = rand(1, 999);
+        $model->status = Order::STATUS_INIT;
+        $model->sku_id = rand(1, 999);
+
+        $this->assertTrue($model->save());
+    }
+
+    // public function testHasMany()
+    // {
+    //     $model = Order::find(37907888619521);
+    //
+    //     var_dump($model->logs);
+    // }
 }

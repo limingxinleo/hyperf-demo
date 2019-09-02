@@ -45,6 +45,7 @@
         "hyperf/pool": "1.0.*",
         "hyperf/process": "1.0.*",
         "hyperf/redis": "1.0.*",
+        "hyperf/snowflake": "1.0.x-dev",
         "hyperf/utils": "1.0.*"
     },
     "require-dev": {
