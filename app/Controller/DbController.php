@@ -41,4 +41,72 @@ class DbController extends Controller
 
         return $this->response->success();
     }
+
+    public function create()
+    {
+        $config = [
+            'host' => 'localhost',
+            'port' => '8123',
+            'username' => 'default',
+            'password' => '',
+        ];
+        $db = new \ClickHouseDB\Client($config);
+        $db->database('default');
+        $db->setTimeout(1.5);      // 1500 ms
+        $db->setTimeout(10);       // 10 seconds
+        $db->setConnectTimeOut(5); // 5 seconds
+
+        go(function () use ($db) {
+            $db->write('CREATE TABLE IF NOT EXISTS log
+(
+    name String
+) ENGINE = Log');
+            var_dump(1);
+        });
+        var_dump(2);
+        return $this->response->success();
+    }
+
+    public function insert()
+    {
+        $config = [
+            'host' => 'localhost',
+            'port' => '8123',
+            'username' => 'default',
+            'password' => '',
+        ];
+        $db = new \ClickHouseDB\Client($config);
+        $db->database('default');
+        $db->setTimeout(1.5);      // 1500 ms
+        $db->setTimeout(10);       // 10 seconds
+        $db->setConnectTimeOut(5); // 5 seconds
+
+        go(function () use ($db) {
+            $sql = sprintf('INSERT INTO log (`name`) VALUES (\'%s\')', uniqid());
+            $db->write($sql);
+            var_dump(1);
+        });
+
+        var_dump(2);
+        return $this->response->success();
+    }
+
+    public function query()
+    {
+        $config = [
+            'host' => 'localhost',
+            'port' => '8123',
+            'username' => 'default',
+            'password' => '',
+        ];
+        $db = new \ClickHouseDB\Client($config);
+        $db->database('default');
+        $db->setTimeout(1.5);      // 1500 ms
+        $db->setTimeout(10);       // 10 seconds
+        $db->setConnectTimeOut(5); // 5 seconds
+
+        $res = $db->select('SELECT * FROM log')->rows();
+
+        return $this->response->success($res);
+    }
 }
