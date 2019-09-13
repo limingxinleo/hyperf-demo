@@ -12,12 +12,24 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Exception\FooException;
+use App\Exception\TestException;
+
 class IndexController extends Controller
 {
     public function index()
     {
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
+
+        if ($user == 'test') {
+            throw new TestException('test');
+        }
+
+        if ($user == 'foo') {
+            throw new FooException('foo');
+        }
+
         return $this->response->success([
             'user' => $user,
             'method' => $method,

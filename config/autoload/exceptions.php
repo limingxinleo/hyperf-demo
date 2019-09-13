@@ -10,9 +10,14 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
+use App\Exception\Handler\FooExceptionHandler;
+use App\Exception\Handler\TestExceptionHandler;
+
 return [
     'handler' => [
         'http' => [
+            FooExceptionHandler::class,
+            TestExceptionHandler::class,
             App\Exception\Handler\BusinessExceptionHandler::class,
         ],
     ],
