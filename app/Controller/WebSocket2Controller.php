@@ -21,7 +21,7 @@ use Swoole\Http\Request;
 use Swoole\Server;
 use Swoole\Websocket\Frame;
 
-class WebSocketController implements OnMessageInterface, OnOpenInterface, OnCloseInterface
+class WebSocket2Controller implements OnMessageInterface, OnOpenInterface, OnCloseInterface
 {
     /**
      * @Inject

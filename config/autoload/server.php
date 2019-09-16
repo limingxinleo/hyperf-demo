@@ -38,6 +38,18 @@ return [
                 SwooleEvent::ON_CLOSE => [Hyperf\WebSocketServer\Server::class, 'onClose'],
             ],
         ],
+        [
+            'name' => 'ws2',
+            'type' => Server::SERVER_WEBSOCKET,
+            'host' => '0.0.0.0',
+            'port' => 9503,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                SwooleEvent::ON_HAND_SHAKE => ['WebSocketServer', 'onHandShake'],
+                SwooleEvent::ON_MESSAGE => ['WebSocketServer', 'onMessage'],
+                SwooleEvent::ON_CLOSE => ['WebSocketServer', 'onClose'],
+            ],
+        ],
     ],
     'settings' => [
         'enable_coroutine' => true,

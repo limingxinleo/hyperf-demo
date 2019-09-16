@@ -18,3 +18,7 @@ Router::addServer('ws', function () {
     Router::get('/', 'App\Controller\WebSocketController');
     Router::get('/http/index', 'App\Controller\HttpController::index');
 });
+
+Router::addServer('ws2', function () {
+    Router::get('/', 'App\Controller\WebSocket2Controller');
+});

@@ -47,7 +47,7 @@
         "hyperf/redis": "1.1.*",
         "hyperf/utils": "1.1.*",
         "hyperf/websocket-client": "1.1.*",
-        "hyperf/websocket-server": "1.1.*",
+        "hyperf/websocket-server": "1.1.*"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
@@ -87,10 +87,6 @@
         "start": "php ./bin/hyperf.php start"
     },
     "repositories": {
-        "h": {
-            "type": "path",
-            "url": "../hyperf/src/*"
-        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
