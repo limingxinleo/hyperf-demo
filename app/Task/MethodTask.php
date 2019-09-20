@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Task;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
 use Hyperf\Task\Annotation\Task;
 use Hyperf\Utils\Coroutine;
 
@@ -45,5 +47,13 @@ class MethodTask
         sleep(2);
 
         return microtime(true);
+    }
+
+    /**
+     * @Task
+     */
+    public function exception()
+    {
+        throw new BusinessException(ErrorCode::SERVER_ERROR, 'Task Exception');
     }
 }

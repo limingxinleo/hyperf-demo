@@ -73,4 +73,11 @@ class TaskController extends Controller
 
         return $this->response->success($result);
     }
+
+    public function exception()
+    {
+        $result = di()->get(MethodTask::class)->exception();
+
+        return $this->response->success($result);
+    }
 }
