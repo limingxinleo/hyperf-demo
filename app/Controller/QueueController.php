@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Job\CountJob;
 use App\Job\ModelJob;
 use App\Model\User;
 use App\Service\QueueService;
@@ -77,6 +78,12 @@ class QueueController extends Controller
 
         di()->get(QueueService::class)->annotationmodel($user);
 
+        return 'success';
+    }
+
+    public function count()
+    {
+        queue_push(new CountJob());
         return 'success';
     }
 }
