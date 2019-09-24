@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
 use App\Job\ExampleJob;
 use App\Model\User;
 use Hyperf\AsyncQueue\Annotation\AsyncQueueMessage;
@@ -69,5 +71,13 @@ class QueueService
     {
         var_dump(111);
         var_dump($user);
+    }
+
+    /**
+     * @AsyncQueueMessage
+     */
+    public function retry()
+    {
+        throw new BusinessException(ErrorCode::SERVER_ERROR);
     }
 }

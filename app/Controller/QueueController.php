@@ -14,6 +14,7 @@ namespace App\Controller;
 
 use App\Job\CountJob;
 use App\Job\ModelJob;
+use App\Job\RetryJob;
 use App\Model\User;
 use App\Service\QueueService;
 use Hyperf\Di\Annotation\Inject;
@@ -84,6 +85,12 @@ class QueueController extends Controller
     public function count()
     {
         queue_push(new CountJob());
+        return 'success';
+    }
+
+    public function retry()
+    {
+        queue_push(new RetryJob());
         return 'success';
     }
 }
