@@ -93,4 +93,10 @@ class QueueController extends Controller
         queue_push(new RetryJob());
         return 'success';
     }
+
+    public function oneMinute()
+    {
+        di()->get(QueueService::class)->oneMinute();
+        return 'success';
+    }
 }

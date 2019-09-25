@@ -80,4 +80,13 @@ class QueueService
     {
         throw new BusinessException(ErrorCode::SERVER_ERROR);
     }
+
+    /**
+     * @AsyncQueueMessage
+     */
+    public function oneMinute()
+    {
+        sleep(1);
+        di()->get(\Redis::class)->incr('asdf');
+    }
 }
