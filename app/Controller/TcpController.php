@@ -24,7 +24,7 @@ class TcpController extends Controller
     public function send()
     {
         $processes = ProcessCollector::all();
-        $data = serialize($this->request->input('data', "asd")) . "\r\n";
+        $data = serialize($this->request->input('data', 'asd')) . "\r\n";
 
         /** @var Process $process */
         foreach ($processes as $process) {
