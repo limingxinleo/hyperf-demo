@@ -12,6 +12,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use Hyperf\Guzzle\PoolHandler;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -24,5 +27,21 @@ class HttpController extends Controller
         $version = $this->request->header('Version', 'v1');
 
         return $this->response->success($version);
+    }
+
+    public function execute()
+    {
+        $handler = make(PoolHandler::class, [
+            'option' => [
+                'max_connections' => 10,
+            ]
+        ]);
+
+        $client = new Client([
+            'handler' => HandlerStack::create($handler),
+            'base_uri' => 'http://127.0.0.1:8888'
+        ]);
+
+        return $client->get('/')->getBody()->getContents();
     }
 }
