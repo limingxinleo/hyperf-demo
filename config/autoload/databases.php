@@ -44,6 +44,7 @@ return [
                 'inheritance' => 'Model',
                 'uses' => '',
                 'refresh_fillable' => true,
+                'table_mapping' => [],
             ],
         ],
     ],
