@@ -24,4 +24,9 @@ class ErrorCode extends AbstractConstants
      * @Message("Server Error")
      */
     const SERVER_ERROR = 500;
+
+    /**
+     * @Message("用户自定义错误")
+     */
+    const USER_DEFINED_ERROR = 10000;
 }

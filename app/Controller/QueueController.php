@@ -12,11 +12,15 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
 use App\Job\CountJob;
 use App\Job\ModelJob;
 use App\Job\RetryJob;
 use App\Model\User;
 use App\Service\QueueService;
+use Hyperf\Constants\ConstantsCollector;
+use Hyperf\Di\Annotation\AspectCollector;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
 
@@ -98,5 +102,11 @@ class QueueController extends Controller
     {
         di()->get(QueueService::class)->oneMinute();
         return 'success';
+    }
+
+    public function exception()
+    {
+        var_dump(AspectCollector::list());
+        throw new BusinessException(ErrorCode::USER_DEFINED_ERROR);
     }
 }
