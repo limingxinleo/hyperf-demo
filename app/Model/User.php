@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use Hyperf\Database\Model\Events\Saving;
-
 /**
  * @property int $id
  * @property string $name
@@ -31,13 +29,6 @@ class User extends Model
     protected $table = 'user';
 
     /**
-     * The connection name for the model.
-     *
-     * @var string
-     */
-    protected $connection = 'default';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -50,11 +41,6 @@ class User extends Model
      * @var array
      */
     protected $casts = ['id' => 'integer', 'gender' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
-
-    public function saving(Saving $event)
-    {
-        var_dump(get_class($event->getModel()) . ' hook method saving');
-    }
 
     public function books()
     {

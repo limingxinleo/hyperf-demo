@@ -27,13 +27,6 @@ class Migration extends Model
     protected $table = 'migration';
 
     /**
-     * The connection name for the model.
-     *
-     * @var string
-     */
-    protected $connection = 'default';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array

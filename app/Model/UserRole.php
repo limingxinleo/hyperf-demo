@@ -29,13 +29,6 @@ class UserRole extends Model
     protected $table = 'user_role';
 
     /**
-     * The connection name for the model.
-     *
-     * @var string
-     */
-    protected $connection = 'default';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
