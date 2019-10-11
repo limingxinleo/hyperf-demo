@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\HttpServer\Contract\ResponseInterface;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
@@ -21,7 +22,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
  */
 class ExcelController extends Controller
 {
-    public function save()
+    public function save(ResponseInterface $response)
     {
         $spreadsheet = new Spreadsheet();
 
@@ -33,8 +34,9 @@ class ExcelController extends Controller
 
         $objWriter = IOFactory::createWriter($spreadsheet, 'Xlsx');
 
-        $objWriter->save(BASE_PATH . '/runtime/example.xlsx');
+        $path = BASE_PATH . '/runtime/example.xlsx';
+        $objWriter->save($path);
 
-        return $this->response->success();
+        return $response->download($path, 'example.xlsx');
     }
 }
