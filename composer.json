@@ -85,10 +85,6 @@
         "start": "php ./bin/hyperf.php start"
     },
     "repositories": {
-        "h": {
-            "type": "path",
-            "url": "../hyperf/src/*"
-        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"

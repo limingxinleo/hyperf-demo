@@ -44,4 +44,26 @@ class HttpController extends Controller
 
         return $client->get('/')->getBody()->getContents();
     }
+
+    public function host()
+    {
+        $handler = make(PoolHandler::class, [
+            'option' => [
+                'max_connections' => 10,
+            ]
+        ]);
+
+        $client = new Client([
+            'handler' => HandlerStack::create($handler),
+            'base_uri' => 'http://127.0.0.1:9501',
+            'headers' => [
+                'Host' => 'test',
+                'X-ID' => uniqid(),
+            ],
+        ]);
+
+        $options = [];
+        // $options = ['headers' => ['Host' => 'test']];
+        return $client->get('/', $options)->getBody()->getContents();
+    }
 }

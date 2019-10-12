@@ -22,6 +22,7 @@ class IndexController extends Controller
             'user' => $user,
             'method' => $method,
             'message' => 'Hello Hyperf.',
+            'headers' => $this->request->getHeaders()
         ]);
     }
 
