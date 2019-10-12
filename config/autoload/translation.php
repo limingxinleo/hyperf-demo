@@ -11,7 +11,7 @@ declare(strict_types=1);
  */
 
 return [
-    'http' => [
-        \Hyperf\Validation\Middleware\ValidationMiddleware::class,
-    ],
+    'locale' => 'zh_CN',
+    'fallback_locale' => 'en',
+    'path' => BASE_PATH . '/storage/languages',
 ];
