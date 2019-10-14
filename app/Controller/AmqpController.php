@@ -31,4 +31,10 @@ class AmqpController extends Controller
 
         return $this->response->success($res);
     }
+
+    public function concurrent()
+    {
+        $res = amqp_produce(new DemoProducer(uniqid()));
+        return $this->response->success($res);
+    }
 }

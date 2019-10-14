@@ -26,6 +26,10 @@ class DemoConsumer extends ConsumerMessage
     {
         $logger = di()->get(StdoutLoggerInterface::class);
         $logger->info('demo' . json_encode($data));
+
+        $redis = di()->get(\Redis::class);
+        $redis->incr('xxx');
+
         return Result::ACK;
     }
 }
