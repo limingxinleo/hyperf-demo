@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Hyperf\CircuitBreaker\Annotation\CircuitBreaker;
+
 class IndexController extends Controller
 {
     public function index()
@@ -23,5 +25,14 @@ class IndexController extends Controller
             'method' => $method,
             'message' => 'Hello Hyperf.',
         ]);
+    }
+
+    /**
+     * @CircuitBreaker(failCounter=1, fallback="App\Controller\IndexController::index", timeout=0.1)
+     */
+    public function breaker()
+    {
+        sleep(1);
+        return $this->response->success('breaking...');
     }
 }
