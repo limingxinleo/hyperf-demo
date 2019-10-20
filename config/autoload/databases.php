@@ -45,6 +45,7 @@ return [
                 'uses' => '',
                 'refresh_fillable' => true,
                 'table_mapping' => [],
+                'with_comments' => true,
             ],
         ],
     ],

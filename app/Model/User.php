@@ -14,8 +14,8 @@ namespace App\Model;
 
 /**
  * @property int $id
- * @property string $name
- * @property int $gender
+ * @property string $name 姓名
+ * @property int $gender 性别 1未知1男2女
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
