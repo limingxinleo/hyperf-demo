@@ -14,7 +14,7 @@ namespace App\Model;
 
 /**
  * @property int $id
- * @property string $name 角色名
+ * @property string $name
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
