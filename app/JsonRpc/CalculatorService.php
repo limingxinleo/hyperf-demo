@@ -31,4 +31,14 @@ class CalculatorService implements CalculatorServiceInterface
     {
         return new MathValue($v1->value + $v2->value);
     }
+
+    public function arr(): array
+    {
+        return [1, 2, 3];
+    }
+
+    public function objs()
+    {
+        return [new MathValue(1), new MathValue(2)];
+    }
 }

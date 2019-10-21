@@ -37,4 +37,14 @@ class CalculatorServiceConsumer extends AbstractServiceClient implements Calcula
     {
         return $this->__request(__FUNCTION__, compact('v1', 'v2'));
     }
+
+    public function arr(): array
+    {
+        return $this->__request(__FUNCTION__, []);
+    }
+
+    public function objs()
+    {
+        return $this->__request(__FUNCTION__, []);
+    }
 }

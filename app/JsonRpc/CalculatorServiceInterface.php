@@ -17,4 +17,11 @@ interface CalculatorServiceInterface
     public function add(int $a, int $b): int;
 
     public function sum(MathValue $v1, MathValue $v2): MathValue;
+
+    public function arr(): array;
+
+    /**
+     * @return MathValue[]
+     */
+    public function objs();
 }

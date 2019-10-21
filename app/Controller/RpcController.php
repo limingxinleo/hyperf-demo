@@ -55,4 +55,34 @@ class RpcController extends Controller
 
         return $result->value;
     }
+
+    public function arr()
+    {
+        $client = di()->get(CalculatorServiceConsumer::class);
+
+        return $client->arr();
+    }
+
+    public function arr2()
+    {
+        $client = di()->get(CalculatorServiceInterface::class);
+
+        return $client->arr();
+    }
+
+    public function objs()
+    {
+        $client = di()->get(CalculatorServiceConsumer::class);
+
+        $res = $client->objs();
+        return $res;
+    }
+
+    public function objs2()
+    {
+        $client = di()->get(CalculatorServiceInterface::class);
+
+        $res = $client->objs();
+        return $res;
+    }
 }
