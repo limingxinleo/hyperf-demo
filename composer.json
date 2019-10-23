@@ -46,8 +46,9 @@
         "hyperf/process": "1.1.*",
         "hyperf/redis": "1.1.*",
         "hyperf/utils": "1.1.*",
-        "hyperf/etcd": "1.0.*",
-        "hyperf/config-etcd": "1.0.*",
+        "hyperf/etcd": "1.1.*",
+        "hyperf/config-etcd": "1.1.*",
+        "hyperf/socket": "1.1.*",
         "start-point/etcd-php": "^1.1",
         "linkorb/etcd-php": "^1.6"
     },
