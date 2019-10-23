@@ -15,7 +15,7 @@ LABEL maintainer="Hyperf Developers <group@hyperf.io>" version="1.0" license="MI
 ARG timezone
 
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
-    COMPOSER_VERSION=1.8.6 \
+    COMPOSER_VERSION=1.9.0 \
     APP_ENV=prod
 
 # update
@@ -47,8 +47,11 @@ RUN set -ex \
 
 WORKDIR /opt/www
 
-COPY . /opt/www
+# Composer Cache
+# COPY ./composer.* /opt/www/
+# RUN composer install --no-dev
 
+COPY . /opt/www
 RUN composer install --no-dev \
     && composer dump-autoload -o \
     && php /opt/www/bin/hyperf.php di:init-proxy
