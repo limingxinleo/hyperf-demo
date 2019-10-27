@@ -87,7 +87,7 @@
     "repositories": {
         "h": {
             "type": "path",
-            "url": "../hyperf/src/*"
+            "url": "../../hyperf/hyperf/src/*"
         },
         "packagist": {
             "type": "composer",
