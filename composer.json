@@ -43,7 +43,7 @@
         "hyperf/model-cache": "1.1.*",
         "hyperf/paginator": "1.1.*",
         "hyperf/pool": "1.1.*",
-        "hyperf/process": "1.1.*",
+        "hyperf/process": "dev-master",
         "hyperf/redis": "1.1.*",
         "hyperf/utils": "1.1.*",
         "hyperf/etcd": "1.1.*",
@@ -90,10 +90,6 @@
         "start": "php ./bin/hyperf.php start"
     },
     "repositories": {
-        "hyperf": {
-            "type": "path",
-            "url": "../hyperf/src/*"
-        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"

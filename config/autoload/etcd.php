@@ -11,7 +11,7 @@ declare(strict_types=1);
  */
 
 return [
-    'uri' => 'http://192.168.1.200:2379',
+    'uri' => 'http://127.0.0.1:2379',
     'version' => 'v3beta',
     'options' => [
         'timeout' => 10,
