@@ -20,6 +20,8 @@ use Hyperf\Process\Annotation\Process;
  */
 class RestartProcess extends AbstractProcess
 {
+    protected $restartInterval = 10;
+
     public function handle(): void
     {
         var_dump(date('Y-m-d H:i:s'));
