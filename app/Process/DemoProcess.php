@@ -23,6 +23,6 @@ class DemoProcess extends AbstractProcess
     public function handle(): void
     {
         var_dump(date('Y-m-d H:i:s'));
-        // throw new \Exception('asdf');
+        throw new \Exception('asdf');
     }
 }
