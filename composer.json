@@ -90,6 +90,10 @@
         "start": "php ./bin/hyperf.php start"
     },
     "repositories": {
+        "g": {
+            "type": "git",
+            "url": "https://github.com/hyperf/process.git"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
