@@ -12,26 +12,18 @@ declare(strict_types=1);
 
 namespace App\Process;
 
-use Hyperf\Contract\ConfigInterface;
 use Hyperf\Process\AbstractProcess;
 use Hyperf\Process\Annotation\Process;
 
 /**
- * @Process(name="custom_process")
+ * @Process(name="RestartProcess")
  */
-class DemoProcess extends AbstractProcess
+class RestartProcess extends AbstractProcess
 {
     public function handle(): void
     {
-        while (true) {
-            sleep(1);
+        var_dump(date('Y-m-d H:i:s'));
 
-            // if (rand(0, 10) > 9) {
-            //     exit();
-            // }
-
-            $config = di()->get(ConfigInterface::class);
-            echo 'Process.Restart ' . json_encode($config->get('etcd')) . PHP_EOL;
-        }
+        // throw new \Exception('asdf');
     }
 }
