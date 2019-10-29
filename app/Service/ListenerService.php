@@ -14,7 +14,7 @@ namespace App\Service;
 
 use Hyperf\Cache\Annotation\Cacheable;
 
-class ListenerService
+class ListenerService implements ListenerServiceInterface
 {
     /**
      * @Cacheable(prefix="listen:cache")

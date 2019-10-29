@@ -10,10 +10,8 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-use App\Service\ListenerService;
-use App\Service\ListenerServiceInterface;
+namespace App\Service;
 
-return [
-    // Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,
-    ListenerServiceInterface::class => ListenerService::class,
-];
+interface ListenerServiceInterface
+{
+}
