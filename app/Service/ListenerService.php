@@ -12,21 +12,15 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-class AspectClass2Service
+use Hyperf\Cache\Annotation\Cacheable;
+
+class ListenerService
 {
-    public function test()
+    /**
+     * @Cacheable(prefix="listen:cache")
+     */
+    public function cache()
     {
-    }
-
-    public function test2()
-    {
-    }
-
-    public function handle()
-    {
-    }
-
-    public function handle2()
-    {
+        return [];
     }
 }
