@@ -19,6 +19,7 @@ use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Di\Annotation\Inject;
 use Swoole\Http\Request;
 use Swoole\Server;
+use Swoole\WebSocket\Server as WebSocketServer;
 use Swoole\Websocket\Frame;
 
 class WebSocketController implements OnMessageInterface, OnOpenInterface, OnCloseInterface
@@ -34,13 +35,13 @@ class WebSocketController implements OnMessageInterface, OnOpenInterface, OnClos
         $this->logger->info(sprintf('%d closed', $fd));
     }
 
-    public function onMessage(Server $server, Frame $frame): void
+    public function onMessage(WebSocketServer $server, Frame $frame): void
     {
         $this->logger->info(sprintf('recv from %d, data=%s', $frame->fd, $frame->data));
         $server->push($frame->fd, 'recv: ' . $frame->data);
     }
 
-    public function onOpen(Server $server, Request $request): void
+    public function onOpen(WebSocketServer $server, Request $request): void
     {
         $server->push($request->fd, 'opened');
         var_dump(static::class);

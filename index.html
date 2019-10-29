@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ws = new WebSocket("ws://127.0.0.1:9502/");//连接服务器
+
+    ws.onopen = function (event) {
+        console.log(event);
+    };
+
+    ws.onmessage = function (event) {
+        console.log('onmessage')
+    }
+
+    ws.onclose = function (event) {
+        alert("已经与服务器断开连接\r\n当前连接状态：" + this.readyState);
+    };
+
+    ws.onerror = function (event) {
+        console.log("WebSocket异常！");
+    };
+
+    ws.send('hello hyperf socket');
+</script>
+</body>
+</html>
