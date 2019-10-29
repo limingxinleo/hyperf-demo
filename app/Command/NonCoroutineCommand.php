@@ -12,30 +12,28 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Constants\ErrorCode;
-use App\Exception\BusinessException;
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Command\Command as HyperfCommand;
 use Hyperf\Utils\Coroutine;
 use Psr\Container\ContainerInterface;
-use Psr\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @Command
  */
-class FailToCommand extends HyperfCommand
+class NonCoroutineCommand extends HyperfCommand
 {
     /**
      * @var ContainerInterface
      */
     protected $container;
 
+    protected $coroutine = false;
+
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->eventDispatcher = $container->get(EventDispatcherInterface::class);
 
-        parent::__construct('demo:fail');
+        parent::__construct('demo:non');
     }
 
     public function configure()
@@ -46,6 +44,6 @@ class FailToCommand extends HyperfCommand
     public function handle()
     {
         var_dump(Coroutine::inCoroutine());
-        throw new BusinessException(ErrorCode::SERVER_ERROR);
+        $this->line('Hello Hyperf!', 'info');
     }
 }

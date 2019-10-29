@@ -14,6 +14,7 @@ namespace App\Command;
 
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Command\Command as HyperfCommand;
+use Hyperf\Utils\Coroutine;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -40,6 +41,7 @@ class DemoCommand extends HyperfCommand
 
     public function handle()
     {
+        var_dump(Coroutine::inCoroutine());
         $this->line('Hello Hyperf!', 'info');
     }
 }
