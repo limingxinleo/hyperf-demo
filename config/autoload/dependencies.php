@@ -11,9 +11,5 @@ declare(strict_types=1);
  */
 
 return [
-    'handler' => [
-        'http' => [
-            App\Exception\Handler\BusinessExceptionHandler::class,
-        ],
-    ],
+    // Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,
 ];
