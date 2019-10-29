@@ -12,4 +12,5 @@ declare(strict_types=1);
 
 return [
     // Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,
+    'WebSocketServer' => Hyperf\WebSocketServer\Server::class,
 ];
