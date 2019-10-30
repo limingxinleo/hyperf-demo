@@ -45,7 +45,8 @@
         "hyperf/pool": "1.1.*",
         "hyperf/process": "1.1.*",
         "hyperf/redis": "1.1.*",
-        "hyperf/utils": "1.1.*"
+        "hyperf/utils": "1.1.*",
+        "hyperf/squeue": "dev-master"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
@@ -85,6 +86,10 @@
         "start": "php ./bin/hyperf.php start"
     },
     "repositories": {
+        "squeue": {
+            "type": "path",
+            "url": "./squeue"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
