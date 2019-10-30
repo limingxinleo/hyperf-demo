@@ -40,7 +40,7 @@ class ConsumerManager
          */
         foreach ($classes as $class => $annotation) {
             $instance = make($class);
-            if (! $instance instanceof Consumer) {
+            if (! $instance instanceof AbstractConsumer) {
                 continue;
             }
             $annotation->subject && $instance->setSubject($annotation->subject);
@@ -55,11 +55,11 @@ class ConsumerManager
         }
     }
 
-    private function createProcess(Consumer $consumer): AbstractProcess
+    private function createProcess(AbstractConsumer $consumer): AbstractProcess
     {
         return new class($this->container, $consumer) extends AbstractProcess {
             /**
-             * @var Consumer
+             * @var AbstractConsumer
              */
             private $consumer;
 
@@ -68,7 +68,7 @@ class ConsumerManager
              */
             private $subscriber;
 
-            public function __construct(ContainerInterface $container, Consumer $consumer)
+            public function __construct(ContainerInterface $container, AbstractConsumer $consumer)
             {
                 parent::__construct($container);
                 $this->consumer = $consumer;
@@ -82,6 +82,8 @@ class ConsumerManager
                 $this->subscriber->subscribe($this->consumer->getSubject(), function ($data) {
                     $this->consumer->handle($data);
                 });
+
+                $this->subscriber->wait();
             }
         };
     }

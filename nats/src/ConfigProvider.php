@@ -19,6 +19,13 @@ class ConfigProvider
         return [
             'dependencies' => [
             ],
+            'annotations' => [
+                'scan' => [
+                    'paths' => [
+                        __DIR__,
+                    ],
+                ],
+            ],
         ];
     }
 }

@@ -14,7 +14,7 @@ namespace Hyperf\Nats;
 
 use Psr\Container\ContainerInterface;
 
-abstract class Consumer
+abstract class AbstractConsumer
 {
     /**
      * @var string

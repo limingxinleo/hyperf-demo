@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Hyperf\Nats\Driver;
 
 use Closure;
+use Hyperf\Pool\SimplePool\Connection;
 use Hyperf\Pool\SimplePool\PoolFactory;
 use Nats\ConnectionOptions;
 use Nats\EncodedConnection;
@@ -36,7 +37,9 @@ class NatsDriver extends AbstractDriver
         $this->pool = $factory->get('squeue' . $this->name, function () use ($config) {
             $option = new ConnectionOptions($config['options'] ?? []);
             $encoder = make($config['encoder'] ?? JSONEncoder::class);
-            return make(EncodedConnection::class, [$option, $encoder]);
+            $conn = make(EncodedConnection::class, [$option, $encoder]);
+            $conn->connect();
+            return $conn;
         }, $poolConfig);
     }
 
@@ -56,16 +59,17 @@ class NatsDriver extends AbstractDriver
         // TODO: Implement request() method.
     }
 
-    public function subscribe(string $subject, Closure $callback): string
+    public function subscribe(string $subject, Closure $callback): void
     {
         try {
-            /** @var EncodedConnection $connection */
+            /** @var Connection $connection */
             $connection = $this->pool->get();
-            $result = $connection->subscribe($subject, $callback);
+            /** @var \Nats\Connection $client */
+            $client = $connection->getConnection();
+            $client->subscribe($subject, $callback);
+            $client->wait();
         } finally {
             $connection->release();
         }
-
-        return $result;
     }
 }
