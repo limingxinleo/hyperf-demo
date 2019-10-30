@@ -10,15 +10,10 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace Hyperf\Squeue;
+namespace Hyperf\Nats\Exception;
 
-class ConfigProvider
+use RuntimeException;
+
+class ConfigNotFoundException extends RuntimeException
 {
-    public function __invoke(): array
-    {
-        return [
-            'dependencies' => [
-            ],
-        ];
-    }
 }

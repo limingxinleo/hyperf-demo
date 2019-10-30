@@ -10,10 +10,11 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace Hyperf\Squeue\Exception;
+namespace Hyperf\Nats;
 
-use RuntimeException;
+use Closure;
 
-class ConfigNotFoundException extends RuntimeException
+interface RequestInterface
 {
+    public function request(string $subject, string $payload, Closure $callback);
 }

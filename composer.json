@@ -46,7 +46,7 @@
         "hyperf/process": "1.1.*",
         "hyperf/redis": "1.1.*",
         "hyperf/utils": "1.1.*",
-        "hyperf/squeue": "dev-master"
+        "hyperf/nats": "dev-master"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",
@@ -86,9 +86,9 @@
         "start": "php ./bin/hyperf.php start"
     },
     "repositories": {
-        "squeue": {
+        "nats": {
             "type": "path",
-            "url": "./squeue"
+            "url": "./nats"
         },
         "packagist": {
             "type": "composer",

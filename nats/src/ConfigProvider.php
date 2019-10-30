@@ -10,9 +10,15 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace Hyperf\Squeue;
+namespace Hyperf\Nats;
 
-interface PublishInterface
+class ConfigProvider
 {
-    public function publish(string $subject, string $payload = null, string $inbox = null);
+    public function __invoke(): array
+    {
+        return [
+            'dependencies' => [
+            ],
+        ];
+    }
 }

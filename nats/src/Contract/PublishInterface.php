@@ -10,11 +10,9 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace Hyperf\Squeue;
+namespace Hyperf\Nats;
 
-use Closure;
-
-interface RequestInterface
+interface PublishInterface
 {
-    public function request(string $subject, string $payload, Closure $callback);
+    public function publish(string $subject, string $payload = null, string $inbox = null);
 }

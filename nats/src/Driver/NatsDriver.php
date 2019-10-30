@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace Hyperf\Squeue\Driver;
+namespace Hyperf\Nats\Driver;
 
 use Closure;
 use Hyperf\Pool\SimplePool\PoolFactory;

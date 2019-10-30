@@ -10,10 +10,10 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace Hyperf\Squeue\Driver;
+namespace Hyperf\Nats\Driver;
 
 use Hyperf\Contract\ConfigInterface;
-use Hyperf\Squeue\Exception\ConfigNotFoundException;
+use Hyperf\Nats\Exception\ConfigNotFoundException;
 use Psr\Container\ContainerInterface;
 
 class DriverFactory

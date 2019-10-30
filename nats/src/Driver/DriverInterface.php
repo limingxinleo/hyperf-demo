@@ -10,11 +10,12 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace Hyperf\Squeue;
+namespace Hyperf\Nats\Driver;
 
-use Closure;
+use Hyperf\Nats\PublishInterface;
+use Hyperf\Nats\RequestInterface;
+use Hyperf\Nats\SubscribeInterface;
 
-interface SubscribeInterface
+interface DriverInterface extends PublishInterface, RequestInterface, SubscribeInterface
 {
-    public function subscribe(string $subject, Closure $callback): string;
 }
