@@ -10,12 +10,10 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace Hyperf\Squeue\Driver;
+namespace Hyperf\Squeue\Exception;
 
-use Hyperf\Squeue\PublishInterface;
-use Hyperf\Squeue\RequestInterface;
-use Hyperf\Squeue\SubscribeInterface;
+use RuntimeException;
 
-interface DriverInterface extends PublishInterface, RequestInterface, SubscribeInterface
+class DriverException extends RuntimeException
 {
 }
