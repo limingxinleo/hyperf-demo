@@ -14,5 +14,5 @@ namespace Hyperf\Nats;
 
 interface PublishInterface
 {
-    public function publish(string $subject, string $payload = null, string $inbox = null);
+    public function publish(string $subject, $payload = null, $inbox = null);
 }

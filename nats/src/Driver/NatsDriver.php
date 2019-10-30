@@ -43,12 +43,14 @@ class NatsDriver extends AbstractDriver
         }, $poolConfig);
     }
 
-    public function publish(string $subject, string $payload = null, string $inbox = null)
+    public function publish(string $subject, $payload = null, $inbox = null)
     {
         try {
-            /** @var EncodedConnection $connection */
+            /** @var Connection $connection */
             $connection = $this->pool->get();
-            $connection->publish($subject, $payload, $inbox);
+            /** @var \Nats\Connection $client */
+            $client = $connection->getConnection();
+            $client->publish($subject, $payload, $inbox);
         } finally {
             $connection->release();
         }
