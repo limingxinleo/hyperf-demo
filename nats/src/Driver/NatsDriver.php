@@ -56,9 +56,17 @@ class NatsDriver extends AbstractDriver
         }
     }
 
-    public function request(string $subject, string $payload, Closure $callback)
+    public function request(string $subject, $payload, Closure $callback)
     {
-        // TODO: Implement request() method.
+        try {
+            /** @var Connection $connection */
+            $connection = $this->pool->get();
+            /** @var \Nats\Connection $client */
+            $client = $connection->getConnection();
+            $client->request($subject, $payload, $callback);
+        } finally {
+            $connection->release();
+        }
     }
 
     public function subscribe(string $subject, Closure $callback): void

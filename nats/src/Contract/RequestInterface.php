@@ -16,5 +16,5 @@ use Closure;
 
 interface RequestInterface
 {
-    public function request(string $subject, string $payload, Closure $callback);
+    public function request(string $subject, $payload, Closure $callback);
 }

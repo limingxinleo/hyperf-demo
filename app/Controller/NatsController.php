@@ -36,4 +36,16 @@ class NatsController extends Controller
 
         return $this->response->success($res);
     }
+
+    public function request()
+    {
+        $connection = $this->factory->get();
+        $res = $connection->request('hyperf.reply', [
+            'id' => 'limx',
+        ], function (\Nats\Message $payload) {
+            var_dump($payload->getBody());
+        });
+
+        return $this->response->success($res);
+    }
 }
