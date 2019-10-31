@@ -42,7 +42,7 @@ class NatsController extends Controller
         $connection = $this->factory->get();
         $res = $connection->request('hyperf.reply', [
             'id' => 'limx',
-        ], function (\Nats\Message $payload) {
+        ], function (\Hyperf\Nats\Message $payload) {
             var_dump($payload->getBody());
         });
 

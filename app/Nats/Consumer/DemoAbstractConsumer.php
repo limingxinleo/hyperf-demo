@@ -14,7 +14,7 @@ namespace App\Nats\Consumer;
 
 use Hyperf\Nats\AbstractConsumer;
 use Hyperf\Nats\Annotation\Consumer;
-use Nats\Message;
+use Hyperf\Nats\Message;
 
 /**
  * @Consumer(name="DemoAbstractConsumer", subject="hyperf.demo")

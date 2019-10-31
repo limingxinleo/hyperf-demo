@@ -13,7 +13,7 @@ declare(strict_types=1);
 return [
     'default' => [
         'driver' => Hyperf\Nats\Driver\NatsDriver::class,
-        'encoder' => Nats\Encoders\JSONEncoder::class,
+        'encoder' => Hyperf\Nats\Encoders\JSONEncoder::class,
         'options' => [
             'host' => '127.0.0.1',
             'port' => 4222,

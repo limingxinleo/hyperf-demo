@@ -88,7 +88,7 @@
     "repositories": {
         "nats": {
             "type": "path",
-            "url": "./nats"
+            "url": "../hyperf/src/*"
         },
         "packagist": {
             "type": "composer",
