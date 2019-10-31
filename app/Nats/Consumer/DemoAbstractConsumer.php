@@ -21,7 +21,7 @@ use Hyperf\Nats\Message;
  */
 class DemoAbstractConsumer extends AbstractConsumer
 {
-    public function handle(Message $payload)
+    public function consume(Message $payload)
     {
         var_dump($payload->getBody());
     }
