@@ -46,7 +46,7 @@
         "hyperf/process": "1.1.*",
         "hyperf/redis": "1.1.*",
         "hyperf/utils": "1.1.*",
-        "hyperf/nats": "dev-master"
+        "hyperf/nats": "*"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",

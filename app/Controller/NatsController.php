@@ -48,4 +48,14 @@ class NatsController extends Controller
 
         return $this->response->success($res);
     }
+
+    public function sync()
+    {
+        $connection = $this->factory->get();
+        $res = $connection->requestSync('hyperf.reply', [
+            'id' => 'limx',
+        ]);
+
+        return $this->response->success($res->getBody());
+    }
 }
