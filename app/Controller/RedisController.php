@@ -32,4 +32,11 @@ class RedisController extends Controller
 
         return $this->response->success('Hello Hyperf!');
     }
+
+    public function index()
+    {
+        $result = di()->get(\Redis::class)->keys('*');
+
+        return $this->response->success($result);
+    }
 }
