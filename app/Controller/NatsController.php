@@ -14,7 +14,7 @@ namespace App\Controller;
 
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
-use Hyperf\Nats\Driver\DriverFactory;
+use Hyperf\Nats\Driver\DriverInterface;
 
 /**
  * @AutoController(prefix="nats")
@@ -23,14 +23,13 @@ class NatsController extends Controller
 {
     /**
      * @Inject
-     * @var DriverFactory
+     * @var DriverInterface
      */
-    protected $factory;
+    protected $nats;
 
     public function publish()
     {
-        $connection = $this->factory->get();
-        $res = $connection->publish('hyperf.demo', [
+        $res = $this->nats->publish('hyperf.demo', [
             'id' => 'limx',
         ]);
 
@@ -39,8 +38,7 @@ class NatsController extends Controller
 
     public function request()
     {
-        $connection = $this->factory->get();
-        $res = $connection->request('hyperf.reply', [
+        $res = $this->nats->request('hyperf.reply', [
             'id' => 'limx',
         ], function (\Hyperf\Nats\Message $payload) {
             var_dump($payload->getBody());
@@ -51,8 +49,7 @@ class NatsController extends Controller
 
     public function sync()
     {
-        $connection = $this->factory->get();
-        $res = $connection->requestSync('hyperf.reply', [
+        $res = $this->nats->requestSync('hyperf.reply', [
             'id' => 'limx',
         ]);
 

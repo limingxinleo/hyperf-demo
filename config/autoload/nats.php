@@ -29,9 +29,8 @@ return [
             'heartbeat' => -1,
             'max_idle_time' => 60,
         ],
-        'processes' => 1,
         'concurrent' => [
-            'limit' => 10,
+            'limit' => 2,
         ],
     ],
 ];

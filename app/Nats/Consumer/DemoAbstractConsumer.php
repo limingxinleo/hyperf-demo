@@ -17,7 +17,7 @@ use Hyperf\Nats\Annotation\Consumer;
 use Hyperf\Nats\Message;
 
 /**
- * @Consumer(name="DemoAbstractConsumer", subject="hyperf.demo")
+ * @Consumer(name="DemoAbstractConsumer", subject="hyperf.demo", queue="hyperf.demo")
  */
 class DemoAbstractConsumer extends AbstractConsumer
 {
