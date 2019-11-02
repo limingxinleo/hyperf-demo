@@ -27,6 +27,7 @@
         "hyperf/config": "1.1.*",
         "hyperf/constants": "1.1.*",
         "hyperf/contract": "1.1.*",
+        "hyperf/crontab": "1.1.*",
         "hyperf/database": "1.1.*",
         "hyperf/db-connection": "1.1.*",
         "hyperf/devtool": "1.1.*",
@@ -84,6 +85,10 @@
         "init-proxy": "init-proxy.sh"
     },
     "repositories": {
+        "h": {
+            "type": "path",
+            "url": "../../hyperf/hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
