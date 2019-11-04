@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @link     https://www.hyperf.io
  * @document https://doc.hyperf.io
  * @contact  group@hyperf.io
- * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
 namespace App\Controller;
@@ -47,5 +47,19 @@ class DbController extends Controller
         $role = UserRole::query()->with('users.books')->first();
 
         return $this->response->success($role->toArray());
+    }
+
+    public function database()
+    {
+        $user = User::find(1);
+
+        return $this->response->success($user->toArray());
+    }
+
+    public function db()
+    {
+        $user = \Hyperf\DB\DB::fetch('SELECT * FROM user WHERE id = ?;', [1]);
+
+        return $this->response->success($user);
     }
 }

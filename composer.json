@@ -28,6 +28,7 @@
         "hyperf/constants": "1.1.*",
         "hyperf/contract": "1.1.*",
         "hyperf/database": "1.1.*",
+        "hyperf/db": "*",
         "hyperf/db-connection": "1.1.*",
         "hyperf/devtool": "1.1.*",
         "hyperf/di": "1.1.*",
@@ -86,7 +87,7 @@
     "repositories": {
         "h": {
             "type": "path",
-            "url": "../hyperf/src/*"
+            "url": "../../hyperf/hyperf/src/*"
         },
         "packagist": {
             "type": "composer",
