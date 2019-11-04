@@ -11,5 +11,6 @@ declare(strict_types=1);
  */
 
 return [
+    Hyperf\DbConnection\Pool\DbPool::class => App\Pool\DbPool::class,
     // Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,
 ];
