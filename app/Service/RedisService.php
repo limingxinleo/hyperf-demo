@@ -22,6 +22,17 @@ class RedisService
         return $this->{$method}(...$arguments);
     }
 
+    public function __call2($name, $arguments)
+    {
+        $method = 'call' . Str::studly($name);
+        return $this->{$method}(...$arguments);
+    }
+
+    public function noCallTest(&$id)
+    {
+        return $this->__call2('test', [&$id]);
+    }
+
     public function callTest(int &$id)
     {
         ++$id;
