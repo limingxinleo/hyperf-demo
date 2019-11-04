@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Service\RedisService;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Redis\Redis;
 
@@ -49,7 +50,6 @@ class RedisController extends Controller
         $iterator = null;
         $result = [];
         $count = 0;
-        $iterator = &$iterator;
         while (true) {
             $keys = $redis->scan($iterator, '*', 2);
             $result = array_merge($result, $keys);
@@ -60,5 +60,16 @@ class RedisController extends Controller
         }
 
         return $this->response->success($result);
+    }
+
+    public function call()
+    {
+        $id = 1;
+
+        // di()->get(RedisService::class)->test($id);
+
+        di()->get(RedisService::class)->callTest($id);
+
+        return $this->response->success($id);
     }
 }
