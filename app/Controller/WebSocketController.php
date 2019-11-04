@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @link     https://www.hyperf.io
  * @document https://doc.hyperf.io
  * @contact  group@hyperf.io
- * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
 namespace App\Controller;
@@ -18,10 +18,11 @@ use Hyperf\Contract\OnOpenInterface;
 use Swoole\Http\Request;
 use Swoole\Server;
 use Swoole\Websocket\Frame;
+use Swoole\WebSocket\Server as WsServer;
 
 class WebSocketController implements OnMessageInterface, OnOpenInterface, OnCloseInterface
 {
-    public function onMessage(Server $server, Frame $frame): void
+    public function onMessage(WsServer $server, Frame $frame): void
     {
         var_dump($frame->data);
         $server->push($frame->fd, 'FROM1: ' . $frame->data);
@@ -33,7 +34,7 @@ class WebSocketController implements OnMessageInterface, OnOpenInterface, OnClos
         $server->push($fd, 'closed');
     }
 
-    public function onOpen(Server $server, Request $request): void
+    public function onOpen(WsServer $server, Request $request): void
     {
         var_dump('opened', $server instanceof \Swoole\WebSocket\Server);
         $server->push($request->fd, 'opened');
