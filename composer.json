@@ -84,10 +84,6 @@
         "init-proxy": "init-proxy.sh"
     },
     "repositories": {
-        "hyperf": {
-            "type": "path",
-            "url": "../../limingxinleo/hyperf/src/*"
-        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
