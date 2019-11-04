@@ -14,6 +14,8 @@ namespace App\Command;
 
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Command\Command as HyperfCommand;
+use Hyperf\Guzzle\ClientFactory;
+use Hyperf\Utils\Parallel;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -40,6 +42,22 @@ class DemoCommand extends HyperfCommand
 
     public function handle()
     {
-        $this->line('Hello Hyperf!', 'info');
+        $parallel = new Parallel();
+        $parallel->add(function () {
+            $client = di()->get(ClientFactory::class)->create();
+            $res = $client->get('https://www.baidu.com')->getBody()->getContents();
+            var_dump(strlen($res));
+        });
+
+        $parallel->add(function () {
+            $client = di()->get(ClientFactory::class)->create();
+            $res = $client->get('https://github.com')->getBody()->getContents();
+            var_dump(strlen($res));
+        });
+
+        while (true) {
+            $parallel->wait();
+            sleep(1);
+        }
     }
 }
