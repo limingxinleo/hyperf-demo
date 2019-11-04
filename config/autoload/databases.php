@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @link     https://www.hyperf.io
  * @document https://doc.hyperf.io
  * @contact  group@hyperf.io
- * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
 return [
@@ -18,8 +18,8 @@ return [
         'port' => env('DB_PORT', 3306),
         'username' => env('DB_USERNAME', 'root'),
         'password' => env('DB_PASSWORD', ''),
-        'charset' => env('DB_CHARSET', 'utf8'),
-        'collation' => env('DB_COLLATION', 'utf8_unicode_ci'),
+        'charset' => env('DB_CHARSET', 'utf8mb4'),
+        'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
         'prefix' => env('DB_PREFIX', ''),
         'pool' => [
             'min_connections' => 4,
@@ -38,11 +38,13 @@ return [
             'load_script' => true,
         ],
         'commands' => [
-            'db:model' => [
+            'gen:model' => [
                 'path' => 'app/Model',
                 'force_casts' => false,
                 'inheritance' => 'Model',
                 'uses' => '',
+                'refresh_fillable' => true,
+                'table_mapping' => [],
             ],
         ],
     ],
