@@ -24,5 +24,8 @@ return [
             'heartbeat' => -1,
             'max_idle_time' => (float) env('REDIS_MAX_IDLE_TIME', 60),
         ],
+        'options' => [
+            Redis::OPT_SCAN => (string) Redis::SCAN_RETRY,
+        ],
     ],
 ];
