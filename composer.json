@@ -44,7 +44,7 @@
         "hyperf/paginator": "1.1.*",
         "hyperf/pool": "1.1.*",
         "hyperf/process": "1.1.*",
-        "hyperf/rate-limit": "1.1.*",
+        "hyperf/rate-limit": "dev-master",
         "hyperf/redis": "1.1.*",
         "hyperf/utils": "1.1.*"
     },
@@ -85,6 +85,10 @@
         "init-proxy": "init-proxy.sh"
     },
     "repositories": {
+        "h": {
+            "type": "path",
+            "url": "../../hyperf/hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
