@@ -17,7 +17,7 @@ use Hyperf\RateLimit\Annotation\RateLimit;
 class IndexController extends Controller
 {
     /**
-     * @RateLimit()
+     * @RateLimit(create=10, capacity=100, waitTimeout=100)
      */
     public function index()
     {
