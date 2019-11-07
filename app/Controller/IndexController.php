@@ -12,8 +12,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Hyperf\RateLimit\Annotation\RateLimit;
+
 class IndexController extends Controller
 {
+    /**
+     * @RateLimit()
+     */
     public function index()
     {
         $user = $this->request->input('user', 'Hyperf');
