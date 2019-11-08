@@ -14,6 +14,7 @@ namespace App\Controller;
 
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\Nats\Driver\DriverFactory;
 use Hyperf\Nats\Driver\DriverInterface;
 
 /**
@@ -34,6 +35,12 @@ class NatsController extends Controller
         ]);
 
         return $this->response->success($res);
+    }
+
+    public function pool()
+    {
+        $factory = di()->get(DriverFactory::class);
+        $factory->get('nats');
     }
 
     public function request()
