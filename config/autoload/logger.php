@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * This file is part of Hyperf.
  *
@@ -10,17 +11,21 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
+use Monolog\Handler;
+use Monolog\Formatter;
+use Monolog\Logger;
+
 return [
     'default' => [
         'handler' => [
-            'class' => Monolog\Handler\RotatingFileHandler::class,
+            'class' => Handler\RotatingFileHandler::class,
             'constructor' => [
                 'filename' => BASE_PATH . '/runtime/logs/hyperf.log',
-                'level' => Monolog\Logger::DEBUG,
+                'level' => Logger::DEBUG,
             ],
         ],
         'formatter' => [
-            'class' => Monolog\Formatter\LineFormatter::class,
+            'class' => Formatter\LineFormatter::class,
             'constructor' => [
                 'format' => null,
                 'dateFormat' => null,
@@ -31,13 +36,13 @@ return [
     'multi' => [
         'handlers' => [
             [
-                'class' => Monolog\Handler\StreamHandler::class,
+                'class' => Handler\StreamHandler::class,
                 'constructor' => [
                     'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
-                    'level' => Monolog\Logger::INFO,
+                    'level' => Logger::INFO,
                 ],
                 'formatter' => [
-                    'class' => Monolog\Formatter\LineFormatter::class,
+                    'class' => Formatter\LineFormatter::class,
                     'constructor' => [
                         'format' => null,
                         'dateFormat' => null,
@@ -46,15 +51,15 @@ return [
                 ],
             ],
             [
-                'class' => Monolog\Handler\StreamHandler::class,
+                'class' => Handler\StreamHandler::class,
                 'constructor' => [
                     'stream' => BASE_PATH . '/runtime/logs/hyperf-debug.log',
-                    'level' => Monolog\Logger::DEBUG,
+                    'level' => Logger::DEBUG,
                 ],
                 'formatter' => [
-                    'class' => Monolog\Formatter\JsonFormatter::class,
+                    'class' => Formatter\JsonFormatter::class,
                     'constructor' => [
-                        'batchMode' => Monolog\Formatter\JsonFormatter::BATCH_MODE_JSON,
+                        'batchMode' => Formatter\JsonFormatter::BATCH_MODE_JSON,
                         'appendNewline' => true,
                     ],
                 ],
