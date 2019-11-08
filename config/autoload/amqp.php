@@ -7,16 +7,19 @@ declare(strict_types=1);
  * @link     https://www.hyperf.io
  * @document https://doc.hyperf.io
  * @contact  group@hyperf.io
- * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
 return [
     'default' => [
-        'host' => 'localhost',
-        'port' => 5672,
-        'user' => 'guest',
-        'password' => 'guest',
+        'host' => env('AMQP_HOST', 'localhost'),
+        'port' => (int) env('AMQP_PORT', 5672),
+        'user' => env('AMQP_USER', 'guest'),
+        'password' => env('AMQP_PASSWORD', 'guest'),
         'vhost' => '/',
+        'concurrent' => [
+            'limit' => 2,
+        ],
         'pool' => [
             'min_connections' => 1,
             'max_connections' => 10,
