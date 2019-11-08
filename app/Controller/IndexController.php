@@ -21,8 +21,13 @@ class IndexController extends Controller
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
 
+        $data = uniqid();
         $logger = di()->get(LoggerFactory::class)->get('hyperf');
-        $logger->info(uniqid());
+        $logger->info($data);
+
+        $logger = di()->get(LoggerFactory::class)->get('hyperf', 'multi');
+        $logger->info($data);
+        $logger->debug('xxxx');
 
         return $this->response->success([
             'user' => $user,

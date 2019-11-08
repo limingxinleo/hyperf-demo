@@ -28,4 +28,37 @@ return [
             ],
         ],
     ],
+    'multi' => [
+        'handlers' => [
+            [
+                'class' => Monolog\Handler\StreamHandler::class,
+                'constructor' => [
+                    'stream' => BASE_PATH . '/runtime/logs/hyperf.log',
+                    'level' => Monolog\Logger::INFO,
+                ],
+                'formatter' => [
+                    'class' => Monolog\Formatter\LineFormatter::class,
+                    'constructor' => [
+                        'format' => null,
+                        'dateFormat' => null,
+                        'allowInlineLineBreaks' => true,
+                    ],
+                ],
+            ],
+            [
+                'class' => Monolog\Handler\StreamHandler::class,
+                'constructor' => [
+                    'stream' => BASE_PATH . '/runtime/logs/hyperf-debug.log',
+                    'level' => Monolog\Logger::DEBUG,
+                ],
+                'formatter' => [
+                    'class' => Monolog\Formatter\JsonFormatter::class,
+                    'constructor' => [
+                        'batchMode' => Monolog\Formatter\JsonFormatter::BATCH_MODE_JSON,
+                        'appendNewline' => true,
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];
