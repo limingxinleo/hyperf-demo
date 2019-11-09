@@ -25,6 +25,8 @@ class DemoReplyConsumer extends AbstractConsumer
     {
         var_dump($payload->getBody());
 
+        sleep(20);
+
         $payload->reply('Hello Nats');
     }
 }

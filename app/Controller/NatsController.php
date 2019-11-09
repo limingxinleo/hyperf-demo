@@ -45,21 +45,24 @@ class NatsController extends Controller
 
     public function request()
     {
+        $time = microtime(true);
         $res = $this->nats->request('hyperf.reply', [
             'id' => 'limx',
         ], function (\Hyperf\Nats\Message $payload) {
             var_dump($payload->getBody());
         });
 
-        return $this->response->success($res);
+        return $this->response->success(microtime(true) - $time);
     }
 
     public function sync()
     {
+        $time = microtime(true);
+
         $res = $this->nats->requestSync('hyperf.reply', [
             'id' => 'limx',
         ]);
 
-        return $this->response->success($res->getBody());
+        return $this->response->success(['body' => $res->getBody(), 'time' => microtime(true) - $time]);
     }
 }
