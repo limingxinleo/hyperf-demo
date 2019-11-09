@@ -26,6 +26,7 @@
         "hyperf/command": "1.1.*",
         "hyperf/config": "1.1.*",
         "hyperf/constants": "1.1.*",
+        "hyperf/consul": "1.1.*",
         "hyperf/contract": "1.1.*",
         "hyperf/database": "1.1.*",
         "hyperf/db-connection": "1.1.*",

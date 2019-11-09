@@ -9,19 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
-namespace App\JsonRpc;
-
-class MathValue
-{
-    public $value;
-
-    /**
-     * MathValue constructor.
-     * @param $value
-     */
-    public function __construct($value)
-    {
-        $this->value = $value;
-    }
-}
+return [
+    'uri' => 'http://127.0.0.1:8500',
+];

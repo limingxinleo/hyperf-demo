@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @link     https://www.hyperf.io
  * @document https://doc.hyperf.io
  * @contact  group@hyperf.io
- * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
 namespace App\JsonRpc;
@@ -16,7 +16,7 @@ use Hyperf\RpcServer\Annotation\RpcService;
 
 /**
  * 注意，如希望通过服务中心来管理服务，需在注解内增加 publishTo 属性.
- * @RpcService(name=CalculatorServiceInterface::class, protocol="jsonrpc-http", server="jsonrpc-http")
+ * @RpcService(name=CalculatorServiceInterface::class, protocol="jsonrpc-http", server="jsonrpc-http", publishTo="consul")
  */
 class CalculatorService implements CalculatorServiceInterface
 {

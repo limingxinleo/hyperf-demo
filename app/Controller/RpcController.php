@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @link     https://www.hyperf.io
  * @document https://doc.hyperf.io
  * @contact  group@hyperf.io
- * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
 namespace App\Controller;
@@ -74,15 +74,13 @@ class RpcController extends Controller
     {
         $client = di()->get(CalculatorServiceConsumer::class);
 
-        $res = $client->objs();
-        return $res;
+        return $client->objs();
     }
 
     public function objs2()
     {
         $client = di()->get(CalculatorServiceInterface::class);
 
-        $res = $client->objs();
-        return $res;
+        return $client->objs();
     }
 }
