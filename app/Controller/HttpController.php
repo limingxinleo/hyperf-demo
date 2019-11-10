@@ -66,4 +66,11 @@ class HttpController extends Controller
         // $options = ['headers' => ['Host' => 'test']];
         return $client->get('/', $options)->getBody()->getContents();
     }
+
+    public function port()
+    {
+        $uri = $this->request->getUri();
+
+        return $this->response->success($uri->getPort());
+    }
 }
