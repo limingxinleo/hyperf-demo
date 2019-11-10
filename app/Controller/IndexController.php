@@ -19,8 +19,12 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $a = [];
-        var_dump($a[1]);
+        try {
+            $a = [];
+            var_dump($a[1]);
+        } catch (\Throwable $throwable) {
+            var_dump(get_class($throwable), $throwable->getMessage());
+        }
 
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
