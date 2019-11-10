@@ -85,6 +85,10 @@
         "init-proxy": "init-proxy.sh"
     },
     "repositories": {
+        "h": {
+            "type": "path",
+            "url": "../hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
