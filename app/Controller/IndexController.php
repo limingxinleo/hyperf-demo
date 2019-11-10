@@ -19,6 +19,9 @@ class IndexController extends Controller
 {
     public function index()
     {
+        $a = [];
+        var_dump($a[1]);
+
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
 
