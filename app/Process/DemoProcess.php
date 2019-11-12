@@ -30,8 +30,8 @@ class DemoProcess extends AbstractProcess
             //     exit();
             // }
 
-            $config = di()->get(ConfigInterface::class);
-            echo 'Process.Restart ' . json_encode($config->get('etcd')) . PHP_EOL;
+            // $config = di()->get(ConfigInterface::class);
+            // echo 'Process.Restart ' . json_encode($config->get('etcd')) . PHP_EOL;
         }
     }
 }

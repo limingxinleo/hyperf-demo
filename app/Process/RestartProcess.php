@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Process;
 
+use Hyperf\Contract\ConfigInterface;
 use Hyperf\Process\AbstractProcess;
 use Hyperf\Process\Annotation\Process;
 
@@ -20,12 +21,15 @@ use Hyperf\Process\Annotation\Process;
  */
 class RestartProcess extends AbstractProcess
 {
-    protected $restartInterval = 10;
+    protected $restartInterval = 1;
 
     public function handle(): void
     {
-        var_dump(date('Y-m-d H:i:s'));
+        $config = di()->get(ConfigInterface::class);
+        echo 'Process.Restart ' . json_encode($config->get('etcd')) . PHP_EOL;
 
+        sleep(10);
+        echo 'Process.Restart ' . json_encode($config->get('etcd')) . PHP_EOL;
         // throw new \Exception('asdf');
     }
 }
