@@ -69,7 +69,6 @@ class RedisController extends Controller
         // di()->get(RedisService::class)->test($id);
         di()->get(RedisService::class)->noCallTest($id);
 
-
         // di()->get(RedisService::class)->callTest($id);
 
         return $this->response->success($id);
