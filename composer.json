@@ -41,6 +41,7 @@
         "hyperf/pool": "1.1.*",
         "hyperf/process": "1.1.*",
         "hyperf/redis": "1.1.*",
+        "hyperf/session": "^1.1@dev",
         "hyperf/utils": "1.1.*"
     },
     "require-dev": {
@@ -80,6 +81,10 @@
         "init-proxy": "init-proxy.sh"
     },
     "repositories": {
+        "h": {
+            "type": "path",
+            "url": "../../hyperf/hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
