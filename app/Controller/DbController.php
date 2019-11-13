@@ -62,4 +62,12 @@ class DbController extends Controller
 
         return $this->response->success($user);
     }
+
+    public function cache()
+    {
+        $users = User::findManyFromCache([1,2,3]);
+        $users = User::findManyFromCache([1,2,3]);
+
+        return $this->response->success($users->toArray());
+    }
 }
