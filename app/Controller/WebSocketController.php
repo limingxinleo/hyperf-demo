@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @link     https://www.hyperf.io
  * @document https://doc.hyperf.io
  * @contact  group@hyperf.io
- * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
 namespace App\Controller;
@@ -19,8 +19,8 @@ use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Di\Annotation\Inject;
 use Swoole\Http\Request;
 use Swoole\Server;
-use Swoole\WebSocket\Server as WebSocketServer;
 use Swoole\Websocket\Frame;
+use Swoole\WebSocket\Server as WebSocketServer;
 
 class WebSocketController implements OnMessageInterface, OnOpenInterface, OnCloseInterface
 {
