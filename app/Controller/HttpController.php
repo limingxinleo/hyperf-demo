@@ -101,7 +101,6 @@ class HttpController extends Controller
                 'id' => 1,
                 'name' => uniqid(),
             ],
-            'Content-Type' => 'multipart/form-data',
             'multipart' => $multipart,
         ]);
 
