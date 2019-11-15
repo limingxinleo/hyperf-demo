@@ -92,15 +92,15 @@ class HttpController extends Controller
             'contents' => fopen($file, 'r'),
             'filename' => basename($file),
         ];
+        $multipart[] = [
+            'name' => 'id',
+            'contents' => uniqid(),
+        ];
         $client = new Client([
             'handler' => di()->get(HandlerStackFactory::class)->create(),
             'base_uri' => 'http://127.0.0.1:9501',
         ]);
         $response = $client->post('/http/file', [
-            'query' => [
-                'id' => 1,
-                'name' => uniqid(),
-            ],
             'multipart' => $multipart,
         ]);
 
