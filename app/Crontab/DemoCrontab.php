@@ -15,14 +15,15 @@ namespace App\Crontab;
 use Hyperf\Crontab\Annotation\Crontab;
 
 /**
- * @Crontab(name="RefreshRepoStarCount", rule="* * * * *", callback="execute", singleton=true)
+ * @Crontab(name="RefreshRepoStarCount", rule="* * * * * *", callback="execute", singleton=true)
  */
 class DemoCrontab
 {
     public function execute()
     {
+        $a = '123';
         var_dump('before crontab.');
-        sleep(1);
+        var_dump(date('Y-m-d H:i:s', (int) $a));
         var_dump('after crontab.');
     }
 }
