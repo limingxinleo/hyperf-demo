@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @link     https://www.hyperf.io
  * @document https://doc.hyperf.io
  * @contact  group@hyperf.io
- * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
 namespace App\Controller;
@@ -19,7 +19,6 @@ use App\Job\ModelJob;
 use App\Job\RetryJob;
 use App\Model\User;
 use App\Service\QueueService;
-use Hyperf\Constants\ConstantsCollector;
 use Hyperf\Di\Annotation\AspectCollector;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\HttpServer\Annotation\AutoController;
@@ -94,7 +93,8 @@ class QueueController extends Controller
 
     public function retry()
     {
-        queue_push(new RetryJob());
+        // queue_push(new RetryJob());
+        di()->get(QueueService::class)->retry();
         return 'success';
     }
 
