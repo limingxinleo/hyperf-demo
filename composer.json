@@ -87,13 +87,9 @@
         "init-proxy": "init-proxy.sh"
     },
     "repositories": {
-        "hyperf": {
-            "type": "path",
-            "url": "../../hyperf/hyperf/src/*"
-        },
         "packagist": {
             "type": "composer",
-            "url": "https://php.cnpkg.org"
+            "url": "https://mirrors.aliyun.com/composer"
         }
     }
 }
