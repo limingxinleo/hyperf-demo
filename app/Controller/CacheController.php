@@ -12,7 +12,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Service\Cache\DemoService;
+use Hyperf\Cache\Listener\DeleteListenerEvent;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\SimpleCache\CacheInterface;
 
 /**
@@ -28,5 +31,21 @@ class CacheController extends Controller
     public function set()
     {
         return $this->response->success(di()->get(CacheInterface::class)->set('key', uniqid()));
+    }
+
+    public function testGet()
+    {
+        $data = di()->get(DemoService::class)->getCache(1);
+
+        return $this->response->success($data);
+    }
+
+    public function testDel()
+    {
+        di()->get(EventDispatcherInterface::class)->dispatch(new DeleteListenerEvent('DemoServiceDelete', ['id' => 1]));
+
+        $data = di()->get(DemoService::class)->getCache(1);
+
+        return $this->response->success($data);
     }
 }
