@@ -16,6 +16,7 @@ use App\Amqp\Producer\ConfirmProducer;
 use App\Amqp\Producer\Demo2Producer;
 use App\Amqp\Producer\Demo4Producer;
 use App\Amqp\Producer\DemoProducer;
+use App\Amqp\Producer\QosProducer;
 use Hyperf\Amqp\Producer;
 use Hyperf\HttpServer\Annotation\AutoController;
 
@@ -49,5 +50,11 @@ class AmqpController extends Controller
         // $res = di()->get(Producer::class)->produce(new ConfirmProducer(uniqid()), true);
 
         return $this->response->success($res);
+    }
+
+    public function qos()
+    {
+        amqp_produce(new QosProducer($id = uniqid()));
+        return $this->response->success($id);
     }
 }
