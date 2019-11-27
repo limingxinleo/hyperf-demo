@@ -65,8 +65,8 @@ class DbController extends Controller
 
     public function cache()
     {
-        $users = User::findManyFromCache([1,2,3]);
-        $users = User::findManyFromCache([1,2,3]);
+        $users = User::findManyFromCache([1, 2, 3]);
+        $users = User::findManyFromCache([1, 2, 3]);
 
         return $this->response->success($users->toArray());
     }
