@@ -13,9 +13,11 @@ declare(strict_types=1);
 namespace App\Amqp\Consumer;
 
 use Hyperf\Amqp\Annotation\Consumer;
+use Hyperf\Amqp\Builder\QueueBuilder;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Message\Type;
 use Hyperf\Amqp\Result;
+use PhpAmqpLib\Wire\AMQPTable;
 
 /**
  * @Consumer(exchange="issue1032", routingKey="issue1032", queue="issue1032", name="Issue1032Consumer", nums=1)
@@ -27,5 +29,13 @@ class Issue1032Consumer extends ConsumerMessage
     public function consume($data): string
     {
         return Result::ACK;
+    }
+
+    public function getQueueBuilder(): QueueBuilder
+    {
+        return parent::getQueueBuilder()->setArguments(new AMQPTable([
+            'x-ha-policy' => ['S', 'all'],
+            'x-max-priority' => 10,
+        ]));
     }
 }
