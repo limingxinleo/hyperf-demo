@@ -39,7 +39,7 @@ class HttpController extends Controller
 
         $client->push('xxxx');
         $client->recv();
-        $client->recv();
+        // $client->recv();
 
         return $client->recv();
     }
