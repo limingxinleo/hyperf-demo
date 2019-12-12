@@ -15,6 +15,7 @@ namespace App\Controller;
 use Hyperf\HttpMessage\Uri\Uri;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\WebSocketClient\Client;
+use Hyperf\WebSocketClient\ClientFactory;
 use Hyperf\WebSocketServer\Sender;
 
 /**
@@ -35,7 +36,8 @@ class HttpController extends Controller
 
     public function client()
     {
-        $client = new Client(new Uri('http://127.0.0.1:9502/ws'));
+        $client = di()->get(ClientFactory::class)->create('127.0.0.1:9502/ws');
+        // $client = new Client(new Uri('ws://127.0.0.1:9502/ws'));
 
         $client->push('xxxx');
         $client->recv();
