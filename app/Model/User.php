@@ -29,6 +29,8 @@ class User extends Model
      */
     protected $table = 'users';
 
+    protected $primaryKey = 'user_id';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -42,4 +44,11 @@ class User extends Model
      * @var array
      */
     protected $casts = ['user_id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    public function joinedGroups()
+    {
+        return $this->belongsToMany(Group::class, 'group_user', 'user_id', 'group_id', 'user_id', 'id')
+            ->withPivot(['role', 'level', 'member_at', 'status'])
+            ->withTimestamps();
+    }
 }
