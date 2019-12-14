@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Model\User;
+use App\Model\UserExt;
 use App\Model\UserRole;
 use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Annotation\AutoController;
@@ -69,5 +70,12 @@ class DbController extends Controller
         $users = User::findManyFromCache([1, 2, 3]);
 
         return $this->response->success($users->toArray());
+    }
+
+    public function ext()
+    {
+        $res = UserExt::query()->find(1);
+
+        return $this->response->success($res->toArray());
     }
 }
