@@ -32,7 +32,7 @@ class UserMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        var_dump('user');
+        $request = $request->withAttribute('uniqid', uniqid());
         return $handler->handle($request);
     }
 }

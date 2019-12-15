@@ -23,6 +23,13 @@ use Hyperf\HttpServer\Annotation\AutoController;
  */
 class HttpController extends Controller
 {
+    public function uniqid()
+    {
+        $id = $this->request->getAttribute('uniqid');
+
+        return $this->response->success($id);
+    }
+
     public function header()
     {
         $version = $this->request->header('Version', 'v1');
