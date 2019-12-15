@@ -84,6 +84,10 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
+        "H": {
+            "type": "path",
+            "url": "../hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
