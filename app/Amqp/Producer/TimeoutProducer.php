@@ -16,9 +16,9 @@ use Hyperf\Amqp\Annotation\Producer;
 use Hyperf\Amqp\Message\ProducerMessage;
 
 /**
- * @Producer(exchange="test", routingKey="test.qos")
+ * @Producer(exchange="hyperf", routingKey="hyperf.timeout")
  */
-class QosProducer extends ProducerMessage
+class TimeoutProducer extends ProducerMessage
 {
     public function __construct($data)
     {
