@@ -10,7 +10,19 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-return [
-    Hyperf\Di\Listener\LazyLoaderBootApplicationListener::class,
-    // Hyperf\ExceptionHandler\Listener\ErrorExceptionHandler::class,
-];
+namespace App\Service;
+
+class LazyService
+{
+    protected $time;
+
+    public function __construct()
+    {
+        $this->time = time();
+    }
+
+    public function id()
+    {
+        return $this->time;
+    }
+}
