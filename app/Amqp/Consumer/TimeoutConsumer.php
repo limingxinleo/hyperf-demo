@@ -23,7 +23,8 @@ class TimeoutConsumer extends ConsumerMessage
 {
     public function consume($data): string
     {
-        sleep(10);
+        sleep($data);
+        var_dump($data);
         return Result::ACK;
     }
 }

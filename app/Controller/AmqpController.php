@@ -17,6 +17,7 @@ use App\Amqp\Producer\Demo2Producer;
 use App\Amqp\Producer\Demo4Producer;
 use App\Amqp\Producer\DemoProducer;
 use App\Amqp\Producer\QosProducer;
+use App\Amqp\Producer\TimeoutProducer;
 use Hyperf\Amqp\Producer;
 use Hyperf\HttpServer\Annotation\AutoController;
 
@@ -56,5 +57,14 @@ class AmqpController extends Controller
     {
         amqp_produce(new QosProducer($id = uniqid()));
         return $this->response->success($id);
+    }
+
+    public function timeout()
+    {
+        $time = $this->request->input('time', 1);
+
+        amqp_produce(new TimeoutProducer($time));
+
+        return $this->response->success($time);
     }
 }

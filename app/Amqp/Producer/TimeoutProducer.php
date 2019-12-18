@@ -16,12 +16,12 @@ use Hyperf\Amqp\Annotation\Producer;
 use Hyperf\Amqp\Message\ProducerMessage;
 
 /**
- * @Producer(exchange="hyperf", routingKey="hyperf.timeout")
+ * @Producer(exchange="hyperf", routingKey="timeout")
  */
 class TimeoutProducer extends ProducerMessage
 {
     public function __construct($data)
     {
-        $this->payload = $data;
+        $this->payload = (int)$data;
     }
 }
