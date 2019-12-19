@@ -21,6 +21,10 @@ use Hyperf\Amqp\Result;
  */
 class TimeoutConsumer extends ConsumerMessage
 {
+    // protected $qos = [
+    //     'prefetch_count' => 9,
+    // ];
+
     public function consume($data): string
     {
         sleep($data);

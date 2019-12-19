@@ -22,6 +22,6 @@ class TimeoutProducer extends ProducerMessage
 {
     public function __construct($data)
     {
-        $this->payload = (int)$data;
+        $this->payload = (int) $data;
     }
 }
