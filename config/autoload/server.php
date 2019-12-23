@@ -46,8 +46,13 @@ return [
                 SwooleEvent::ON_RECEIVE => [\Hyperf\JsonRpc\TcpServer::class, 'onReceive'],
             ],
             'settings' => [
-                'open_eof_split' => true,
-                'package_eof' => "\r\n",
+                // 'open_eof_split' => true,
+                // 'package_eof' => "\r\n",
+
+                'open_length_check' => true,
+                'package_length_type' => 'N',
+                'package_length_offset' => 0,
+                'package_body_offset' => 4,
             ],
         ],
     ],
