@@ -48,7 +48,6 @@ return [
             'settings' => [
                 // 'open_eof_split' => true,
                 // 'package_eof' => "\r\n",
-
                 'open_length_check' => true,
                 'package_length_type' => 'N',
                 'package_length_offset' => 0,
