@@ -7,11 +7,12 @@ declare(strict_types=1);
  * @link     https://www.hyperf.io
  * @document https://doc.hyperf.io
  * @contact  group@hyperf.io
- * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
+ * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
 namespace App\Controller;
 
+use App\Service\AopService;
 use App\Task\ClassTask;
 use App\Task\DemoTask;
 use App\Task\MethodTask;
@@ -79,5 +80,13 @@ class TaskController extends Controller
         $result = di()->get(MethodTask::class)->exception();
 
         return $this->response->success($result);
+    }
+
+    public function dump()
+    {
+        di()->get(AopService::class)->dump(1, 2, 3);
+        di()->get(MethodTask::class)->dump(1, 2, 3);
+
+        return $this->response->success();
     }
 }

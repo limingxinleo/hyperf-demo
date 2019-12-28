@@ -10,36 +10,32 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace App\Command;
+namespace App\Aspect;
 
-use Hyperf\Command\Annotation\Command;
-use Hyperf\Command\Command as HyperfCommand;
+use App\Service\AopService;
+use Hyperf\Di\Annotation\Aspect;
+use Hyperf\Di\Aop\AbstractAspect;
+use Hyperf\Di\Aop\ProceedingJoinPoint;
 use Psr\Container\ContainerInterface;
 
 /**
- * @Command
+ * @Aspect
  */
-class DemoCommand extends HyperfCommand
+class ServiceAspect extends AbstractAspect
 {
-    /**
-     * @var ContainerInterface
-     */
     protected $container;
+
+    public $classes = [
+        AopService::class
+    ];
 
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-
-        parent::__construct('demo:command');
     }
 
-    public function configure()
+    public function process(ProceedingJoinPoint $proceedingJoinPoint)
     {
-        $this->setDescription('Hyperf Demo Command');
-    }
-
-    public function handle()
-    {
-        $this->line('Hello Hyperf!', 'info');
+        return $proceedingJoinPoint->process();
     }
 }

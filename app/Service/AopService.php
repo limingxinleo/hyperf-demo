@@ -10,21 +10,12 @@ declare(strict_types=1);
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
 
-namespace App\Task;
+namespace App\Service;
 
-use Hyperf\Task\Annotation\Task;
-use Hyperf\Utils\Coroutine;
-
-/**
- * @Task
- */
-class ClassTask
+class AopService
 {
-    public function handle($cid)
+    public function dump(...$arguments)
     {
-        return [
-            'worker.cid' => $cid,
-            'task.cid' => Coroutine::id(),
-        ];
+        var_dump($arguments);
     }
 }
