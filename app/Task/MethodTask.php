@@ -54,7 +54,7 @@ class MethodTask
      */
     public function dump(...$arguments)
     {
-        var_dump($arguments);
+        return $arguments;
     }
 
     /**

@@ -84,9 +84,12 @@ class TaskController extends Controller
 
     public function dump()
     {
-        di()->get(AopService::class)->dump(1, 2, 3);
-        di()->get(MethodTask::class)->dump(1, 2, 3);
+        $r1 = di()->get(AopService::class)->dump(1, 2, 3);
+        $r2 = di()->get(MethodTask::class)->dump(1, 2, 3);
 
-        return $this->response->success();
+        return $this->response->success([
+            'r1' => $r1,
+            'r2' => $r2
+        ]);
     }
 }
