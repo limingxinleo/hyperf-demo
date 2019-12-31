@@ -24,4 +24,8 @@ interface CalculatorServiceInterface
      * @return MathValue[]
      */
     public function objs();
+
+    public function exception();
+
+    public function error();
 }

@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\JsonRpc;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
 use Hyperf\RpcServer\Annotation\RpcService;
 
 /**
@@ -42,5 +44,16 @@ class CalculatorService implements CalculatorServiceInterface
     public function objs()
     {
         return [new MathValue(1), new MathValue(2)];
+    }
+
+    public function exception()
+    {
+        // throw new \RuntimeException('exception xxx.');
+        throw new BusinessException(ErrorCode::SERVER_ERROR, 'business exception xxx.');
+    }
+
+    public function error()
+    {
+        throw new \Error('error xxx.');
     }
 }

@@ -24,13 +24,6 @@ class RpcController extends Controller
 {
     public function send()
     {
-        $client = di()->get(CalculatorServiceConsumer::class);
-
-        return $client->add(1, 2);
-    }
-
-    public function send2()
-    {
         $client = di()->get(CalculatorServiceInterface::class);
 
         return $client->add(1, 2);
@@ -46,24 +39,7 @@ class RpcController extends Controller
         return $result->value;
     }
 
-    public function sum2()
-    {
-        $client = di()->get(CalculatorServiceConsumer::class);
-
-        /** @var MathValue $result */
-        $result = $client->sum(new MathValue(1), new MathValue(2));
-
-        return $result->value;
-    }
-
     public function arr()
-    {
-        $client = di()->get(CalculatorServiceConsumer::class);
-
-        return $client->arr();
-    }
-
-    public function arr2()
     {
         $client = di()->get(CalculatorServiceInterface::class);
 
@@ -72,15 +48,15 @@ class RpcController extends Controller
 
     public function objs()
     {
-        $client = di()->get(CalculatorServiceConsumer::class);
+        $client = di()->get(CalculatorServiceInterface::class);
 
         return $client->objs();
     }
 
-    public function objs2()
+    public function exception()
     {
         $client = di()->get(CalculatorServiceInterface::class);
 
-        return $client->objs();
+        return $client->exception();
     }
 }
