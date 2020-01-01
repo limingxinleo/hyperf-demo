@@ -15,7 +15,9 @@ namespace App\Controller;
 use App\JsonRpc\CalculatorServiceConsumer;
 use App\JsonRpc\CalculatorServiceInterface;
 use App\JsonRpc\MathValue;
+use Hyperf\Contract\NormalizerInterface;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\JsonRpc\NormalizeDataFormatter;
 
 /**
  * @AutoController
@@ -58,5 +60,16 @@ class RpcController extends Controller
         $client = di()->get(CalculatorServiceInterface::class);
 
         return $client->exception();
+    }
+
+    public function error()
+    {
+        // $bean = di()->get(NormalizerInterface::class);
+        // $res = $bean->normalize(new \Error('xxxx'));
+        // var_dump(111,$res);
+        // return $res;
+        $client = di()->get(CalculatorServiceInterface::class);
+
+        return $client->error();
     }
 }
