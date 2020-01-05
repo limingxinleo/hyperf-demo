@@ -46,7 +46,7 @@ class ExampleTest extends HttpTestCase
 
     public function testSuperGlobals()
     {
-        for ($i = 0; $i < 1; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $res = $this->json('/sg/index?id=' . $id = uniqid(), [
                 'name' => $name = 'Hyperf' . uniqid(),
             ], [
