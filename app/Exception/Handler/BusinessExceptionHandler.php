@@ -17,6 +17,7 @@ use App\Exception\BusinessException;
 use App\Kernel\Http\Response;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\ExceptionHandler\ExceptionHandler;
+use Hyperf\RpcClient\Exception\RequestException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
@@ -53,9 +54,13 @@ class BusinessExceptionHandler extends ExceptionHandler
             return $this->response->fail($throwable->getCode(), $throwable->getMessage());
         }
 
+        if ($throwable instanceof RequestException) {
+            return $this->response->fail($throwable->getThrowableCode(), $throwable->getThrowableMessage());
+        }
+
         $this->logger->error(format_throwable($throwable));
 
-        return $this->response->fail(ErrorCode::SERVER_ERROR, 'Server Error');
+        return $this->response->fail(ErrorCode::SERVER_ERROR, $throwable->getMessage());
     }
 
     public function isValid(Throwable $throwable): bool

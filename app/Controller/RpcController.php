@@ -12,12 +12,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\JsonRpc\CalculatorServiceConsumer;
 use App\JsonRpc\CalculatorServiceInterface;
 use App\JsonRpc\MathValue;
 use Hyperf\Contract\NormalizerInterface;
 use Hyperf\HttpServer\Annotation\AutoController;
-use Hyperf\JsonRpc\NormalizeDataFormatter;
 
 /**
  * @AutoController
