@@ -36,6 +36,8 @@ class RpcController extends Controller
         /** @var MathValue $result */
         $result = $client->sum(new MathValue(1), new MathValue(2));
 
+        var_dump($result);
+
         return $result->value;
     }
 
@@ -50,7 +52,11 @@ class RpcController extends Controller
     {
         $client = di()->get(CalculatorServiceInterface::class);
 
-        return $client->objs();
+        $result =  $client->objs();
+
+        var_dump($result);
+
+        return $result;
     }
 
     public function exception()
