@@ -29,7 +29,7 @@ class ExampleJob extends Job
     {
         // 根据参数处理具体逻辑
         $result = di()->get(AspectService::class)->handle($this->params);
-
+        
         var_dump($result);
     }
 }
