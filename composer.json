@@ -93,7 +93,7 @@
     "repositories": {
         "h": {
             "type": "path",
-            "url": "../hyperf/src/dev-master"
+            "url": "../hyperf/src/*"
         },
         "packagist": {
             "type": "composer",
