@@ -28,7 +28,6 @@
         "hyperf/contract": "dev-master",
         "hyperf/database": "dev-master",
         "hyperf/db-connection": "dev-master",
-        "hyperf/devtool": "dev-master",
         "hyperf/di": "dev-master",
         "hyperf/dispatcher": "dev-master",
         "hyperf/event": "dev-master",
@@ -44,11 +43,12 @@
         "hyperf/utils": "dev-master"
     },
     "require-dev": {
-        "swoft/swoole-ide-helper": "^4.2",
         "friendsofphp/php-cs-fixer": "^2.14",
+        "hyperf/devtool": "dev-master",
+        "hyperf/testing": "dev-master",
         "mockery/mockery": "^1.0",
         "phpstan/phpstan": "^0.11.2",
-        "hyperf/testing": "dev-master"
+        "swoft/swoole-ide-helper": "^4.2"
     },
     "autoload": {
         "psr-4": {
