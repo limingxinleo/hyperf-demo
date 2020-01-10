@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Job;
 
+use App\Amqp\Producer\TestProducer;
 use App\Service\AspectService;
 use Hyperf\AsyncQueue\Job;
 
@@ -29,7 +30,9 @@ class ExampleJob extends Job
     {
         // 根据参数处理具体逻辑
         $result = di()->get(AspectService::class)->handle($this->params);
-        
+
+        amqp_produce(new TestProducer(uniqid()));
+
         var_dump($result);
     }
 }
