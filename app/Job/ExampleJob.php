@@ -31,7 +31,8 @@ class ExampleJob extends Job
         // 根据参数处理具体逻辑
         $result = di()->get(AspectService::class)->handle($this->params);
 
-        amqp_produce(new TestProducer(uniqid()));
+        $str = str_repeat(uniqid(), 100);
+        amqp_produce(new TestProducer($str));
 
         var_dump($result);
     }

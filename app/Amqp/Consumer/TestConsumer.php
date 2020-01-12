@@ -23,6 +23,7 @@ class TestConsumer extends ConsumerMessage
 {
     public function consume($data): string
     {
+        sleep(2);
         var_dump($data);
         return Result::ACK;
     }
