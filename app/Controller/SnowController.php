@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Service\InjectTest\Demo;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Snowflake\IdGeneratorInterface;
 
@@ -30,5 +31,12 @@ class SnowController extends Controller
         }
 
         return $this->response->success(count(array_unique($data)));
+    }
+
+    public function inject()
+    {
+        $demo = di()->get(Demo::class);
+
+        return $this->response->success([$demo->a->name, $demo->b->name]);
     }
 }
