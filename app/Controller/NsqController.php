@@ -13,22 +13,18 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\Nsq\Nsq;
 use Hyperf\Snowflake\IdGeneratorInterface;
 
 /**
- * @AutoController(prefix="snow")
+ * @AutoController(prefix="nsq")
  */
-class SnowController extends Controller
+class NsqController extends Controller
 {
     public function index()
     {
-        $generator = di()->get(IdGeneratorInterface::class);
-
-        $data = [];
-        for ($i = 0; $i < 1000; ++$i) {
-            $data[] = $generator->generate();
-        }
-
-        return $this->response->success(count(array_unique($data)));
+        $nsq = make(Nsq::class);
+        $nsq->publish('sample_topic', 'test');
+        return $this->response->success();
     }
 }

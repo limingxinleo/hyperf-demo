@@ -41,7 +41,8 @@
         "hyperf/process": "dev-master",
         "hyperf/redis": "dev-master",
         "hyperf/snowflake": "dev-master",
-        "hyperf/utils": "dev-master"
+        "hyperf/utils": "dev-master",
+        "hyperf/nsq": "dev-master"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
