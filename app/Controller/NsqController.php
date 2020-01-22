@@ -14,7 +14,6 @@ namespace App\Controller;
 
 use Hyperf\HttpServer\Annotation\AutoController;
 use Hyperf\Nsq\Nsq;
-use Hyperf\Snowflake\IdGeneratorInterface;
 
 /**
  * @AutoController(prefix="nsq")
