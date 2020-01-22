@@ -21,8 +21,10 @@ use Hyperf\Nsq\Message;
  */
 class NsqConsumer extends AbstractConsumer
 {
-    public function consume(Message $payload)
+    public function consume(Message $payload): ?string
     {
         var_dump(get_called_class() . $payload->getBody());
+
+        return 'ack';
     }
 }

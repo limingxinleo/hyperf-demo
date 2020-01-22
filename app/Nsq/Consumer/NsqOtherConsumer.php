@@ -15,14 +15,17 @@ namespace App\Nsq\Consumer;
 use Hyperf\Nsq\AbstractConsumer;
 use Hyperf\Nsq\Annotation\Consumer;
 use Hyperf\Nsq\Message;
+use Hyperf\Nsq\Result;
 
 /**
  * @Consumer(topic="sample_topic", channel="test2", name="NsqOtherConsumer", nums=1)
  */
 class NsqOtherConsumer extends AbstractConsumer
 {
-    public function consume(Message $payload)
+    public function consume(Message $payload): ?string
     {
         var_dump(get_called_class() . $payload->getBody());
+
+        return Result::ACK;
     }
 }
