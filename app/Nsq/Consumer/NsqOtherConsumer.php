@@ -18,7 +18,7 @@ use Hyperf\Nsq\Message;
 use Hyperf\Nsq\Result;
 
 /**
- * @Consumer(topic="sample_topic", channel="test2", name="NsqOtherConsumer", nums=1)
+ * @Consumer(topic="test", channel="test2", name="NsqOtherConsumer", nums=1)
  */
 class NsqOtherConsumer extends AbstractConsumer
 {

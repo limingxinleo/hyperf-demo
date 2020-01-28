@@ -24,7 +24,7 @@ class NsqController extends Controller
     {
         $nsq = make(Nsq::class);
         // $nsq->publish('sample_topic', ['test', 'test2'], 2);
-        $nsq->publish('sample_topic', 'test', 2);
+        $nsq->publish('test', 'test');
         return $this->response->success();
     }
 }

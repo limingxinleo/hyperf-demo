@@ -17,7 +17,7 @@ use Hyperf\Nsq\Annotation\Consumer;
 use Hyperf\Nsq\Message;
 
 /**
- * @Consumer(topic="sample_topic", channel="test", name="NsqConsumer", nums=1)
+ * @Consumer(topic="test", channel="test", name="NsqConsumer", nums=1)
  */
 class NsqConsumer extends AbstractConsumer
 {

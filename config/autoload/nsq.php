@@ -14,6 +14,7 @@ return [
     'default' => [
         'host' => '127.0.0.1',
         'port' => 4150,
+        'auth' => 'hyperf',
         'pool' => [
             'min_connections' => 1,
             'max_connections' => 10,
