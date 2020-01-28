@@ -45,11 +45,12 @@
         "hyperf/utils": "dev-master"
     },
     "require-dev": {
-        "swoft/swoole-ide-helper": "^4.2",
         "friendsofphp/php-cs-fixer": "^2.14",
+        "hyperf/devtool": "dev-master",
         "mockery/mockery": "^1.0",
         "phpstan/phpstan": "^0.11.2",
-        "hyperf/testing": "dev-master"
+        "hyperf/testing": "dev-master",
+        "swoft/swoole-ide-helper": "^4.2"
     },
     "autoload": {
         "psr-4": {
@@ -84,10 +85,6 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
-        "H": {
-            "type": "path",
-            "url": "../hyperf/src/*"
-        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
