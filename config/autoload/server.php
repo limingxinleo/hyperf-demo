@@ -29,12 +29,12 @@ return [
     ],
     'settings' => [
         'enable_coroutine' => true,
-        'worker_num' => 4,
+        'worker_num' => 1,
         'pid_file' => BASE_PATH . '/runtime/hyperf.pid',
         'open_tcp_nodelay' => true,
         'max_coroutine' => 100000,
         'open_http2_protocol' => true,
-        'max_request' => 100000,
+        'max_request' => 2,
         'socket_buffer_size' => 2 * 1024 * 1024,
     ],
     'callbacks' => [

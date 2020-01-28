@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Swoole\Timer;
+
 class IndexController extends Controller
 {
     public function index()
@@ -28,6 +30,9 @@ class IndexController extends Controller
 
     public function user(int $id)
     {
+        Timer::tick(1000, function () {
+            var_dump(1);
+        });
         return $this->response->success($id);
     }
 }
