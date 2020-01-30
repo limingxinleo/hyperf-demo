@@ -30,9 +30,11 @@ class IndexController extends Controller
 
     public function user(int $id)
     {
-        Timer::tick(1000, function () {
-            var_dump(1);
-        });
+        for ($i = 0; $i < 10; $i++) {
+            Timer::tick(1000, function () {
+                sleep(3);
+            });
+        }
         return $this->response->success($id);
     }
 }
