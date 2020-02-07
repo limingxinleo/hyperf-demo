@@ -30,7 +30,7 @@ class ImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'image',
+            'file' => ['required', 'image', 'lte:10485760'],
         ];
     }
 }
