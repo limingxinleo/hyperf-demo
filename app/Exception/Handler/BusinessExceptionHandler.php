@@ -55,7 +55,7 @@ class BusinessExceptionHandler extends ExceptionHandler
         }
 
         if ($throwable instanceof ValidationException) {
-            return $this->response->fail($throwable->getCode(), $throwable->errors());
+            return $this->response->fail($throwable->getCode(), $throwable->validator->errors());
         }
 
         $this->logger->error(format_throwable($throwable));
