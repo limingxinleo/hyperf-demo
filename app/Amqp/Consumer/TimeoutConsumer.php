@@ -17,7 +17,7 @@ use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
 
 /**
- * @Consumer(exchange="hyperf", routingKey="timeout", queue="hyperf.timeout", name="TimeoutConsumer", nums=1)
+ * @Consumer(exchange="hyperf", routingKey="timeout", queue="hyperf.timeout", name="TimeoutConsumer", nums=1, enable=false)
  */
 class TimeoutConsumer extends ConsumerMessage
 {

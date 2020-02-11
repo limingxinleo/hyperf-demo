@@ -18,7 +18,7 @@ use Hyperf\Amqp\Result;
 use Hyperf\Contract\StdoutLoggerInterface;
 
 /**
- * @Consumer(exchange="hyperf", routingKey="hyperf3", queue="hyperf2", nums=1)
+ * @Consumer(exchange="hyperf", routingKey="hyperf3", queue="hyperf2", nums=1, enable=false)
  */
 class Demo2Consumer extends ConsumerMessage
 {

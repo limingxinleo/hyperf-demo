@@ -15,21 +15,17 @@ namespace App\Amqp\Consumer;
 use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
+use Hyperf\Utils\Codec\Json;
 
 /**
- * @Consumer(exchange="test", routingKey="test.qos", queue="test.qos", name="Qos2Consumer", nums=1, enable=false)
+ * @Consumer(exchange="hyperf", routingKey="large", queue="hyperf.large", name="LargeConsumer", nums=1)
  */
-class Qos2Consumer extends ConsumerMessage
+class LargeConsumer extends ConsumerMessage
 {
-    protected $qos = [
-        'prefetch_count' => 1,
-    ];
-
     public function consume($data): string
     {
-        var_dump('qos2.begin');
-        sleep(1);
-        var_dump('qos2.end');
+        $json = Json::encode($data);
+        var_dump(strlen($json), isset($data['is'], $data['name'], $data['data']));
         return Result::ACK;
     }
 }

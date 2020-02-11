@@ -18,7 +18,7 @@ use Hyperf\Amqp\Result;
 use Hyperf\DbConnection\Db;
 
 /**
- * @Consumer(exchange="hyperf", routingKey="hyperf4", queue="hyperf3", nums=1)
+ * @Consumer(exchange="hyperf", routingKey="hyperf4", queue="hyperf3", nums=1, enable=false)
  */
 class Demo3Consumer extends ConsumerMessage
 {

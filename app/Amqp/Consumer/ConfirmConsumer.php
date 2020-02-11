@@ -17,7 +17,7 @@ use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
 
 /**
- * @Consumer(exchange="hyperf", routingKey="confirm", queue="confirm", name="ConfirmConsumer", nums=1)
+ * @Consumer(exchange="hyperf", routingKey="confirm", queue="confirm", name="ConfirmConsumer", nums=1, enable=false)
  */
 class ConfirmConsumer extends ConsumerMessage
 {

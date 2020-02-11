@@ -67,4 +67,8 @@ class AmqpController extends Controller
 
         return $this->response->success($time);
     }
+
+    public function large()
+    {
+    }
 }
