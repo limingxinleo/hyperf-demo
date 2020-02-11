@@ -12,10 +12,11 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Amqp\Producer\DemoProducer;
+use App\Amqp\Producer\LargeProducer;
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Command\Command as HyperfCommand;
 use Psr\Container\ContainerInterface;
+use Swoole\Timer;
 
 /**
  * @Command
@@ -43,6 +44,16 @@ class DemoCommand extends HyperfCommand
 
     public function handle()
     {
-        amqp_produce(new DemoProducer('command+' . uniqid()));
+        $data = [
+            'id' => uniqid(),
+            'data' => str_repeat(uniqid(), 1000),
+        ];
+        amqp_produce(new LargeProducer($data));
+        amqp_produce(new LargeProducer($data));
+        amqp_produce(new LargeProducer($data));
+        amqp_produce(new LargeProducer($data));
+        amqp_produce(new LargeProducer($data));
+
+        // Timer::clearAll();
     }
 }

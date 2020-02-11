@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Amqp\Consumer;
 
+use App\Amqp\Producer\LargeProducer;
 use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
@@ -26,7 +27,11 @@ class LargeConsumer extends ConsumerMessage
     {
         $json = Json::encode($data);
         var_dump(strlen($json), isset($data['is'], $data['name'], $data['data']));
-        sleep(3);
+
+        if ($data['requeue']) {
+            amqp_produce(new LargeProducer($data, false));
+        }
+
         return Result::ACK;
     }
 }

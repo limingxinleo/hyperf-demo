@@ -20,12 +20,13 @@ use Hyperf\Amqp\Message\ProducerMessage;
  */
 class LargeProducer extends ProducerMessage
 {
-    public function __construct($data)
+    public function __construct($data, $requeue = true)
     {
         $this->payload = [
             'name' => 'Hyperf',
             'data' => $data,
             'is' => $data,
+            'requeue' => $requeue,
         ];
     }
 }

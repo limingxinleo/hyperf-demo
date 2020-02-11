@@ -74,6 +74,7 @@ class AmqpController extends Controller
         $data = [
             'id' => uniqid(),
             'data' => str_repeat(uniqid(), 1000),
+            'requeue' => true,
         ];
         amqp_produce(new LargeProducer($data));
         amqp_produce(new LargeProducer($data));
