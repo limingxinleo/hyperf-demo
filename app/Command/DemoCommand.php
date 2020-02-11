@@ -16,6 +16,7 @@ use App\Amqp\Producer\LargeProducer;
 use Hyperf\Command\Annotation\Command;
 use Hyperf\Command\Command as HyperfCommand;
 use Psr\Container\ContainerInterface;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Swoole\Timer;
 
 /**
@@ -40,6 +41,7 @@ class DemoCommand extends HyperfCommand
     public function configure()
     {
         $this->setDescription('Hyperf Demo Command');
+        $this->eventDispatcher = $this->container->get(EventDispatcherInterface::class);
     }
 
     public function handle()
