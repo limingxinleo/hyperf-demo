@@ -26,6 +26,7 @@ class LargeConsumer extends ConsumerMessage
     {
         $json = Json::encode($data);
         var_dump(strlen($json), isset($data['is'], $data['name'], $data['data']));
+        sleep(3);
         return Result::ACK;
     }
 }

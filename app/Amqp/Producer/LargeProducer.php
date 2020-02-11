@@ -16,7 +16,7 @@ use Hyperf\Amqp\Annotation\Producer;
 use Hyperf\Amqp\Message\ProducerMessage;
 
 /**
- * @Producer(exchange="hyperf", routingKey="hyperf")
+ * @Producer(exchange="hyperf", routingKey="large")
  */
 class LargeProducer extends ProducerMessage
 {

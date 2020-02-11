@@ -16,6 +16,7 @@ use App\Amqp\Producer\ConfirmProducer;
 use App\Amqp\Producer\Demo2Producer;
 use App\Amqp\Producer\Demo4Producer;
 use App\Amqp\Producer\DemoProducer;
+use App\Amqp\Producer\LargeProducer;
 use App\Amqp\Producer\QosProducer;
 use App\Amqp\Producer\TimeoutProducer;
 use Hyperf\Amqp\Producer;
@@ -70,5 +71,15 @@ class AmqpController extends Controller
 
     public function large()
     {
+        $data = [
+            'id' => uniqid(),
+            'data' => str_repeat(uniqid(), 1000),
+        ];
+        amqp_produce(new LargeProducer($data));
+        amqp_produce(new LargeProducer($data));
+        amqp_produce(new LargeProducer($data));
+        amqp_produce(new LargeProducer($data));
+        amqp_produce(new LargeProducer($data));
+        return $this->response->success();
     }
 }
