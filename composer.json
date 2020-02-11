@@ -19,6 +19,7 @@
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
         "ext-swoole": ">=4.4",
+        "hyperf/amqp": "1.1.*",
         "hyperf/async-queue": "1.1.*",
         "hyperf/cache": "1.1.*",
         "hyperf/command": "1.1.*",
