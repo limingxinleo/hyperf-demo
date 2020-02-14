@@ -27,6 +27,8 @@ class QueueService
      */
     protected $driver;
 
+    protected $count = 0;
+
     public function __construct(DriverFactory $driverFactory)
     {
         $this->driver = $driverFactory->get('default');
@@ -51,7 +53,9 @@ class QueueService
      */
     public function annotation($params)
     {
+        sleep(1);
         var_dump($params);
+        var_dump($this->count++);
     }
 
     /**

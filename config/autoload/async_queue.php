@@ -18,9 +18,9 @@ return [
         'retry_seconds' => 5,
         'handle_timeout' => 10,
         'processes' => 1,
-        'max_messages' => 10000,
+        'max_messages' => 11,
         'concurrent' => [
-            'limit' => 2,
+            'limit' => 10,
         ],
     ],
 ];
