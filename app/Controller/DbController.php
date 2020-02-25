@@ -78,4 +78,13 @@ class DbController extends Controller
 
         return $this->response->success($res->toArray());
     }
+
+    public function ext2()
+    {
+        $model = new UserExt();
+        $model->float_num = 1.1;
+        $res = $model->save();
+
+        return $this->response->success($res);
+    }
 }
