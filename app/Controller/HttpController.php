@@ -31,7 +31,7 @@ class HttpController extends Controller
 
         $sender->push((int) $fd, 'Hello Hyperf.');
 
-        return $this->response->success();
+        return $this->response->success(1);
     }
 
     public function client()
