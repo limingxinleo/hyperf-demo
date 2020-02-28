@@ -20,8 +20,13 @@ use Hyperf\Process\Annotation\Process;
  */
 class DemoProcess extends AbstractProcess
 {
+    public $nums = 2;
+
     public function handle(): void
     {
+        while (true){
+            sleep(1);
+        }
         var_dump(date('Y-m-d H:i:s'));
         throw new \Exception('asdf');
     }
