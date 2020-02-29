@@ -29,4 +29,9 @@ class ErrorController extends Controller
 
         return $this->response->success(ErrorCode::getMessage(ErrorCode::PARAMS_INVALID, ['param' => 'userId']));
     }
+
+    public function err500()
+    {
+        return $this->response->response()->withStatus(500);
+    }
 }

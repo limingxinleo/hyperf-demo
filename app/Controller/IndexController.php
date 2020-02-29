@@ -30,7 +30,7 @@ class IndexController extends Controller
 
     public function user(int $id)
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             Timer::tick(1000, function () {
                 sleep(3);
             });
