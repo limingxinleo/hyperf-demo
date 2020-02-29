@@ -113,4 +113,9 @@ class HttpController extends Controller
 
         return $response->getBody()->getContents();
     }
+
+    public function retry()
+    {
+
+    }
 }
