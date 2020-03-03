@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace App\Process;
 
+use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\Process\AbstractProcess;
 use Hyperf\Process\Annotation\Process;
 
@@ -20,14 +21,21 @@ use Hyperf\Process\Annotation\Process;
  */
 class DemoProcess extends AbstractProcess
 {
-    public $nums = 2;
+    // public $nums = 2;
+
+    protected $running = true;
 
     public function handle(): void
     {
-        while (true){
+        \Swoole\Process::signal(SIGTERM, function () {
+            $this->running = false;
+            var_dump('recv...');
+        });
+
+        while ($this->running) {
+            di()->get(StdoutLoggerInterface::class)->info('sleep...');
             sleep(1);
+            di()->get(StdoutLoggerInterface::class)->info('down...');
         }
-        var_dump(date('Y-m-d H:i:s'));
-        throw new \Exception('asdf');
     }
 }
