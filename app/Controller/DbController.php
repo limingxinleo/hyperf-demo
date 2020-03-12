@@ -15,6 +15,7 @@ namespace App\Controller;
 use App\Model\User;
 use App\Model\UserExt;
 use App\Model\UserRole;
+use App\Service\DbService;
 use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Annotation\AutoController;
 
@@ -86,5 +87,16 @@ class DbController extends Controller
         $res = $model->save();
 
         return $this->response->success($res);
+    }
+
+    public function rollback()
+    {
+        $success = $this->request->input('s');
+
+        di()->get(DbService::class)->execute((bool)$success);
+
+        $model = User::query()->where('id', 3)->first();
+
+        return $this->response->success($model);
     }
 }
