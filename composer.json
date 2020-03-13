@@ -32,6 +32,7 @@
         "hyperf/event": "1.1.*",
         "hyperf/exception-handler": "1.1.*",
         "hyperf/framework": "1.1.*",
+        "hyperf/grpc-client": "1.1.*",
         "hyperf/grpc-server": "1.1.*",
         "hyperf/guzzle": "1.1.*",
         "hyperf/http-server": "1.1.*",
