@@ -16,4 +16,5 @@ return [
     'options' => [
         'timeout' => 10,
     ],
+    'use_standalone_process' => true,
 ];
