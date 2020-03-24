@@ -12,12 +12,22 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Service\ElasticService;
+use Hyperf\Di\Annotation\Inject;
+
 class IndexController extends Controller
 {
+    /**
+     * @Inject
+     * @var ElasticService
+     */
+    protected $service;
+
     public function index()
     {
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
+        var_dump($this->service->client()->info());
         return $this->response->success([
             'user' => $user,
             'method' => $method,
