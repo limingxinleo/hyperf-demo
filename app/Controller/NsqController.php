@@ -23,8 +23,9 @@ class NsqController extends Controller
     public function index()
     {
         $nsq = make(Nsq::class);
-        // $nsq->publish('sample_topic', ['test', 'test2'], 2);
-        $nsq->publish('test', 'test');
+        $message = 'test';
+        $message = $message = str_pad('1386', 16*1024, 'a') . '1386';
+        $nsq->publish('test', $message);
         return $this->response->success();
     }
 }

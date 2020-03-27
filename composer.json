@@ -87,7 +87,7 @@
     "repositories": {
         "h": {
             "type": "path",
-            "url": "../../huangzhui/hyperf-nsq/src/*"
+            "url": "../hyperf/src/*"
         },
         "packagist": {
             "type": "composer",
