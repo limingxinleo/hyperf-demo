@@ -24,7 +24,7 @@ class NsqController extends Controller
     {
         $nsq = make(Nsq::class);
         $message = 'test';
-        $message = $message = str_pad('1386', 16*1024, 'a') . '1386';
+        // $message = $message = str_pad('1386', 16*1024, 'a') . '1386';
         $nsq->publish('test', $message);
         return $this->response->success();
     }
