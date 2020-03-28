@@ -12,12 +12,17 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Hyperf\Process\ProcessCollector;
+
 class IndexController extends Controller
 {
     public function index()
     {
         $user = $this->request->input('user', 'Hyperf');
         $method = $this->request->getMethod();
+        $process = ProcessCollector::get('xxxx');
+        $process = array_shift($process);
+        $process->write('1');
         return $this->response->success([
             'user' => $user,
             'method' => $method,
