@@ -26,7 +26,6 @@ class NsqOtherConsumer extends AbstractConsumer
     public function consume(Message $payload): ?string
     {
         di()->get(Nsq::class)->publish('test2', uniqid());
-
         return Result::ACK;
     }
 }
