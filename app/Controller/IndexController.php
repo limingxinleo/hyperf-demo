@@ -12,16 +12,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Model\User;
+
 class IndexController extends Controller
 {
     public function index()
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
-        return $this->response->success([
-            'user' => $user,
-            'method' => $method,
-            'message' => 'Hello Hyperf.',
-        ]);
+        $model = User::query()->find(1);
+        return $this->response->success($model->toArray());
     }
 }
