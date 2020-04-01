@@ -12,10 +12,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-class IndexController extends Controller
+class Index2Controller extends Controller
 {
     public function index()
     {
-        return $this->response->success(1);
+        return $this->response->success(2);
     }
 }
