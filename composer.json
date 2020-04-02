@@ -10,7 +10,7 @@
         "middleware"
     ],
     "description": "A coroutine framework that focuses on hyperspeed and flexible, specifically use for build microservices and middlewares.",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
@@ -18,7 +18,7 @@
         "ext-pdo": "*",
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
-        "ext-swoole": ">=4.2",
+        "ext-swoole": ">=4.4",
         "hyperf/amqp": "dev-master",
         "hyperf/async-queue": "dev-master",
         "hyperf/cache": "dev-master",
@@ -52,11 +52,12 @@
         "symfony/serializer": "^4.3"
     },
     "require-dev": {
-        "swoft/swoole-ide-helper": "^4.2",
         "friendsofphp/php-cs-fixer": "^2.14",
+        "hyperf/devtool": "1.1.*",
         "mockery/mockery": "^1.0",
         "phpstan/phpstan": "^0.11.2",
-        "hyperf/testing": "dev-master"
+        "hyperf/testing": "dev-master",
+        "swoft/swoole-ide-helper": "^4.2"
     },
     "autoload": {
         "psr-4": {
@@ -68,7 +69,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "HyperfTest\\": "./test/"
+            "HyperfTest\\": "test/"
         }
     },
     "minimum-stability": "dev",
