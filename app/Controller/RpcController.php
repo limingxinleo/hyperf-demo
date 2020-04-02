@@ -52,7 +52,7 @@ class RpcController extends Controller
     {
         $client = di()->get(CalculatorServiceInterface::class);
 
-        $result =  $client->objs();
+        $result = $client->objs();
 
         var_dump($result);
 
@@ -75,5 +75,10 @@ class RpcController extends Controller
         $client = di()->get(CalculatorServiceInterface::class);
 
         return $client->error();
+    }
+
+    public function ping()
+    {
+        return di()->get(CalculatorServiceInterface::class)->ping();
     }
 }

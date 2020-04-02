@@ -56,4 +56,9 @@ class CalculatorService implements CalculatorServiceInterface
     {
         throw new \Error('error xxx.');
     }
+
+    public function ping(): string
+    {
+        return 'pong';
+    }
 }
