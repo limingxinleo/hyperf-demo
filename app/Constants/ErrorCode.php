@@ -24,4 +24,14 @@ class ErrorCode extends AbstractConstants
      * @Message("Server Error")
      */
     const SERVER_ERROR = 500;
+
+    /**
+     * @Message("error_code.token_invalid")
+     */
+    const TOKEN_INVALID = 700;
+
+    /**
+     * @Message("Token2 [%s] is invalid.")
+     */
+    const TOKEN2_INVALID = 701;
 }

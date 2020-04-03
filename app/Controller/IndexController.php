@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Constants\ErrorCode;
+
 class IndexController extends Controller
 {
     public function index()
@@ -21,7 +23,10 @@ class IndexController extends Controller
         return $this->response->success([
             'user' => $user,
             'method' => $method,
-            'message' => 'Hello Hyperf.',
+            'message' => ErrorCode::getMessage(ErrorCode::TOKEN_INVALID, [
+                'token' => 'xxx',
+            ]),
+            'message2' => ErrorCode::getMessage(ErrorCode::TOKEN2_INVALID, 'yyy'),
         ]);
     }
 }
