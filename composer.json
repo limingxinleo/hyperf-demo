@@ -39,6 +39,7 @@
         "hyperf/pool": "1.1.*",
         "hyperf/process": "1.1.*",
         "hyperf/redis": "1.1.*",
+        "hyperf/translation": "1.1.x-dev",
         "hyperf/utils": "1.1.*",
         "hyperf/validation": "1.1.*"
     },
@@ -83,6 +84,10 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
+        "h": {
+            "type": "path",
+            "url": "../hyperf/src/*"
+        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"

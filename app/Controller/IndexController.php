@@ -26,6 +26,7 @@ class IndexController extends Controller
             'message' => ErrorCode::getMessage(ErrorCode::TOKEN_INVALID, [
                 'token' => 'xxx',
             ]),
+            'message3' => ErrorCode::getMessage(ErrorCode::TOKEN2_INVALID, ['xxx']),
             'message2' => ErrorCode::getMessage(ErrorCode::TOKEN2_INVALID, 'yyy'),
         ]);
     }
