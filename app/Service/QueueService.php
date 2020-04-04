@@ -73,15 +73,16 @@ class QueueService
      */
     public function annotationmodel(User $user)
     {
-        var_dump(111);
-        var_dump($user);
+        var_dump(date('Y-m-d H:i:s'));
+        var_dump($user->toArray());
     }
 
     /**
-     * @AsyncQueueMessage
+     * @AsyncQueueMessage(maxAttempts=1)
      */
     public function retry()
     {
+        var_dump(date('Y-m-d H:i:s'));
         throw new BusinessException(ErrorCode::SERVER_ERROR);
     }
 

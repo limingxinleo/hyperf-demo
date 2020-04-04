@@ -79,7 +79,7 @@ class QueueController extends Controller
     public function annotation3()
     {
         $user = User::query()->find(1);
-
+        var_dump(date('Y-m-d H:i:s'));
         di()->get(QueueService::class)->annotationmodel($user);
 
         return 'success';
