@@ -14,9 +14,12 @@ namespace App\Controller;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Stream;
 use Hyperf\Guzzle\HandlerStackFactory;
 use Hyperf\Guzzle\PoolHandler;
 use Hyperf\HttpServer\Annotation\AutoController;
+use Hyperf\Utils\Context;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * @AutoController
@@ -114,8 +117,12 @@ class HttpController extends Controller
         return $response->getBody()->getContents();
     }
 
-    public function retry()
+    public function image()
     {
+        $response = Context::get(ResponseInterface::class);
 
+        $stream = new Stream(fopen(BASE_PATH . '/storage/hf.jpeg', 'r'));
+
+        return $response->withAddedHeader('Content-Type', 'image/jpeg')->withBody($stream);
     }
 }
