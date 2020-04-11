@@ -9,13 +9,14 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace App\Model;
+namespace App\Tcp;
 
-use Hyperf\DbConnection\Model\Model as BaseModel;
-use Hyperf\ModelCache\Cacheable;
-use Hyperf\ModelCache\CacheableInterface;
+use Hyperf\Contract\OnReceiveInterface;
+use Swoole\Server as SwooleServer;
 
-abstract class Model extends BaseModel implements CacheableInterface
+class TcpServer implements OnReceiveInterface
 {
-    use Cacheable;
+    public function onReceive(SwooleServer $server, int $fd, int $fromId, string $data): void
+    {
+    }
 }
