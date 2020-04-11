@@ -18,5 +18,6 @@ class TcpServer implements OnReceiveInterface
 {
     public function onReceive(SwooleServer $server, int $fd, int $fromId, string $data): void
     {
+        $server->send($fd, 'xxxx' . uniqid());
     }
 }

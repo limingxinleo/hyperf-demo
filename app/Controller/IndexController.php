@@ -11,16 +11,16 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Swoole\Coroutine\Socket;
+
 class IndexController extends Controller
 {
     public function index()
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
-        return $this->response->success([
-            'user' => $user,
-            'method' => $method,
-            'message' => 'Hello Hyperf.',
-        ]);
+        $socket = new Socket(AF_INET, SOCK_STREAM, 0);
+        $socket->connect('127.0.0.1', 9502);
+        $socket->send('hello');
+        $data = $socket->recv();
+        return $this->response->success($data);
     }
 }
