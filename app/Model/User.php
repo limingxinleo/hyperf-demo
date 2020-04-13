@@ -13,6 +13,9 @@ namespace App\Model;
 
 /**
  * @property int $id
+ * @property string $name
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
  */
 class User extends Model
 {
@@ -28,12 +31,27 @@ class User extends Model
      *
      * @var array
      */
-    protected $fillable = ['id'];
+    protected $fillable = ['id', 'name', 'created_at', 'updated_at'];
 
     /**
      * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $casts = ['id' => 'integer'];
+    protected $casts = ['id' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+
+    /**
+     * 用户访问过的圈子，用于排序的部分.
+     */
+    public function visitedGroups()
+    {
+        return $this->belongsToMany(
+            Group::class,
+            'group_visited',
+            'user_id',
+            'group_id',
+            'id',
+            'id'
+        )->withTimestamps();
+    }
 }
