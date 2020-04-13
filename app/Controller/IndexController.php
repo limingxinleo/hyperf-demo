@@ -18,7 +18,8 @@ class IndexController extends Controller
     public function index()
     {
         $user = User::query()->find(2);
-        $result = $user->visitedGroups->toArray();
+        var_dump($user->visitedGroups->first()->pivot);
+        return $user->visitedGroups->toArray();
         return $user->visitedGroups()
             ->limit(7)
             ->latest('group_visited.created_at')

@@ -52,6 +52,8 @@ class User extends Model
             'group_id',
             'id',
             'id'
-        )->withTimestamps();
+        )
+            ->using(GroupVisitedPivot::class)
+            ->withTimestamps();
     }
 }
