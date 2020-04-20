@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace App\Model;
 
 /**
@@ -18,6 +17,7 @@ namespace App\Model;
  * @property int $role_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property \App\Model\User[]|\Hyperf\Database\Model\Collection $users
  */
 class UserRole extends Model
 {

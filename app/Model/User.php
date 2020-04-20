@@ -9,8 +9,9 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace App\Model;
+
+use Hyperf\Database\Model\Builder;
 
 /**
  * @property int $id
@@ -18,6 +19,9 @@ namespace App\Model;
  * @property int $gender
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property \App\Model\Book $book
+ * @property \App\Model\Book[]|\Hyperf\Database\Model\Collection $books
+ * @property null|\App\Model\Book|int|string $test
  */
 class User extends Model
 {
@@ -42,8 +46,29 @@ class User extends Model
      */
     protected $casts = ['id' => 'integer', 'gender' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
 
+    public function book()
+    {
+        return $this->hasOne(Book::class, 'user_id', 'id');
+    }
+
     public function books()
     {
         return $this->hasMany(Book::class, 'user_id', 'id');
+    }
+
+    /**
+     * @return null|Book|int|string
+     */
+    public function getTestAttribute()
+    {
+        return uniqid();
+    }
+
+    /**
+     * @param Builder $query
+     */
+    public function scopeMan($query)
+    {
+        return $query->where('gender', 1);
     }
 }

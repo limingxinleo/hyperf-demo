@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace App\Controller;
 
 use App\Model\User;
@@ -53,7 +52,11 @@ class DbController extends Controller
 
     public function database()
     {
+        /** @var User $user */
         $user = User::find(1);
+
+        var_dump(User::man()->first());
+        var_dump($user->book->toArray());
 
         return $this->response->success($user->toArray());
     }
@@ -93,7 +96,7 @@ class DbController extends Controller
     {
         $success = $this->request->input('s');
 
-        di()->get(DbService::class)->execute((bool)$success);
+        di()->get(DbService::class)->execute((bool) $success);
 
         $model = User::query()->where('id', 3)->first();
 
