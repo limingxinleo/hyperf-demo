@@ -11,16 +11,29 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Hyperf\Di\Annotation\Inject;
+use Hyperf\Utils\Codec\Json;
+use League\Flysystem\Filesystem;
+
 class IndexController extends Controller
 {
+    /**
+     * @Inject
+     * @var Filesystem
+     */
+    protected $filesystem;
+
     public function index()
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
-        return $this->response->success([
-            'user' => $user,
-            'method' => $method,
-            'message' => 'Hello Hyperf.',
-        ]);
+        try {
+            $res = $this->filesystem->put('test.json', Json::encode([
+                'id' => uniqid(),
+            ]));
+            var_dump($res);
+        } catch (\Throwable $exception) {
+            var_dump((string) $exception);
+        }
+
+        return $this->response->success();
     }
 }

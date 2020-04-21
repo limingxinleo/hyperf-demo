@@ -31,6 +31,7 @@
         "hyperf/dispatcher": "1.1.*",
         "hyperf/event": "1.1.*",
         "hyperf/exception-handler": "1.1.*",
+        "hyperf/filesystem": "1.1.*",
         "hyperf/framework": "1.1.*",
         "hyperf/guzzle": "1.1.*",
         "hyperf/http-server": "1.1.*",
@@ -39,7 +40,8 @@
         "hyperf/pool": "1.1.*",
         "hyperf/process": "1.1.*",
         "hyperf/redis": "1.1.*",
-        "hyperf/utils": "1.1.*"
+        "hyperf/utils": "1.1.*",
+        "xxtime/flysystem-aliyun-oss": "^1.5"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
