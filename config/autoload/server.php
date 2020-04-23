@@ -53,6 +53,20 @@ return [
                 'package_body_offset' => 4,
             ],
         ],
+        [
+            'name' => 'jsonrpc-http-2',
+            'type' => Server::SERVER_BASE,
+            'host' => '0.0.0.0',
+            'port' => 9505,
+            'sock_type' => SWOOLE_SOCK_TCP,
+            'callbacks' => [
+                SwooleEvent::ON_RECEIVE => ['TcpServer2', 'onReceive'],
+            ],
+            'settings' => [
+                'open_eof_split' => true,
+                'package_eof' => "\r\n",
+            ],
+        ],
     ],
     'settings' => [
         'enable_coroutine' => true,

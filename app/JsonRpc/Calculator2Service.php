@@ -17,9 +17,9 @@ use Hyperf\RpcServer\Annotation\RpcService;
 
 /**
  * 注意，如希望通过服务中心来管理服务，需在注解内增加 publishTo 属性.
- * @RpcService(name=CalculatorServiceInterface::class, protocol="jsonrpc-tcp-length-check", server="jsonrpc-http", publishTo="consul")
+ * @RpcService(name=CalculatorServiceInterface::class, protocol="jsonrpc", server="jsonrpc-http-2", publishTo="consul")
  */
-class CalculatorService implements CalculatorServiceInterface
+class Calculator2Service implements CalculatorServiceInterface
 {
     // @RpcService(name=CalculatorServiceInterface::class, protocol="jsonrpc-http", server="jsonrpc-http", publishTo="consul")
 

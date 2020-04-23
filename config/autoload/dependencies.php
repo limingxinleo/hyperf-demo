@@ -15,4 +15,5 @@ use Hyperf\JsonRpc\JsonRpcTransporter;
 return [
     Hyperf\Contract\StdoutLoggerInterface::class => App\Kernel\Log\LoggerFactory::class,
     JsonRpcTransporter::class => JsonRpcPoolTransporter::class,
+    'TcpServer2' => Hyperf\JsonRpc\TcpServer::class,
 ];
