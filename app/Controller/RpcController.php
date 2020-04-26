@@ -80,4 +80,10 @@ class RpcController extends Controller
     {
         return di()->get(CalculatorServiceInterface::class)->ping();
     }
+
+    public function null()
+    {
+        $result = di()->get(CalculatorServiceInterface::class)->testNull();
+        return $this->response->success($result);
+    }
 }

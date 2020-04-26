@@ -27,4 +27,6 @@ interface CalculatorServiceInterface extends ServiceInterface
     public function exception();
 
     public function error();
+
+    public function testNull();
 }

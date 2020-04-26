@@ -60,4 +60,9 @@ class CalculatorService implements CalculatorServiceInterface
     {
         return 'pong';
     }
+
+    public function testNull()
+    {
+        return null;
+    }
 }
