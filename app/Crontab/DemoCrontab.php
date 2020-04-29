@@ -9,7 +9,6 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace App\Crontab;
 
 use Hyperf\Contract\StdoutLoggerInterface;
@@ -22,7 +21,7 @@ use Hyperf\Di\Annotation\Inject;
 class DemoCrontab
 {
     /**
-     * @Inject()
+     * @Inject
      * @var StdoutLoggerInterface
      */
     protected $logger;
@@ -31,7 +30,7 @@ class DemoCrontab
     {
         $a = '123';
         var_dump('before crontab.');
-        $this->logger->info(date('Y-m-d H:i:s', (int)$a));
+        $this->logger->info(date('Y-m-d H:i:s', (int) $a));
         var_dump('after crontab.');
     }
 }
