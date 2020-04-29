@@ -11,16 +11,15 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Model\UserExt;
+
 class IndexController extends Controller
 {
     public function index()
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
-        return $this->response->success([
-            'user' => $user,
-            'method' => $method,
-            'message' => 'Hello Hyperf.',
-        ]);
+        /** @var UserExt $model */
+        $model = UserExt::query()->find(1);
+        $model->float_num = $model->float_num + 0.1;
+        return $this->response->success($model->save());
     }
 }
