@@ -15,6 +15,7 @@ use App\Model\User;
 use App\Model\UserExt;
 use App\Model\UserRole;
 use App\Service\DbService;
+use Hyperf\DbConnection\Collector\TableCollector;
 use Hyperf\DbConnection\Db;
 use Hyperf\HttpServer\Annotation\AutoController;
 
@@ -23,6 +24,16 @@ use Hyperf\HttpServer\Annotation\AutoController;
  */
 class DbController extends Controller
 {
+    public function first()
+    {
+        $data = User::query()->find(1)->toArray();
+        $list = di()->get(TableCollector::class)->get('default', 'user');
+        foreach ($list as $column) {
+            var_dump($column);
+        }
+        return $this->response->success($data);
+    }
+
     public function roll()
     {
         $conn = Db::connection();
