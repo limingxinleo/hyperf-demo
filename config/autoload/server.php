@@ -40,7 +40,7 @@ return [
         'task_enable_coroutine' => false,
         // View
         'document_root' => BASE_PATH . '/public',
-        'static_handler_locations' => ['/'],
+        'static_handler_locations' => ['/static'],
         'enable_static_handler' => true,
     ],
     'callbacks' => [

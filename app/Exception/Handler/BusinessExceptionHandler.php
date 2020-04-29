@@ -16,6 +16,7 @@ use App\Exception\BusinessException;
 use App\Kernel\Http\Response;
 use Hyperf\Contract\StdoutLoggerInterface;
 use Hyperf\ExceptionHandler\ExceptionHandler;
+use Hyperf\View\Exception\RenderException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
@@ -49,6 +50,11 @@ class BusinessExceptionHandler extends ExceptionHandler
         if ($throwable instanceof BusinessException) {
             $this->logger->warning(format_throwable($throwable));
 
+            return $this->response->fail($throwable->getCode(), $throwable->getMessage());
+        }
+
+        if ($throwable instanceof RenderException) {
+            var_dump(111);
             return $this->response->fail($throwable->getCode(), $throwable->getMessage());
         }
 

@@ -18,7 +18,7 @@ use Hyperf\View\Engine\SmartyEngine;
 use Hyperf\View\RenderInterface;
 
 /**
- * @AutoController
+ * @AutoController(prefix="view")
  */
 class ViewController extends Controller
 {
@@ -36,5 +36,10 @@ class ViewController extends Controller
         }
 
         return $render->render($template, ['name' => $name]);
+    }
+
+    public function exception(RenderInterface $render)
+    {
+        return $render->render('index', ['title' => 'Hyperf']);
     }
 }

@@ -19,6 +19,7 @@
         "ext-pdo_mysql": "*",
         "ext-redis": "*",
         "ext-swoole": ">=4.4",
+        "duncan3dc/blade": "^4.6",
         "hyperf/async-queue": "1.1.*",
         "hyperf/cache": "1.1.*",
         "hyperf/command": "1.1.*",
@@ -39,12 +40,12 @@
         "hyperf/pool": "1.1.*",
         "hyperf/process": "1.1.*",
         "hyperf/redis": "1.1.*",
-        "hyperf/utils": "1.1.*",
-        "hyperf/view": "1.1.*",
         "hyperf/task": "1.1.*",
-        "topthink/think-template": "^2.0",
+        "hyperf/utils": "1.1.*",
+        "hyperf/view": "1.1.x-dev",
         "smarty/smarty": "^3.1",
-        "duncan3dc/blade": "^4.6"
+        "symfony/event-dispatcher": "^4.4",
+        "topthink/think-template": "^2.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
@@ -87,10 +88,6 @@
         "test": "co-phpunit -c phpunit.xml --colors=always"
     },
     "repositories": {
-        "h": {
-            "type": "path",
-            "url": "../hyperf/src/*"
-        },
         "packagist": {
             "type": "composer",
             "url": "https://mirrors.aliyun.com/composer"
