@@ -18,7 +18,9 @@ use App\Amqp\Producer\DemoProducer;
 use App\Amqp\Producer\LargeProducer;
 use App\Amqp\Producer\QosProducer;
 use App\Amqp\Producer\TimeoutProducer;
+use App\Amqp\RpcMessage\DemoRpcMessage;
 use Hyperf\Amqp\Producer;
+use Hyperf\Amqp\RpcClient;
 use Hyperf\HttpServer\Annotation\AutoController;
 
 /**
@@ -80,6 +82,15 @@ class AmqpController extends Controller
         amqp_produce(new LargeProducer($data));
         amqp_produce(new LargeProducer($data));
         amqp_produce(new LargeProducer($data));
+        return $this->response->success();
+    }
+
+    public function request()
+    {
+        $message = new DemoRpcMessage(['id' => uniqid()]);
+        $result = di()->get(RpcClient::class)->call($message);
+
+        var_dump($result);
         return $this->response->success();
     }
 }
