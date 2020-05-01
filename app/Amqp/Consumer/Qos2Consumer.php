@@ -14,7 +14,6 @@ namespace App\Amqp\Consumer;
 use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
-use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * @Consumer(exchange="test", routingKey="test.qos", queue="test.qos", name="Qos2Consumer", nums=1, enable=false)
@@ -25,7 +24,7 @@ class Qos2Consumer extends ConsumerMessage
         'prefetch_count' => 1,
     ];
 
-    public function consume($data, AMQPMessage $message): string
+    public function consume($data): string
     {
         var_dump('qos2.begin');
         sleep(1);

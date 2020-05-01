@@ -14,7 +14,6 @@ namespace App\Amqp\Consumer;
 use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
-use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * @Consumer(exchange="hyperf", routingKey="timeout", queue="hyperf.timeout", name="TimeoutConsumer", nums=1, enable=false)
@@ -25,7 +24,7 @@ class TimeoutConsumer extends ConsumerMessage
     //     'prefetch_count' => 9,
     // ];
 
-    public function consume($data, AMQPMessage $message): string
+    public function consume($data): string
     {
         sleep($data);
         var_dump($data);

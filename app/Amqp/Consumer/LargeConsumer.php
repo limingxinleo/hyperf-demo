@@ -16,14 +16,13 @@ use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
 use Hyperf\Utils\Codec\Json;
-use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * @Consumer(exchange="hyperf", routingKey="large", queue="hyperf.large", name="LargeConsumer", nums=1)
  */
 class LargeConsumer extends ConsumerMessage
 {
-    public function consume($data, AMQPMessage $message): string
+    public function consume($data): string
     {
         $json = Json::encode($data);
         var_dump(strlen($json), isset($data['is'], $data['name'], $data['data']));

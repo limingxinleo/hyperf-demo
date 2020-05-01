@@ -15,14 +15,13 @@ use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
 use Hyperf\DbConnection\Db;
-use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * @Consumer(exchange="hyperf", routingKey="hyperf4", queue="hyperf3", nums=1, enable=false)
  */
 class Demo3Consumer extends ConsumerMessage
 {
-    public function consume($data, AMQPMessage $message): string
+    public function consume($data): string
     {
         Db::beginTransaction();
         throw new \Exception('xxx');
