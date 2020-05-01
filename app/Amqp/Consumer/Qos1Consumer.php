@@ -9,12 +9,12 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace App\Amqp\Consumer;
 
 use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
+use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * @Consumer(exchange="test", routingKey="test.qos", queue="test.qos", name="Qos1Consumer", nums=1, enable=false)
@@ -23,7 +23,7 @@ class Qos1Consumer extends ConsumerMessage
 {
     protected $qos = [];
 
-    public function consume($data): string
+    public function consume($data, AMQPMessage $message): string
     {
         var_dump('qos1.begin');
         sleep(1);

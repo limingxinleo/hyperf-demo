@@ -9,20 +9,20 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-
 namespace App\Amqp\Consumer;
 
 use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
 use Hyperf\Amqp\Result;
 use Hyperf\Contract\StdoutLoggerInterface;
+use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * @Consumer(exchange="hyperf", routingKey={"hyperf", "hyperf2"}, queue="hyperf", nums=1, enable=true)
  */
 class DemoConsumer extends ConsumerMessage
 {
-    public function consume($data): string
+    public function consume($data, AMQPMessage $message): string
     {
         $logger = di()->get(StdoutLoggerInterface::class);
         $logger->info('demo' . json_encode($data));
