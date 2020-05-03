@@ -107,7 +107,7 @@ class DbController extends Controller
     {
         $success = $this->request->input('s');
 
-        di()->get(DbService::class)->execute((bool)$success);
+        di()->get(DbService::class)->execute((bool) $success);
 
         $model = User::query()->where('id', 3)->first();
 
@@ -118,7 +118,7 @@ class DbController extends Controller
     {
         $res = UserExt::query()->where('id', 1)->update(
             [
-                'count' => Db::raw('count + 1')
+                'count' => Db::raw('count + 1'),
             ]
         );
 
