@@ -89,7 +89,6 @@ class AmqpController extends Controller
     {
         $message = new DemoRpcMessage(['id' => uniqid()]);
         $result = di()->get(RpcClient::class)->call($message);
-
         var_dump($result);
         return $this->response->success();
     }
