@@ -13,6 +13,7 @@ use Hyperf\Server\Server;
 use Hyperf\Server\SwooleEvent;
 
 return [
+    'server' => \Hyperf\Server\CoServer::class,
     'mode' => SWOOLE_BASE,
     'servers' => [
         [
