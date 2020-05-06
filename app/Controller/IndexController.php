@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Constants\ErrorCode;
+use App\Exception\BusinessException;
 use App\Service\GuzzleService;
 use Hyperf\CircuitBreaker\Annotation\CircuitBreaker;
 use Hyperf\Di\Annotation\Inject;
@@ -18,7 +20,7 @@ use Hyperf\Di\Annotation\Inject;
 class IndexController extends Controller
 {
     /**
-     * @Inject()
+     * @Inject
      * @var GuzzleService
      */
     protected $service;
@@ -40,7 +42,8 @@ class IndexController extends Controller
     public function breaker()
     {
         $this->service->client()->get('/sleep');
-
+        // sleep(1);
+        // throw new BusinessException(ErrorCode::SERVER_ERROR, 'breaking...');
         return $this->response->success('breaking...');
     }
 
