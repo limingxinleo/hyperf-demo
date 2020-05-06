@@ -11,10 +11,18 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use App\Service\GuzzleService;
 use Hyperf\CircuitBreaker\Annotation\CircuitBreaker;
+use Hyperf\Di\Annotation\Inject;
 
 class IndexController extends Controller
 {
+    /**
+     * @Inject()
+     * @var GuzzleService
+     */
+    protected $service;
+
     public function index()
     {
         $user = $this->request->input('user', 'Hyperf');
@@ -30,6 +38,13 @@ class IndexController extends Controller
      * @CircuitBreaker(failCounter=1, fallback="App\Controller\IndexController::index", timeout=0.1)
      */
     public function breaker()
+    {
+        $this->service->client()->get('/sleep');
+
+        return $this->response->success('breaking...');
+    }
+
+    public function sleep()
     {
         sleep(1);
         return $this->response->success('breaking...');

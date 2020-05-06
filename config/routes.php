@@ -13,3 +13,4 @@ use Hyperf\HttpServer\Router\Router;
 
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController::index');
 Router::get('/breaker', 'App\Controller\IndexController@breaker');
+Router::get('/sleep', 'App\Controller\IndexController@sleep');
