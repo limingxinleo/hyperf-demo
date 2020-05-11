@@ -35,8 +35,8 @@ class JobController extends Controller
     public function delay()
     {
         return $this->response->success(
-            queue_push(new ExampleJob(), 1)
-        // $this->service->example()
+        // queue_push(new ExampleJob(), 1)
+            $this->service->example()
         );
     }
 }
