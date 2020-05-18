@@ -11,6 +11,7 @@ declare(strict_types=1);
  */
 namespace App\Model;
 
+use App\Caster\UserInfoCaster;
 use Hyperf\Database\Model\Builder;
 
 /**
@@ -22,6 +23,7 @@ use Hyperf\Database\Model\Builder;
  * @property \App\Model\Book $book
  * @property \App\Model\Book[]|\Hyperf\Database\Model\Collection $books
  * @property null|\App\Model\Book|int|string $test
+ * @property \App\Caster\UserInfo $userInfo
  */
 class User extends Model
 {
@@ -44,7 +46,7 @@ class User extends Model
      *
      * @var array
      */
-    protected $casts = ['id' => 'integer', 'gender' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
+    protected $casts = ['userInfo' => UserInfoCaster::class, 'id' => 'integer', 'gender' => 'integer', 'created_at' => 'datetime', 'updated_at' => 'datetime'];
 
     public function book()
     {
