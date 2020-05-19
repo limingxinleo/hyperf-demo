@@ -11,20 +11,12 @@ declare(strict_types=1);
  */
 namespace App\Caster;
 
-class UserInfo
+use Hyperf\Database\Model\CastsValue;
+
+/**
+ * @property string $name
+ * @property int $gender
+ */
+class UserInfo extends CastsValue
 {
-    public $name;
-
-    public $gender;
-
-    /**
-     * UserInfo constructor.
-     * @param $name
-     * @param $gender
-     */
-    public function __construct($name, $gender)
-    {
-        $this->name = $name;
-        $this->gender = $gender;
-    }
 }

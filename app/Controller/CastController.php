@@ -22,7 +22,12 @@ class CastController extends Controller
     public function index()
     {
         /** @var User $user */
-        $user = User::query()->find(1);
-        return $this->response->success($user->userInfo->name);
+        $user = User::query()->find(100);
+        $user->userInfo->name = 'John1';
+        // $user->syncAttributes();
+        // $user->syncAttributes();
+        // $user->syncAttributes();
+        // $user->syncAttributes();
+        return $this->response->success($user->getAttributes());
     }
 }

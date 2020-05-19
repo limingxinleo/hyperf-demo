@@ -12,12 +12,13 @@ declare(strict_types=1);
 namespace App\Caster;
 
 use Hyperf\Contract\CastsAttributes;
+use Hyperf\Utils\Arr;
 
 class UserInfoCaster implements CastsAttributes
 {
     public function get($model, string $key, $value, array $attributes)
     {
-        return new UserInfo($attributes['name'], $attributes['gender']);
+        return new UserInfo($model, Arr::only($attributes, ['name', 'gender']));
     }
 
     /**
